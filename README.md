@@ -1,2 +1,2 @@
-# might-ask
+# mightask
 csds393 repo
