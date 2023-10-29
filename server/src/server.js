@@ -1,8 +1,11 @@
+// import { taskRouter } from "./task.routes";
+
 const dotenv = require("dotenv");
 const cors = require("cors");
 const express = require("express");
 const { connectToDatabase } = require("./database");
 const userRouter = require("./user.routes");
+const taskRouter = require("./task.routes");
 
 // Clear Node.js module cache
 Object.keys(require.cache).forEach(function(key) {
@@ -27,6 +30,7 @@ connectToDatabase(ATLAS_URI)
         res.send("Hello, this is the root URL!");
       });
     app.use("/users", userRouter);
+    app.use("/tasks", taskRouter);
 
     // start the Express server
     app.listen(5200, () => {
