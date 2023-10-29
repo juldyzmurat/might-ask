@@ -7,7 +7,7 @@ This is a simple task/schedule manager built as a class project.
 These are the guidelines that project members will adhere to when contributing
 to the project.
 
-## Version Control
+### Version Control
 
 1. All changes will be made in a branch off of the `main` branch
 1. Commit atomically (commit small changes to one or a few files at a time)
@@ -16,15 +16,15 @@ to the project.
 1. Each PR shall be reviewed by one other team member before merging
 1. Code reviews will be conducted through the GitHub interface
 
-## Coding Standards
+### Coding Standards
 
 1. Document code using appropriate comments and meaningful names
 
-## Issue Tracking
+### Issue Tracking
 
 1. Bugs and issues will be tracked using GitHub Issues
 
-## Documentation
+### Documentation
 
 1. Maintain a README file for major directories with explanations and
 instructions for future contributions
