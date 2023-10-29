@@ -30,6 +30,9 @@ connectToDatabase(ATLAS_URI)
         res.send("Hello, this is the root URL!");
       });
     app.use("/users", userRouter);
+    // app.get("/tasks", (req, res) => {
+    //     res.send("Hello, this is the tasks URL!");
+    //   });
     app.use("/tasks", taskRouter);
 
     // start the Express server

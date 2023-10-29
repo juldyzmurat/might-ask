@@ -7,7 +7,7 @@ taskRouter.use(express.json());
 
 taskRouter.get("/", async (_req, res) => {
   try {
-    console.log("Hi");
+    console.log("Bye");
     const tasks = await collections.tasks.find({}).toArray();
     res.status(200).send(tasks);
   } catch (error) {
