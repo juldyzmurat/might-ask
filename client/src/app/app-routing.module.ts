@@ -10,7 +10,7 @@ import { ListviewComponent } from './listview/listview.component';
 
  
 const routes: Routes = [
- { path: '', redirectTo: 'users', pathMatch: 'full' },
+ { path: '', redirectTo: 'taskpage', pathMatch: 'full' },
  { path: 'users', component: UsersListComponent },
  { path: 'users/new', component: AddUserComponent }, 
  { path: 'users/edit/:id', component: EditUserComponent },
