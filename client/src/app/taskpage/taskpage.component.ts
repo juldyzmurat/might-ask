@@ -9,35 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-taskpage',
-  template: `
-    <!DOCTYPE html>
-    <html>
-    <head>
-    </head>
-    <body>
-        <div class="container">
-          <mat-tab-group>
-            <mat-tab label="List View" (click)="showListView()"><app-listview></app-listview></mat-tab>
-            <mat-tab label="Board View" (click)="showBoardView()"><app-boardview></app-boardview></mat-tab>
-          </mat-tab-group>
-        <router-outlet></router-outlet> 
-        
-        </div>
-
-        <div class="circle-image">
-            <img src="../../assets/kitty.jpeg" alt="Profile Image">
-        </div>
-
-        <div class="circle-buttons" id="circleButtons">
-            <button id="myProfileButton">My Profile</button>
-            <button id="generateScheduleButton">Generate Schedule</button>
-            <button id="dashboardButton">Dashboard</button>
-        </div>
-
-        <img id="gif" src="./../assets/20cat.gif" alt="Animated GIF">
-    </body>
-    </html>
-  `,
+  templateUrl: './taskpage.component.html',
   styles: [`
     body {
       width: 100%;
