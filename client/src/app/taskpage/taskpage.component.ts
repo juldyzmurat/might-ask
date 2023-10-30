@@ -1,10 +1,10 @@
-import { Component, Renderer2, ElementRef } from '@angular/core';
+import { Component, Renderer2, ElementRef,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs'; 
 import { ListviewComponent } from '../listview/listview.component';
 import { BoardviewComponent } from '../boardview/boardview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -34,7 +34,7 @@ import { Observable } from 'rxjs';
             <button id="dashboardButton">Dashboard</button>
         </div>
 
-        <img id="gif" src="">
+        <img id="gif" src="./../assets/20cat.gif" alt="Animated GIF">
     </body>
     </html>
   `,
@@ -242,7 +242,7 @@ import { Observable } from 'rxjs';
   ]
 })
 
-export class TaskpageComponent {
+export class TaskpageComponent{
   viewType: 'list' | 'board' = 'list'; // Set the default view type
 
   constructor(private router: Router) { }
@@ -268,5 +268,8 @@ export class TaskpageComponent {
     this.router.navigate(['/board-view']);
   }
 
+
 }
+
+
 
