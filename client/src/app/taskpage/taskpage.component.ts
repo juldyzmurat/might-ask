@@ -4,6 +4,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ListviewComponent } from '../listview/listview.component';
 import { BoardviewComponent } from '../boardview/boardview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-taskpage',
@@ -14,9 +16,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     </head>
     <body>
         <div class="container">
-          <mat-tab-group [selectedIndex]="viewType === 'list' ? 0 : 1">
-          <mat-tab label="List View" (click)="showListView()"> </mat-tab>
-          <mat-tab label="Board View" (click)="showBoardView()"></mat-tab>
+          <mat-tab-group>
+            <mat-tab label="List View" (click)="showListView()"><app-listview></app-listview></mat-tab>
+            <mat-tab label="Board View" (click)="showBoardView()"><app-boardview></app-boardview></mat-tab>
           </mat-tab-group>
         <router-outlet></router-outlet> 
         

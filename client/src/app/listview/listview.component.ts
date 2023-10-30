@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-listview',
   template: `
-  <div class="list-view" id="list-view">
+  <div>
   
     <div class="task-bar">
 
