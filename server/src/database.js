@@ -9,13 +9,16 @@ async function connectToDatabase(uri) {
   await client.connect();
 
   const db = client.db("mightask");
-  await applySchemaValidation(db);
+  // await applyUserSchemaValidation(db);
+  // await applyTaskSchemaValidation(db);
 
   const userCollection = db.collection("user");
+  const taskCollection = db.collection("task");
   collections.users = userCollection;
+  collections.tasks = taskCollection;
 }
 
-async function applySchemaValidation(db) {
+async function applyUserSchemaValidation(db) {
   const jsonSchema = {
     $jsonSchema: {
       bsonType: "object",
@@ -46,6 +49,24 @@ async function applySchemaValidation(db) {
     },
   };
 
+  async function applyTaskSchemaValidation(db) {
+    const jsonSchema = {
+    $jsonSchema: {
+        bsonType: "object",
+        required: ["name", "user"],
+        additionalProperties: false,
+        properties: {
+          _id: {},
+          user: {},
+          name: {
+            bsonType: "string",
+            description: "'name' is required and is a string",
+          },
+        },
+      },
+    }
+  };
+
   await db
     .command({
       collMod: "users",
@@ -61,5 +82,5 @@ async function applySchemaValidation(db) {
 module.exports = {
   collections,
   connectToDatabase,
-  applySchemaValidation,
+  // applyUserSchemaValidation,
 };
