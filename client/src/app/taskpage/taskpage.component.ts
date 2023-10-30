@@ -8,15 +8,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @Component({
   selector: 'app-taskpage',
   template: `
-    <!DOCTYPE html>
     <html>
-    <head>
-    </head>
-    <body>
+      <head></head>
+      <body>
         <div class="container">
           <mat-tab-group>
-            <mat-tab label="List View" (click)="showListView()"><app-listview></app-listview></mat-tab>
-            <mat-tab label="Board View" (click)="showBoardView()"><app-boardview></app-boardview></mat-tab>
+            <mat-tab label="List View" (click)="showListView()">
+            <app-listview></app-listview>
+            </mat-tab>
+            
+            <mat-tab label="Board View" (click)="showBoardView()">
+            <app-boardview></app-boardview>
+            </mat-tab>
           </mat-tab-group>
         <router-outlet></router-outlet> 
         
@@ -33,8 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         </div>
 
         <img id="gif" src="">
-    </body>
-    </html>
+      </body>
   `,
   styles: [`
     body {
