@@ -112,9 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return taskProperty;
     }
 
-/* Adding Task Button */
-
-
 });
 
  

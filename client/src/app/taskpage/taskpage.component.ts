@@ -1,4 +1,9 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs'; 
+import { ListviewComponent } from '../listview/listview.component';
+import { BoardviewComponent } from '../boardview/boardview.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-taskpage',
@@ -9,39 +14,12 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
     </head>
     <body>
         <div class="container">
-            <div class="tabs">
-                <button id="list-view-button">List View</button>
-                <button id="board-view-button">Board View</button>
-            </div>
-            <div class="content">
-                <div class="list-view" id="list-view">
-                    <!-- List view content -->
-                    <div class="task-bar">
-                          <button id="ellipsis-button">&#8285;</button>
-                          <div class="task-properties">
-                              <!-- placeholders -->
-                              <p><strong>Name:</strong> <span class="name-placeholder">Task Name 1</span></p>
-                          
-                          </div>
-                          <div class="task-properties">
-                              <!-- placeholders -->
-                              <p><strong>Due Date:</strong> <span class="Date-placeholder"> date</span></p>
-                          
-                          </div>
-                          <div class="task-properties">
-                              <!-- placeholders -->
-                              <p><strong>Category:</strong> <span class="Category-placeholder"> cat</span></p>
-                          
-                          </div>
-                      </div>
-                </div>  
-                <div class="board-view" id="board-view">
-                    <!-- Board view content -->
-                    <div class="task-card">To Do</div>
-                    <div class="task-card">In Progress</div>
-                    <div class="task-card">Done</div>
-                </div>
-            </div>
+          <mat-tab-group [selectedIndex]="viewType === 'list' ? 0 : 1">
+          <mat-tab label="List View" (click)="showListView()"> </mat-tab>
+          <mat-tab label="Board View" (click)="showBoardView()"></mat-tab>
+          </mat-tab-group>
+        <router-outlet></router-outlet> 
+        
         </div>
 
         <div class="circle-image">
@@ -60,6 +38,8 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
   `,
   styles: [`
     body {
+      width: 100%;
+      height: 80%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -69,7 +49,7 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
     }
   
     .container {
-      width: 60%;
+      width: 100%;
       height: 80%;
       border: 2px solid #000;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -77,6 +57,8 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
     }
   
     .tabs {
+      width: 60%;
+      height: 80%;
       display: flex;
       justify-content: center; 
       border: 2px solid #ccc;
@@ -113,7 +95,6 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
       clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%);
     }
   
-  
     .content {
       display: flex;
       flex: 1;
@@ -124,24 +105,23 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
     .list-view {
       width: 100%;
       height: 100%;
-      display: none;
+      
     }
   
     .board-view {
       width: 100%;
       height: 100%;
-      display: none;
       text-align: center; 
     }
    
     .task-bar {
-        position: relative;
-        width: 80%;
-        height: 30px;
-        background-color: #e0e0e0;
-        margin: 10px;
-        padding: 10px;
-        display: flex;
+      position: relative;
+      width: 80%;
+      height: 30px;
+      background-color: #e0e0e0;
+      margin: 10px;
+      padding: 10px;
+      display: flex;
         
         /*justify-content: space-between;*/
         
@@ -259,9 +239,32 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
     }`
   ]
 })
+
 export class TaskpageComponent {
-  constructor(private renderer: Renderer2, private el: ElementRef) { }
+  viewType: 'list' | 'board' = 'list'; // Set the default view type
+
+  constructor(private router: Router) { }
+
+
+  showListView() {
+    this.viewType = 'list'; // Set viewType to 'list' when the List View tab is clicked
+    this.navigateToListView();
+  }
+
+  showBoardView() {
+    console.log("boardfunc");
+    this.viewType = 'board'; // Set viewType to 'board' when the Board View tab is clicked
+    this.navigateToBoardView();
+  }
+
+
+  navigateToListView() {
+    this.router.navigate(['/list-view']);
+  }
+
+  navigateToBoardView() {
+    this.router.navigate(['/board-view']);
+  }
 
 }
-
 
