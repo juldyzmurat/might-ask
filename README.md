@@ -7,6 +7,11 @@ This is a simple task/schedule manager built as a class project.
 These are the guidelines that project members will adhere to when contributing
 to the project.
 
+### Database Modification
+
+1. Exercise extreme caution when modifying the database directly because it is
+not backed up
+
 ### Version Control
 
 1. All changes will be made in a branch off of the `main` branch
