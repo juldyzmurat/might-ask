@@ -35,8 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
             <button id="dashboardButton">Dashboard</button>
         </div>
 
-        <img id="gif" src="">
+        <img id="gif" src="./../assets/20cat.gif" alt="Animated GIF">
       </body>
+    </html>
   `,
   styles: [`
     body {
@@ -242,7 +243,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ]
 })
 
-export class TaskpageComponent {
+export class TaskpageComponent{
   viewType: 'list' | 'board' = 'list'; // Set the default view type
 
   constructor(private router: Router) { }
@@ -268,5 +269,8 @@ export class TaskpageComponent {
     this.router.navigate(['/board-view']);
   }
 
+
 }
+
+
 
