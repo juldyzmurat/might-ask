@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-boardview',
   template: `
-    <div class="board-view" id="board-view">
+    <div>
       <p>To Do</p>
       <p>In Progress</p>
       <p>Done</p>
@@ -19,7 +19,11 @@ import { Router } from '@angular/router';
   `
   ]
 })
+
+
 export class BoardviewComponent {
   constructor(private router: Router) { }
+
+  
 
 }
