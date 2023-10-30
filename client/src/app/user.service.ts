@@ -13,14 +13,12 @@ export class UserService {
  constructor(private httpClient: HttpClient) { }
  
  private refreshUsers() {
-  console.log(`Hi`);
-  console.log(`${this.url}/users`);
    this.httpClient.get<User[]>(`${this.url}/users`)
      .subscribe(users => {
        this.users$.next(users);
      });
  }
- 
+
  getUsers(): Subject<User[]> {
    this.refreshUsers();
    return this.users$;
