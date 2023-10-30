@@ -6,10 +6,7 @@ import { UserService } from '../user.service';
  
 @Component({
  selector: 'app-edit-user.component.ts',
- template: `
-   <h2 class="text-center m-5">Edit an User</h2>
-   <app-user-form [initialState]="user" (formSubmitted)="editUser($event)"></app-user-form>
- `
+ templateUrl: './edit-user.component.html',
 })
 export class EditUserComponent implements OnInit {
  user: BehaviorSubject<User> = new BehaviorSubject({});

@@ -3,13 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boardview',
-  template: `
-    <div>
-      <p>To Do</p>
-      <p>In Progress</p>
-      <p>Done</p>
-    </div>
-  `,
+  templateUrl: "./boardview.component.html",
   styles: [`
   .board-view {
     width: 100%;
