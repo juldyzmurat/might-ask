@@ -1,11 +1,9 @@
-import { Component, Renderer2, ElementRef,OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs'; 
 import { ListviewComponent } from '../listview/listview.component';
 import { BoardviewComponent } from '../boardview/boardview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
 
 @Component({
   selector: 'app-taskpage',
