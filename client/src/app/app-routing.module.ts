@@ -17,7 +17,6 @@ const routes: Routes = [
  { path: 'taskpage', component: TaskpageComponent },
  { path: 'list-view', component: ListviewComponent },
  { path: 'board-view', component: BoardviewComponent },
-
 ];
  
 @NgModule({
