@@ -4,6 +4,9 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { AddUserComponent } from './add-user/add-user.component'; // <-- add this line
 import { EditUserComponent } from './edit-user/edit-user.component'; // <-- add this line
 import { TaskpageComponent } from './taskpage/taskpage.component';
+import { BoardviewComponent } from './boardview/boardview.component';
+import { ListviewComponent } from './listview/listview.component';
+
 
  
 const routes: Routes = [
@@ -11,7 +14,10 @@ const routes: Routes = [
  { path: 'users', component: UsersListComponent },
  { path: 'users/new', component: AddUserComponent }, // <-- add this line
  { path: 'users/edit/:id', component: EditUserComponent },// <-- add this line
- { path: 'taskpage', component: TaskpageComponent }
+ { path: 'taskpage', component: TaskpageComponent },
+ { path: 'list-view', component: ListviewComponent },
+ { path: 'board-view', component: BoardviewComponent },
+
 ];
  
 @NgModule({
