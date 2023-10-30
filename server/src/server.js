@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const express = require("express");
 const { connectToDatabase } = require("./database");
+const getUserData = require("./dashboard");
 const userRouter = require("./user.routes");
 const taskRouter = require("./task.routes");
 
@@ -39,5 +40,10 @@ connectToDatabase(ATLAS_URI)
     app.listen(5200, () => {
       console.log(`Server running at http://localhost:5200...`);
     });
+
+    getUserData();
   })
   .catch((error) => console.error(error));
+
+
+
