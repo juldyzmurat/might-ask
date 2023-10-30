@@ -9,6 +9,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { TaskpageComponent } from './taskpage/taskpage.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     UserFormComponent,
     AddUserComponent,
     EditUserComponent,
+    TaskpageComponent,
   ],
   imports: [
     BrowserModule,
