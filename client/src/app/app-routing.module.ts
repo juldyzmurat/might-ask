@@ -6,11 +6,11 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { TaskpageComponent } from './taskpage/taskpage.component';
 import { BoardviewComponent } from './boardview/boardview.component';
 import { ListviewComponent } from './listview/listview.component';
+import { LoginComponent } from './login/login.component';
 
-
- 
 const routes: Routes = [
- { path: '', redirectTo: 'taskpage', pathMatch: 'full' },
+ { path: '', redirectTo: 'login', pathMatch: 'full' },
+ { path: 'login', component: LoginComponent},
  { path: 'users', component: UsersListComponent },
  { path: 'users/new', component: AddUserComponent }, 
  { path: 'users/edit/:id', component: EditUserComponent },
