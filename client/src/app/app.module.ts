@@ -14,6 +14,7 @@ import { TaskpageComponent } from './taskpage/taskpage.component';
 import { ListviewComponent } from './listview/listview.component';
 import { BoardviewComponent } from './boardview/boardview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditUserComponent,
     TaskpageComponent,
     ListviewComponent,
-    BoardviewComponent
+    BoardviewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
