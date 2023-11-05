@@ -14,10 +14,11 @@ not backed up
 
 ### Version Control
 
-1. All changes will be made in a branch off of the `main` branch
-1. Commit atomically (commit small changes to one or a few files at a time)
+1. Commits will not be made directly to the `main` branch
+1. Branches will be based on features, not authors
+1. Commit and push atomically (frequently commit small changes)
 1. Commit messages should be descriptive and concise
-1. Make a PR to merge your branch into `main` when you are ready to merge
+1. Make a PR before merging into `main`
 1. Each PR shall be reviewed by one other team member before merging
 1. Code reviews will be conducted through the GitHub interface
 
