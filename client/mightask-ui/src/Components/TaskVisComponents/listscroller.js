@@ -1,8 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
+
+const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 function PinnedSubheaderList() {
   return (
@@ -18,12 +20,12 @@ function PinnedSubheaderList() {
       }}
       subheader={<li />}
     >
-      {[0, 1, 2, 3, 4].map((sectionId) => (
-        <li key={`section-${sectionId}`}>
+      {daysOfWeek.map((day, index) => (
+        <li key={`section-${index}`}>
           <ul>
-            <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
+            <ListSubheader>{`${day}`}</ListSubheader>
             {[0, 1, 2].map((item) => (
-              <ListItem key={`item-${sectionId}-${item}`}>
+              <ListItem key={`item-${index}-${item}`}>
                 <ListItemText primary={`Item ${item}`} />
               </ListItem>
             ))}
