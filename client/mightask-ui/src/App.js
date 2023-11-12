@@ -4,10 +4,14 @@ import './App.css';
 import Tabs from "./Components/TabComponent/Tabs";
 import CircleButton from "./Components/TaskVisComponents/accounticon"; 
 
+
 // For the cat  <img src={gif} className="App-logo" alt="gif" />
 
 
 function App() {
+
+
+
   return (
     <div className="App">
       <header className="App-header"> 
