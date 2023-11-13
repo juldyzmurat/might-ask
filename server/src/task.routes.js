@@ -5,7 +5,7 @@ const { collections } = require("./database");
 const taskRouter = express.Router();
 taskRouter.use(express.json());
 
-taskRouter.get("/", async (_req, res) => {
+taskRouter.get("/task", async (_req, res) => {
   try {
     console.log("Bye");
     const tasks = await collections.tasks.find({}).toArray();
@@ -15,7 +15,7 @@ taskRouter.get("/", async (_req, res) => {
   }
 });
 
-taskRouter.get("/:id", async (req, res) => {
+taskRouter.get("/task/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const query = { _id: new mongodb.ObjectId(id) };
@@ -31,7 +31,7 @@ taskRouter.get("/:id", async (req, res) => {
     }
   });
 
-  taskRouter.post("/", async (req, res) => {
+  taskRouter.post("/task/post", async (req, res) => {
     try {
       const task = req.body;
       const result = await collections.tasks.insertOne(task);
@@ -47,7 +47,7 @@ taskRouter.get("/:id", async (req, res) => {
     }
   });
   
-  taskRouter.put("/:id", async (req, res) => {
+  taskRouter.put("/task/put/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const task = req.body;
@@ -67,7 +67,7 @@ taskRouter.get("/:id", async (req, res) => {
     }
   });
 
-  taskRouter.delete("/:id", async (req, res) => {
+  taskRouter.delete("/task/delete/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const query = { _id: new mongodb.ObjectId(id) };
