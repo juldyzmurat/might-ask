@@ -1,9 +1,11 @@
 import React from 'react';
- 
+import Google from "../Login/LoginAPI";
+import { GoogleOAuthProvider } from '@react-oauth/google'; 
+
 const SignUp = () => {
     return (
         <div>
-            <h1>Sign Up Successful</h1>
+           Thing
         </div>
     );
 };
