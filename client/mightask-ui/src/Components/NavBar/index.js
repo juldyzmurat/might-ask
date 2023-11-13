@@ -16,7 +16,7 @@ const Navbar = () => {
                     <NavLink to="/TasksViewPage" activeStyle>
                         TaskView
                     </NavLink>
-                    <NavLink to="/sign-up" activeStyle>
+                    <NavLink to="/signup" activeStyle>
                         Sign Up
                     </NavLink>
                 </NavMenu>

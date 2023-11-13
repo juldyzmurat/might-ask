@@ -1,12 +1,17 @@
 import { FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
+import CircleButton from "../TaskVisComponents/accounticon";
 
 export const Nav = styled.nav`
+position:fixed;
 background: #ffb3ff;
+width:50%;
+top:0;
+left:0;
 height: 85px;
 display: flex;
-justify-content: space-between;
+justify-content: center;
 padding: 0.2rem calc((100vw - 1000px) / 2);
 z-index: 12;
 `;
@@ -27,6 +32,7 @@ cursor: pointer;
 export const Bars = styled(FaBars)`
 display: none;
 color: #808080;
+
 @media screen and (max-width: 768px) {
 	display: block;
 	position: absolute;

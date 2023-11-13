@@ -26,17 +26,18 @@ function App() {
     <div className="App">
       <header className="App-header"> 
     
-        <CircleButton />
+      <CircleButton />
         <img src={gif} className="App-logo" alt="gif" />
       </header>
         <Router>
             <Navbar />
+            
             <Routes>
                 <Route exact path='/' element={<Home />} />
                 <Route path='/about' element={<About />} />
-                <Route path='/contact' element={<Contact />} />
                 <Route path='/TasksViewPage' element={<TaskView />} />
-                <Route path='/sign-up' element={<SignUp />} />
+                <Route path='/DashboardPage' element={<Dashboard />} />
+                <Route path='/signup' element={<SignUp />} />
             </Routes>
         </Router>
     </div>

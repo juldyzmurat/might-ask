@@ -5,7 +5,9 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 const SignUp = () => {
     return (
         <div>
-           Thing
+            <GoogleOAuthProvider clientId="599824373793-o5aoosfc8ndecst0jq232s9qjqdhmr83.apps.googleusercontent.com">
+                <Google />
+            </GoogleOAuthProvider>
         </div>
     );
 };
