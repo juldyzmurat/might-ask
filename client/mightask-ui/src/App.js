@@ -13,6 +13,9 @@ import About from './Components/Pages/about';
 import Blogs from './Components/Pages/blogs';
 import SignUp from './Components/Pages/signup';
 import Contact from './Components/Pages/contact';
+import Google from "./Components/Login/LoginAPI";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 
 // For the cat  <img src={gif} className="App-logo" alt="gif" />
@@ -25,6 +28,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header"> 
+        <GoogleOAuthProvider clientId="599824373793-o5aoosfc8ndecst0jq232s9qjqdhmr83.apps.googleusercontent.com">
+          <Google />
+        </GoogleOAuthProvider>
+
         <CircleButton />
         <img src={gif} className="App-logo" alt="gif" />
       </header>
@@ -45,3 +52,9 @@ function App() {
 }
 
 export default App;
+
+
+
+// For the cat  <img src={gif} className="App-logo" alt="gif" />
+
+
