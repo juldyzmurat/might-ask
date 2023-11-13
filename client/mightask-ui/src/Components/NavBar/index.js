@@ -22,7 +22,7 @@ const Navbar = () => {
                         TaskView
                     </NavLink>
                     <NavLink to="/signup" activeStyle>
-                        Sign Up
+                    Schedule
                     </NavLink>
                 </NavMenu>
             </Nav>
