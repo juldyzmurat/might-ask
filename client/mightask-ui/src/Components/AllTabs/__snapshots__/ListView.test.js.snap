@@ -1,0 +1,378 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="FirstTab"
+>
+  <div
+    style={
+      Object {
+        "height": "500px",
+      }
+    }
+  >
+    <ul
+      className="MuiList-root MuiList-padding MuiList-subheader css-1w8ty78-MuiList-root"
+    >
+      <li />
+      <li>
+        <ul>
+          <li
+            className="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+          >
+            Monday
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 0
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 1
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 2
+              </span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li
+            className="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+          >
+            Tuesday
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 0
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 1
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 2
+              </span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li
+            className="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+          >
+            Wednesday
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 0
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 1
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 2
+              </span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li
+            className="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+          >
+            Thursday
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 0
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 1
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 2
+              </span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li
+            className="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+          >
+            Friday
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 0
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 1
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 2
+              </span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li
+            className="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+          >
+            Saturday
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 0
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 1
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 2
+              </span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li
+            className="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+          >
+            Sunday
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 0
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 1
+              </span>
+            </div>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+            disabled={false}
+          >
+            <div
+              className="MuiListItemText-root css-tlelie-MuiListItemText-root"
+            >
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+              >
+                Item 2
+              </span>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

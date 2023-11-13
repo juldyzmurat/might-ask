@@ -21,6 +21,12 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Use `npm test -- --coverage` to see the test coverage.
 
+#### Snapshot Testing
+
+Snapshot testing is used to test the UI components. The snapshots are stored in the `__snapshots__` folder. If you make changes to the UI components, you will need to update the snapshots. To do this, run `npm test -- -u` to update the snapshots. Please be careful not to update the snapshots unintentionally; The purpose of the snapshots is to alert you to potentially unintentional changes to the UI.
+
+See the documentation on Snapshot Testing [here](https://jestjs.io/docs/snapshot-testing) for more information.
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
