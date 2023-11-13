@@ -31,7 +31,6 @@ const TaskComponent = () => {
 
   return (
     <div>
-      <h1>Task:</h1>
       <ul>
         {/* Map over the data and render each item */}
         {data.map(item => (
