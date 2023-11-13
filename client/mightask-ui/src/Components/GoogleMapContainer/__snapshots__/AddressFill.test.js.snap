@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <input
+    id="location-input"
+    onChange={[Function]}
+    placeholder="Address"
+    type="text"
+    value=""
+  />
+  <input
+    onChange={[Function]}
+    placeholder="Apt, Suite, etc (optional)"
+    type="text"
+  />
+  <input
+    id="locality-input"
+    onChange={[Function]}
+    placeholder="City"
+    type="text"
+    value=""
+  />
+  <div
+    className="half-input-container"
+  >
+    <input
+      className="half-input"
+      id="administrative_area_level_1-input"
+      onChange={[Function]}
+      placeholder="State/Province"
+      type="text"
+      value=""
+    />
+    <input
+      className="half-input"
+      id="postal_code-input"
+      onChange={[Function]}
+      placeholder="Zip/Postal code"
+      type="text"
+      value=""
+    />
+  </div>
+  <input
+    id="country-input"
+    onChange={[Function]}
+    placeholder="Country"
+    type="text"
+    value=""
+  />
+  <div
+    id="gmp-map"
+    style={
+      Object {
+        "height": "400px",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
