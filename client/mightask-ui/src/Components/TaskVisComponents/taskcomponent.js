@@ -8,7 +8,7 @@ const TaskComponent = () => {
     // Function to fetch data from the backend
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5200/task');
+        const response = await fetch('http://localhost:5200/tasks');
         
         // Check if the response is successful (status code 200)
         if (!response.ok) {
