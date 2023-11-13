@@ -15,13 +15,13 @@ const CircleButton = () => {
 };
 
 const circleStyle = {
-  width: '100px',
-  height: '100px',
+  width: '90px',
+  height: '90px',
   borderRadius: '50%',
   overflow: 'hidden',
   cursor: 'pointer',
+  backgroundColor: 'red', // Add a background color for testing
 };
-
 const imageStyle = {
   width: '100%',
   height: '100%',

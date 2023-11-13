@@ -1,11 +1,16 @@
 import React from "react";
-import { Nav, NavLink, NavMenu }
+import { Nav, NavLink, NavMenu, CircleButtonWrapper}
     from "./NavbarElements";
+import CircleButton from "../TaskVisComponents/accounticon";
+
  
 const Navbar = () => {
     return (
         <>
             <Nav>
+                <CircleButtonWrapper>
+                    <CircleButton />
+                </CircleButtonWrapper>
                 <NavMenu>
                     <NavLink to="/about" activeStyle>
                         About

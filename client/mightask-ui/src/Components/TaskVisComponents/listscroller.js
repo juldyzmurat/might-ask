@@ -11,11 +11,10 @@ function PinnedSubheaderList() {
     <List
       sx={{
         width: '100%',
-        maxWidth: 360,
+        maxHeight: "100%",
         bgcolor: 'background.paper',
         position: 'relative',
         overflow: 'auto',
-        maxHeight: 300,
         '& ul': { padding: 0 },
       }}
       subheader={<li />}

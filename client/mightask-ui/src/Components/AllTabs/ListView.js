@@ -9,7 +9,9 @@ const FirstTab = () => {
     return (
       <div className="FirstTab">
         {/* First tab content will go here */}
-        <PinnedSubheaderList />
+        <div style={{height: '500px'}}>
+          <PinnedSubheaderList />
+        </div>
 
       </div>
     );

@@ -1,12 +1,11 @@
 import { FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
-import CircleButton from "../TaskVisComponents/accounticon";
 
 export const Nav = styled.nav`
 position:fixed;
 background: #ffb3ff;
-width:50%;
+width:70%;
 top:0;
 left:0;
 height: 85px;
@@ -46,6 +45,7 @@ color: #808080;
 
 export const NavMenu = styled.div`
 display: flex;
+width: 50%;
 align-items: center;
 margin-right: -24px;
 /* Second Nav */
@@ -56,4 +56,17 @@ white-space: nowrap; */
 @media screen and (max-width: 768px) {
 	display: none;
 }
+`;
+
+export const CircleButtonWrapper = styled.div`
+  position: absolute;
+  right: 30px; /* Adjust the positioning as needed */
+  top: 50%; /* Adjust the positioning as needed */
+  transform: translateY(-50%);
+`;
+
+export const TaskView = styled.div`
+  width: 100%; /* Set a fixed width */
+  height: 100vh; /* Set a fixed height (100% of the viewport height) */
+  overflow: hidden; /* Hide overflow if content exceeds the fixed height */
 `;

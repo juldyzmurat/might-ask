@@ -17,22 +17,19 @@
   width: 200px;
   height: 200px;
 
-
-
  }
 
- .CircleButton {
-  position: fixed;
-  top: 0px; /* Adjust top value as needed */
-  right: 0px; /* Adjust right value as needed */
-  transform: translateY(50%);
-}
+.Aboutcat{
+  width: 200px;
+  height: 200px;
+ }
+
 
 /* Tab Container */
 .Tabs {
   
-  width: auto;
-  height: auto;
+  width: 600px;
+  height: 600px;
   min-height: 400px;
   background: #f1b6dc;
   margin: 3.5rem auto 1.5rem;
@@ -80,7 +77,12 @@ ul.nav li.active {
   background: #39A2DB;
 }
 
-.FirstTab p,
+.FirstTab p{
+
+  font-size: 2rem;
+  text-align: center;
+}
+
 .SecondTab p {
   font-size: 2rem;
   text-align: center;
