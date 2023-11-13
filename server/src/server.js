@@ -5,6 +5,7 @@ const cors = require("cors");
 const express = require("express");
 const { connectToDatabase } = require("./database");
 const getUserData = require("./dashboard");
+const getTaskData = require("./task.function")
 const userRouter = require("./user.routes");
 const taskRouter = require("./task.routes");
 
@@ -42,6 +43,7 @@ connectToDatabase(ATLAS_URI)
     });
 
     getUserData();
+    getTaskData();
   })
   .catch((error) => console.error(error));
 
