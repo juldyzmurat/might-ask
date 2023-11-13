@@ -28,7 +28,7 @@ not backed up
 
 ### Issue Tracking
 
-1. Bugs and issues will be tracked using Jira
+1. Bugs and issues will be tracked using GitHub Issues
 
 ### Documentation
 

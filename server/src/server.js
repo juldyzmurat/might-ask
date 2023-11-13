@@ -5,9 +5,9 @@ const cors = require("cors");
 const express = require("express");
 const { connectToDatabase } = require("./database");
 const getUserData = require("./dashboard");
-const getTaskData = require("./task.function")
 const userRouter = require("./user.routes");
 const taskRouter = require("./task.routes");
+const categoryRouter = require("./category.routes");
 
 // Clear Node.js module cache
 Object.keys(require.cache).forEach(function(key) {
@@ -32,10 +32,8 @@ connectToDatabase(ATLAS_URI)
         res.send("Hello, this is the root URL!");
       });
     app.use("/users", userRouter);
-    // app.get("/tasks", (req, res) => {
-    //     res.send("Hello, this is the tasks URL!");
-    //   });
     app.use("/tasks", taskRouter);
+    app.use("/categories", categoryRouter);
 
     // start the Express server
     app.listen(5200, () => {
@@ -43,7 +41,6 @@ connectToDatabase(ATLAS_URI)
     });
 
     getUserData();
-    getTaskData();
   })
   .catch((error) => console.error(error));
 
