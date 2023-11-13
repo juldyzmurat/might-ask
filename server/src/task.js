@@ -9,9 +9,10 @@ const Task = {
   due: Date,
   recurrence: mongodb.Int32,
   estimated_duration: mongodb.Int32,
+  actual_duration: mongodb.Int32,
   location: String,
-  category: String,
-  user: mongodb.ObjectId,
+  categoryid: mongodb.ObjectId,
+  userid: mongodb.ObjectId,
   _id: mongodb.ObjectId,
 };
 
