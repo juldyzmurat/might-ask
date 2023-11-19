@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, NavLink, NavMenu, CircleButtonWrapper}
+import { Nav, NavLink, NavMenu, CircleButtonWrapper, LoginButton}
     from "./NavbarElements";
 import CircleButton from "../TaskVisComponents/accounticon";
 
@@ -15,13 +15,13 @@ const Navbar = () => {
                     <NavLink to="/about" activeStyle>
                         About
                     </NavLink>
-                    <NavLink to="/contact" activeStyle>
-                        Contact Us
-                    </NavLink>
                     <NavLink to="/TasksViewPage" activeStyle>
                         TaskView
                     </NavLink>
-                    <NavLink to="/signup" activeStyle>
+                    <NavLink to="/DashboardPage" activeStyle>
+                        Dashboard
+                    </NavLink>
+                    <NavLink to="/schedule" activeStyle>
                         Schedule
                     </NavLink>
                 </NavMenu>
