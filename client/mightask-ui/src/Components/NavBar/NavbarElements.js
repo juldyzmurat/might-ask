@@ -13,6 +13,7 @@ display: flex;
 justify-content: center;
 padding: 0.2rem calc((100vw - 1000px) / 2);
 z-index: 12;
+display: none;
 `;
 
 export const NavLink = styled(Link)`
@@ -69,4 +70,10 @@ export const TaskView = styled.div`
   width: 100%; /* Set a fixed width */
   height: 100vh; /* Set a fixed height (100% of the viewport height) */
   overflow: hidden; /* Hide overflow if content exceeds the fixed height */
+`;
+
+export const LoginButton = styled.div`
+	width: 100%
+	height: 100%
+	
 `;
