@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route }
     from 'react-router-dom';
 import Home from './Components/Pages/';
 import About from './Components/Pages/about';
-import SignUp from './Components/Pages/signup';
+import Schedule from './Components/Pages/schedule';
 import Dashboard from "./Components/Pages/DashboardPage";
 
 
@@ -28,7 +28,7 @@ function App() {
                 <Route path='/about' element={<About />} />
                 <Route path='/TasksViewPage' element={<TaskView />} />
                 <Route path='/DashboardPage' element={<Dashboard />} />
-                <Route path='/signup' element={<SignUp />} />
+                <Route path='/schedule' element={<Schedule />} />
             </Routes>
         </Router>
     </div>
