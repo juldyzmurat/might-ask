@@ -12,16 +12,16 @@ const Navbar = () => {
                     <CircleButton />
                 </CircleButtonWrapper>
                 <NavMenu>
-                    <NavLink to="/about" activeStyle>
+                    <NavLink to="/about">
                         About
                     </NavLink>
-                    <NavLink to="/TasksViewPage" activeStyle>
+                    <NavLink to="/TasksViewPage">
                         TaskView
                     </NavLink>
-                    <NavLink to="/DashboardPage" activeStyle>
+                    <NavLink to="/DashboardPage">
                         Dashboard
                     </NavLink>
-                    <NavLink to="/schedule" activeStyle>
+                    <NavLink to="/schedule">
                         Schedule
                     </NavLink>
                 </NavMenu>
