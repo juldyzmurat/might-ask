@@ -1,33 +1,31 @@
-import React from 'react';
-import { GoogleLogin } from '@react-oauth/google';
-import { useNavigate } from "react-router-dom";
-//import { BrowserRouter as Router } from 'react-router-dom';
+//we are starting from scratch 
+import {GoogleLogin} from 'react-google-login'; 
 
+const clientID = "613216441734-0c8nmpfakholp4jm5v5jp14occlu232i.apps.googleusercontent.com";
 
+function LoginButton(){
 
-const GoogleLoginComponent = () => {
+    const onSuccess = (res) => {
+        console.log("LOGIN SUCCESS Current user: ", res);
+    }
 
-    const navigate = useNavigate();
+    const onFailure = (res) => {
+        console.log("LOGIN Fail");
+    }
 
-    const redirectToPage = () => {
-        // Redirect to another page when the Google Login button is clicked
-        navigate("../../App"); // Change 'dashboard' to your desired path
-      };
+    return(
+        <div id="signInButton">
+            <GoogleLogin
+                clientId={clientID}
+                buttonText="Login"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                cookiePolicy={'single_host_origin'}
+                isSignedIn={true}
+            />
+        </div>
+    )
 
-      
-    return (
+}
 
-        <GoogleLogin
-                //onSuccess={credentialResponse => {
-                //    console.log(credentialResponse);
-                //}}
-                //onError={() => {
-            //    console.log('Login Failed');
-                //}}
-            onClick = {redirectToPage}
-        />
-
-    );
-};
-
-export default GoogleLoginComponent;
+export default LoginButton; 

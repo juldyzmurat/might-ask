@@ -1,29 +1,40 @@
 import React, { useState } from "react";
-import Google from "../Login/LoginAPI";
-import { GoogleOAuthProvider } from '@react-oauth/google'; 
 import gif from '../../80cat.gif';
-import { Nav, LoginButton} from "../NavBar/NavbarElements";
- 
-const Home = () => {
+import { Nav} from "../NavBar/NavbarElements";
+import  LoginButton  from "../Login/LoginAPI";
+import  LogoutButton  from "../Login/LogoutAPI";
 
-    const [navDisplay, setNavDisplay] = useState(false);
+import { useEffect } from 'react';
+import { gapi } from 'gapi-script'
 
-    const handleLoginClick = () => {
-        // Toggle the navigation bar display
-        setNavDisplay(!navDisplay);
-    };
+const clientId = "613216441734-0c8nmpfakholp4jm5v5jp14occlu232i.apps.googleusercontent.com";
+
+
+
+function Home(){
+
+    useEffect(() => {
+        function start() {
+            if (!gapi.auth2.getAuthInstance()) {
+                gapi.auth2.init({
+                  client_id: clientId,
+                  scope: "profile email"
+                });
+              }
+              
+            const authInstance = gapi.auth2.getAuthInstance();
+        };
+        gapi.load('client: auth2', start);
+    });
 
     return (
         <div>
             <img src={gif} className="App-logo" alt="gif" />
-            <LoginButton onClick={handleLoginClick}>
-                <GoogleOAuthProvider clientId="599824373793-o5aoosfc8ndecst0jq232s9qjqdhmr83.apps.googleusercontent.com">
-                    <Google />
-                </GoogleOAuthProvider>
-            </LoginButton>
+            <LoginButton />
+            <LogoutButton />
         </div>
-        
-    );
+    )
+    
 };
  
 export default Home;
