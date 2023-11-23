@@ -1,7 +1,5 @@
 import PinnedSubheaderList from '../TaskVisComponents/listscroller';
 import TaskComponent from '../TaskVisComponents/taskcomponent';
-//import GoogleLogin from "../Login/GoogleLogin"
-//import Auth from '../Login/auth';
 import React, { useState, useEffect } from 'react';
 
 const FirstTab = () => {

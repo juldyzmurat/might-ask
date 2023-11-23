@@ -13,8 +13,10 @@ display: flex;
 justify-content: center;
 padding: 0.2rem calc((100vw - 1000px) / 2);
 z-index: 12;
-display: none;
+
 `;
+
+//display: none;
 
 export const NavLink = styled(Link)`
 color: #808080;
@@ -73,7 +75,11 @@ export const TaskView = styled.div`
 `;
 
 export const LoginButton = styled.div`
-	width: 150%
-	height: 150%
-	background: #ffb3ff;
+width: 150px;
+height: 150px;
+background: #ffb3ff;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer; /* Add this to indicate that it's clickable */
 `;
