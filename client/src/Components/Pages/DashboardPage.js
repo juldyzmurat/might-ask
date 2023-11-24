@@ -61,16 +61,25 @@ const Dashboard = () => {
     // Convert the structure
     const transformedJson = newJson.map(item => ({
     name: `Category ${item.categoryName}`, // Can be customized
-    students: item.count
+    count: item.count
     }));
 
     console.log(transformedJson);
 
     
+    // Function to generate pastel colors dynamically
+    const generatePastelColors = (count) => {
+        const colors = [];
+        for (let i = 0; i < count; i++) {
+        const hue = (360 / count) * i;
+        const pastelColor = `hsl(${hue}, 70%, 80%)`; // Adjust saturation and lightness for pastel effect
+        colors.push(pastelColor);
+        }
+        return colors;
+    };
 
-
- 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; // Custom colors for the Pie Chart
+    const COLORS = generatePastelColors(taskData.length);
+    //const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; // Custom colors for the Pie Chart
     return (
         //<PieChart width={700} height={700}>
         //    <Pie data={result} dataKey="students" outerRadius={250} fill="pink" />
@@ -80,7 +89,7 @@ const Dashboard = () => {
         <PieChart width={700} height={700}>
             <Pie
                 data={transformedJson}
-                dataKey="students"
+                dataKey="count"
                 outerRadius={250}
                 fill="pink"
                 label
@@ -89,12 +98,12 @@ const Dashboard = () => {
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
                 <Label
-                    value={(entry) => `${entry.name}: ${entry.students}`}
+                    value={(entry) => `${entry.name}: ${entry.count}`}
                     position="center"
                     fill="white"
                 />
             </Pie>
-            <Tooltip formatter={(value) => `${value} students`} />
+            <Tooltip formatter={(value) => `${value} tasks`} />
             <Legend />
       </PieChart>
     
