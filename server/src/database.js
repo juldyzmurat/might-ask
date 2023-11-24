@@ -14,8 +14,10 @@ async function connectToDatabase(uri) {
 
   const userCollection = db.collection("user");
   const taskCollection = db.collection("task");
+  const categoryCollection = db.collection("category");
   collections.users = userCollection;
   collections.tasks = taskCollection;
+  collections.categories = categoryCollection;
 }
 
 async function applyUserSchemaValidation(db) {
