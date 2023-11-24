@@ -2,6 +2,14 @@ import { FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
+
+
+export const setNavDisplay = (displayValue) => {
+	return `
+	  display: ${displayValue ? 'flex' : 'none'};
+	`;
+  };
+
 export const Nav = styled.nav`
 position:fixed;
 background: #ffb3ff;

@@ -9,6 +9,8 @@ function LoginButton(){
         console.log("LOGIN SUCCESS Current user: ", res);
     }
 
+    
+
     const onFailure = (res) => {
         console.log("LOGIN Fail");
     }

@@ -4,10 +4,15 @@ import { Nav, NavLink, NavMenu, CircleButtonWrapper, LoginButton}
 import CircleButton from "../TaskVisComponents/accounticon";
 
  
+const displayValue = {
+
+};
+
+
 const Navbar = () => {
     return (
         <>
-            <Nav>
+            <Nav display={displayValue}>
                 <CircleButtonWrapper>
                     <CircleButton />
                 </CircleButtonWrapper>

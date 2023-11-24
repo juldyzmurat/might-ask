@@ -39,6 +39,4 @@ export default App;
 
 
 
-// For the cat  <img src={gif} className="App-logo" alt="gif" />
-
 
