@@ -53,7 +53,7 @@ const Dashboard = () => {
     // Create a new JSON object with Categoryid, CategoryName, and count
     const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({
         categoryId,
-        categoryName: categoryJsonData.find(categoryItem => categoryItem._id === categoryId)?.name || 'Unknown',
+        categoryName: categoryData.find(categoryItem => categoryItem._id === categoryId)?.name || 'Unknown',
         count
     }));
 
