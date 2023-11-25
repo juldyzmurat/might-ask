@@ -13,8 +13,8 @@ taskToScheduleRouter.use(express.json());
 
 taskToScheduleRouter.get("/", async (_req, res) => {
   try {
-    const tasks_schedules = await collections.tasks_schedules.find({}).toArray();
-    res.status(200).send(tasks_schedules);
+    const taskstoschedules = await collections.taskstoschedules.find({}).toArray();
+    res.status(200).send(taskstoschedules);
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -24,27 +24,27 @@ taskToScheduleRouter.get("/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const query = { _id: new mongodb.ObjectId(id) };
-      const task_schedule = await collections.tasks_schedules.findOne(query);
+      const tasktoschedule = await collections.taskstoschedules.findOne(query);
   
-      if (task_schedule) {
-        res.status(200).send(task_schedule);
+      if (tasktoschedule) {
+        res.status(200).send(tasktoschedule);
       } else {
-        res.status(404).send(`Failed to find an task_schedule: ID ${id}`);
+        res.status(404).send(`Failed to find an tasktoschedule: ID ${id}`);
       }
     } catch (error) {
-      res.status(500).send(`Failed to find an task_schedule: ID ${req.params.id}`);
+      res.status(500).send(`Failed to find an tasktoschedule: ID ${req.params.id}`);
     }
   });
 
   taskToScheduleRouter.post("/", async (req, res) => {
     try {
-      const task_schedule = req.body;
-      const result = await collections.tasks_schedules.insertOne(task_schedule);
+      const tasktoschedule = req.body;
+      const result = await collections.taskstoschedules.insertOne(tasktoschedule);
   
       if (result.acknowledged) {
-        res.status(201).send(`Created a new task_schedule: ID ${result.insertedId}.`);
+        res.status(201).send(`Created a new tasktoschedule: ID ${result.insertedId}.`);
       } else {
-        res.status(500).send("Failed to create a new task_schedule.");
+        res.status(500).send("Failed to create a new tasktoschedule.");
       }
     } catch (error) {
       console.error(error);
@@ -55,16 +55,16 @@ taskToScheduleRouter.get("/:id", async (req, res) => {
   taskToScheduleRouter.put("/:id", async (req, res) => {
     try {
       const id = req.params.id;
-      const task_schedule = req.body;
+      const tasktoschedule = req.body;
       const query = { _id: new mongodb.ObjectId(id) };
-      const result = await collections.tasks_schedules.updateOne(query, { $set: task_schedule });
+      const result = await collections.taskstoschedules.updateOne(query, { $set: tasktoschedule });
   
       if (result && result.matchedCount > 0) {
-        res.status(200).send(`Updated a task_schedule: ID ${id}.`);
+        res.status(200).send(`Updated a tasktoschedule: ID ${id}.`);
       } else if (result && result.matchedCount === 0) {
-        res.status(404).send(`Failed to find a task_schedule: ID ${id}`);
+        res.status(404).send(`Failed to find a tasktoschedule: ID ${id}`);
       } else {
-        res.status(304).send(`Failed to update a task_schedule: ID ${id}`);
+        res.status(304).send(`Failed to update a tasktoschedule: ID ${id}`);
       }
     } catch (error) {
       console.error(error.message);
@@ -76,14 +76,14 @@ taskToScheduleRouter.get("/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const query = { _id: new mongodb.ObjectId(id) };
-      const result = await collections.tasks_schedules.deleteOne(query);
+      const result = await collections.taskstoschedules.deleteOne(query);
   
       if (result && result.deletedCount > 0) {
-        res.status(202).send(`Removed a task_schedule: ID ${id}`);
+        res.status(202).send(`Removed a tasktoschedule: ID ${id}`);
       } else if (!result) {
-        res.status(400).send(`Failed to remove a task_schedule: ID ${id}`);
+        res.status(400).send(`Failed to remove a tasktoschedule: ID ${id}`);
       } else if (result && result.deletedCount === 0) {
-        res.status(404).send(`Failed to find a task_schedule: ID ${id}`);
+        res.status(404).send(`Failed to find a tasktoschedule: ID ${id}`);
       }
     } catch (error) {
       console.error(error.message);
