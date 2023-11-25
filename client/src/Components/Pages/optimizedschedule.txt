@@ -1,0 +1,9 @@
+Files
+
+schedulecomponent.js -> for each individual schedule
+taskinschedule.js -> or can we just reuse taskcomponent.js?
+
+Algorithm
+
+We can probably use DP for this, but we may have to use an AI graph search algorithm if things get too complicated.
+
