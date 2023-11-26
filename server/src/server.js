@@ -8,6 +8,9 @@ const getUserData = require("./dashboard");
 const userRouter = require("./user.routes");
 const taskRouter = require("./task.routes");
 const categoryRouter = require("./category.routes");
+const scheduleRouter = require("./schedule.routes");
+const taskToScheduleRouter = require("./task_schedule.routes")
+const notificationRouter = require("./notification.routes");
 
 // Clear Node.js module cache
 Object.keys(require.cache).forEach(function(key) {
@@ -34,6 +37,9 @@ connectToDatabase(ATLAS_URI)
     app.use("/users", userRouter);
     app.use("/tasks", taskRouter);
     app.use("/categories", categoryRouter);
+    app.use("/schedules", scheduleRouter);
+    app.use("/schedules/tasks", taskToScheduleRouter);
+    app.use("/notifications", notificationRouter);
 
     // start the Express server
     app.listen(5200, () => {
