@@ -1,18 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Nav, NavLink, NavMenu, CircleButtonWrapper, LoginButton}
     from "./NavbarElements";
 import CircleButton from "../TaskVisComponents/accounticon";
+import { useNavigate, useLocation } from 'react-router-dom';
 
- 
+
 const displayValue = {
 
 };
 
 
 const Navbar = () => {
+    const [showNavbar, setShowNavbar] = useState(false);
+    const location = useLocation();
+    const currentRoute = location.pathname;
+    
+    React.useEffect(() => {
+    setShowNavbar(currentRoute !== '/');
+    }, [currentRoute]);
     return (
         <>
-            <Nav display={displayValue}>
+            <Nav shownavbar = {showNavbar}>
                 <CircleButtonWrapper>
                     <CircleButton />
                 </CircleButtonWrapper>
