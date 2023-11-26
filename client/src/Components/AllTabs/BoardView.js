@@ -5,7 +5,7 @@ const SecondTab = () => {
   return (
     <div className="SecondTab">
       < MapAutocomplete />
-      {/* Second  tab content will go here */}
+      {/* Adding task cards here */}
     </div>
   );
 };
