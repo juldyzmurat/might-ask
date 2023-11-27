@@ -33,6 +33,7 @@ to the project.
 1. Document code using appropriate comments and meaningful names
 1. Coding style is enforced using `Prettier` -- This is done automatically by
    `husky` and `lint-staged` when committing
+   - Styling can be applied to the entire project by running `npm run lint`
 
 ### Issue Tracking
 
