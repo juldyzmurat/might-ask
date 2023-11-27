@@ -59,7 +59,7 @@ async function applyUserSchemaValidation(db) {
 
   async function applyTaskSchemaValidation(db) {
     const jsonSchema = {
-    $jsonSchema: {
+      $jsonSchema: {
         bsonType: "object",
         required: ["name", "user"],
         additionalProperties: false,
@@ -72,8 +72,8 @@ async function applyUserSchemaValidation(db) {
           },
         },
       },
-    }
-  };
+    };
+  }
 
   await db
     .command({
