@@ -3,7 +3,7 @@ import MapAutocomplete from "../GoogleMapContainer/AddressFill";
 
 const BoardView = () => {
   return (
-    <div className="SecondTab">
+    <div className="BoardView">
       <MapAutocomplete />
       {/* Adding task cards here */}
     </div>
