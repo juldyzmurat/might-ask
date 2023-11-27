@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ListView from "../AllTabs/ListView";
 import BoardView from "../AllTabs/BoardView";
 
-const Tabs = () => {
+const Tabs = ({ categories }) => {
   const [activeTab, setActiveTab] = useState("ListView");
   const handleTab1 = () => {
     // update the state to tab1
@@ -29,7 +29,11 @@ const Tabs = () => {
         </li>
       </ul>
       <div className="outlet">
-        {activeTab === "ListView" ? <ListView /> : <BoardView />}
+        {activeTab === "ListView" ? (
+          <ListView />
+        ) : (
+          <BoardView categories={categories} />
+        )}
       </div>
     </div>
   );

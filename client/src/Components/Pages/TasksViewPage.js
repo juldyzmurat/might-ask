@@ -1,11 +1,12 @@
-import React from "react";
-import "../../App.css";
+import { useState } from "react";
 import Tabs from "../TabComponent/Tabs";
 
 function TaskView() {
+  const categories = ["Work", "School", "Personal"]; // TODO get categories from database
+
   return (
     <div className="TaskView">
-      <Tabs />
+      <Tabs categories={categories} />
     </div>
   );
 }
