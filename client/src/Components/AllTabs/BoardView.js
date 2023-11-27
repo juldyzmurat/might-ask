@@ -1,10 +1,11 @@
 import React from "react";
-import MapAutocomplete from "../GoogleMapContainer/AddressFill";
+import TaskCard from "../Tasks/TaskCard";
+// import MapAutocomplete from "../GoogleMapContainer/AddressFill";
 
 const BoardView = () => {
   return (
     <div className="BoardView">
-      <MapAutocomplete />
+      <TaskCard task="hi" />
     </div>
   );
 };
