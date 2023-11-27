@@ -2,7 +2,7 @@ import PinnedSubheaderList from "../TaskVisComponents/listscroller";
 import TaskComponent from "../TaskVisComponents/taskcomponent";
 import React, { useState, useEffect } from "react";
 
-const FirstTab = () => {
+const ListView = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -36,7 +36,6 @@ const FirstTab = () => {
       <div style={{ height: "500px" }}>
         <PinnedSubheaderList data={data} />
       </div>
-    </div>
-  );
-};
-export default FirstTab;
+    );
+  };
+  export default ListView;

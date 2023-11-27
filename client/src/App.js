@@ -8,8 +8,6 @@ import About from "./Components/Pages/about";
 import Schedule from "./Components/Pages/schedule";
 import Dashboard from "./Components/Pages/DashboardPage";
 
-// For the cat  <img src={gif} className="App-logo" alt="gif" />
-
 function App() {
   return (
     <div className="App">

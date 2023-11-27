@@ -1,7 +1,7 @@
 import React from "react";
 import MapAutocomplete from "../GoogleMapContainer/AddressFill";
 
-const SecondTab = () => {
+const BoardView = () => {
   return (
     <div className="SecondTab">
       <MapAutocomplete />
@@ -9,4 +9,5 @@ const SecondTab = () => {
     </div>
   );
 };
-export default SecondTab;
+
+export default BoardView;
