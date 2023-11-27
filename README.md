@@ -22,6 +22,12 @@ not backed up
 1. Each PR shall be reviewed by one other team member before merging
 1. Code reviews will be conducted through the GitHub interface
 
+### Testing
+
+1. Unit tests will be written for each feature and key functions
+1. Unit tests will be run before each commit
+1. All tests must be passing before merging into main
+
 ### Coding Standards
 
 1. Document code using appropriate comments and meaningful names
