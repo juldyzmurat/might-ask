@@ -31,7 +31,7 @@ const ListView = () => {
   }, []);
 
   return (
-    <div className="FirstTab">
+    <div className="ListView">
       {/* First tab content will go here */}
       <div style={{ height: "500px" }}>
         <PinnedSubheaderList data={data} />

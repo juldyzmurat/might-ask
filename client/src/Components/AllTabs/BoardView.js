@@ -5,7 +5,6 @@ const BoardView = () => {
   return (
     <div className="BoardView">
       <MapAutocomplete />
-      {/* Adding task cards here */}
     </div>
   );
 };

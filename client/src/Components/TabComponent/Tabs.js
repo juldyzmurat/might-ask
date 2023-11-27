@@ -3,7 +3,7 @@ import ListView from "../AllTabs/ListView";
 import BoardView from "../AllTabs/BoardView";
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState("tab1");
+  const [activeTab, setActiveTab] = useState("ListView");
   const handleTab1 = () => {
     // update the state to tab1
     setActiveTab("ListView");
