@@ -1,10 +1,18 @@
-import React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListSubheader from '@mui/material/ListSubheader';
+import React from "react";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListSubheader from "@mui/material/ListSubheader";
 
-const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const daysOfWeek = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
 
 function PinnedSubheaderList({ data }) {
   const getColorForItem = (item) => {
@@ -12,18 +20,18 @@ function PinnedSubheaderList({ data }) {
     // For example, you can check if the item has a specific property or value
     // and return a corresponding color.
     // This is just a placeholder, make sure to customize it based on your data.
-    return item.priority === 'high' ? 'red' : 'blue';
+    return item.priority === "high" ? "red" : "blue";
   };
 
   return (
     <List
       sx={{
-        width: '100%',
-        maxHeight: '100%',
-        bgcolor: 'background.paper',
-        position: 'relative',
-        overflow: 'auto',
-        '& ul': { padding: 0 },
+        width: "100%",
+        maxHeight: "100%",
+        bgcolor: "background.paper",
+        position: "relative",
+        overflow: "auto",
+        "& ul": { padding: 0 },
       }}
       subheader={<li />}
     >
