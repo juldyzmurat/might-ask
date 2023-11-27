@@ -15,8 +15,18 @@ const Tabs = () => {
   return (
     <div className="Tabs">
       <ul className="nav">
-        <li className={activeTab === "ListView" ? "active" : ""} onClick={handleTab1}>ListView</li>
-        <li className={activeTab === "BoardView" ? "active" : ""} onClick={handleTab2}>BoardView</li>
+        <li
+          className={activeTab === "ListView" ? "active" : ""}
+          onClick={handleTab1}
+        >
+          ListView
+        </li>
+        <li
+          className={activeTab === "BoardView" ? "active" : ""}
+          onClick={handleTab2}
+        >
+          BoardView
+        </li>
       </ul>
       <div className="outlet">
         {activeTab === "ListView" ? <ListView /> : <BoardView />}

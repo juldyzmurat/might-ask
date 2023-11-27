@@ -36,6 +36,7 @@ const ListView = () => {
       <div style={{ height: "500px" }}>
         <PinnedSubheaderList data={data} />
       </div>
-    );
-  };
-  export default ListView;
+    </div>
+  );
+};
+export default ListView;

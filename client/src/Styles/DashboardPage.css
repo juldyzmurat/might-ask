@@ -1,19 +1,21 @@
 /* client/src/App.css */
-html, body, #root {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    height: 100%; /* Make the container take up full height of viewport */
-  }
-  
-  .box {
-    flex: 1;
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-  }
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%; /* Make the container take up full height of viewport */
+}
+
+.box {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
