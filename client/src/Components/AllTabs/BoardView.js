@@ -3,9 +3,8 @@ import MapAutocomplete from "../GoogleMapContainer/AddressFill";
 
 const BoardView = () => {
   return (
-    <div className="SecondTab">
+    <div className="BoardView">
       <MapAutocomplete />
-      {/* Second  tab content will go here */}
     </div>
   );
 };
