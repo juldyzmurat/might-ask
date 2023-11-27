@@ -1,11 +1,9 @@
-import React from "react";
 import TaskCard from "../Tasks/TaskCard";
-// import MapAutocomplete from "../GoogleMapContainer/AddressFill";
 
 const BoardView = () => {
   return (
     <div className="BoardView">
-      <TaskCard task="hi" />
+      <TaskCard task={{ name: "sample task name" }} />
     </div>
   );
 };
