@@ -2,13 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Nav, NavLink, NavMenu, CircleButtonWrapper, LoginButton}
     from "./NavbarElements";
 import CircleButton from "../TaskVisComponents/accounticon";
-import { useNavigate, useLocation } from 'react-router-dom';
-
-
-const displayValue = {
-
-};
-
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [showNavbar, setShowNavbar] = useState(false);
