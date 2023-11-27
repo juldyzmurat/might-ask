@@ -50,6 +50,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ## Dependencies list
 
 ### 'npm install react-google-login --force'
+
 ### 'npm install --save gapi-script'
 
 Please install these dependencies from your terminal for google OAuth2 to work.

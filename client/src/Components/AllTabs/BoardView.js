@@ -4,7 +4,7 @@ import MapAutocomplete from "../GoogleMapContainer/AddressFill";
 const SecondTab = () => {
   return (
     <div className="SecondTab">
-      < MapAutocomplete />
+      <MapAutocomplete />
       {/* Second  tab content will go here */}
     </div>
   );

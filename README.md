@@ -10,7 +10,7 @@ to the project.
 ### Database Modification
 
 1. Exercise extreme caution when modifying the database directly because it is
-not backed up
+   not backed up
 
 ### Version Control
 
@@ -33,4 +33,4 @@ not backed up
 ### Documentation
 
 1. Maintain a README file for major directories with explanations and
-instructions for future contributions
+   instructions for future contributions
