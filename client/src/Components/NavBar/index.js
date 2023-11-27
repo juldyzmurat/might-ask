@@ -6,7 +6,7 @@ import {
   CircleButtonWrapper,
   LoginButton,
 } from "./NavbarElements";
-import CircleButton from "../TaskVisComponents/accounticon";
+import CircleButton from "../Tasks/accounticon";
 import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
