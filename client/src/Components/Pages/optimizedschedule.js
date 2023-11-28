@@ -22,11 +22,13 @@ const OptimizedSchedule = () => {
 
         // Parse the response body as JSON
         const sortedData = await response.json();
-        console.log(sortedData);
+        // console.log(sortedData);
 
         // Sorting function
         function compareByDeadline(a, b) {
-          return a.due - b.due;
+          const dateOne = Date.parse(a.due);
+          const dateTwo = Date.parse(b.due);
+          return dateOne - dateTwo;
         }
 
         // Sort data
