@@ -5,20 +5,20 @@ const { collections } = require("./database");
 const userRouter = express.Router();
 userRouter.use(express.json());
 
-userRouter.get("/", async (_req, res) => {
-  try {
-    //console.log("Hi");
-    const users = await collections.users.find({}).toArray();
-    res.status(200).send(users);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
+// userRouter.get("/", async (_req, res) => {
+//   try {
+//     //console.log("Hi");
+//     const users = await collections.users.find({}).toArray();
+//     res.status(200).send(users);
+//   } catch (error) {
+//     res.status(500).send(error.message);
+//   }
+// });
 
-userRouter.get("/:id", async (req, res) => {
+userRouter.get("/:email", async (req, res) => {
   try {
-    const id = req.params.id;
-    const query = { _id: new mongodb.ObjectId(id) };
+    const email = req.params.email;
+    const query = { email: new mongodb.ObjectId(email) };
     const user = await collections.users.findOne(query);
 
     if (user) {
@@ -47,11 +47,11 @@ userRouter.post("/", async (req, res) => {
   }
 });
 
-userRouter.put("/:id", async (req, res) => {
+userRouter.put("/:email", async (req, res) => {
   try {
-    const id = req.params.id;
+    const email = req.params.email;
     const user = req.body;
-    const query = { _id: new mongodb.ObjectId(id) };
+    const query = { email: new mongodb.ObjectId(email) };
     const result = await collections.users.updateOne(query, { $set: user });
 
     if (result && result.matchedCount > 0) {
@@ -67,22 +67,23 @@ userRouter.put("/:id", async (req, res) => {
   }
 });
 
-userRouter.delete("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const query = { _id: new mongodb.ObjectId(id) };
-    const result = await collections.users.deleteOne(query);
+// userRouter.delete("/:id", async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const query = { _id: new mongodb.ObjectId(id) };
+//     const result = await collections.users.deleteOne(query);
 
-    if (result && result.deletedCount > 0) {
-      res.status(202).send(`Removed an user: ID ${id}`);
-    } else if (!result) {
-      res.status(400).send(`Failed to remove an user: ID ${id}`);
-    } else if (result && result.deletedCount === 0) {
-      res.status(404).send(`Failed to find an user: ID ${id}`);
-    }
-  } catch (error) {
-    console.error(error.message);
-    res.status(400).send(error.message);
-  }
-});
+//     if (result && result.deletedCount > 0) {
+//       res.status(202).send(`Removed an user: ID ${id}`);
+//     } else if (!result) {
+//       res.status(400).send(`Failed to remove an user: ID ${id}`);
+//     } else if (result && result.deletedCount === 0) {
+//       res.status(404).send(`Failed to find an user: ID ${id}`);
+//     }
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(400).send(error.message);
+//   }
+// });
+
 module.exports = userRouter;

@@ -5,19 +5,25 @@ const { collections } = require("./database");
 const categoryRouter = express.Router();
 categoryRouter.use(express.json());
 
-categoryRouter.get("/", async (_req, res) => {
+categoryRouter.get("/:user", async (req, res) => {
   try {
-    const categories = await collections.categories.find({}).toArray();
+    const user = req.params.user;
+    const query = { userid: user };
+    const categories = await collections.categories.find(query).toArray();
     res.status(200).send(categories);
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
 
-categoryRouter.get("/:id", async (req, res) => {
+categoryRouter.get("/:user/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const query = { _id: new mongodb.ObjectId(id) };
+    const user = req.params.user;
+    const query = { 
+        _id: new mongodb.ObjectId(id),
+        userid: user,
+    };
     const category = await collections.categories.findOne(query);
 
     if (category) {
@@ -46,14 +52,16 @@ categoryRouter.post("/", async (req, res) => {
   }
 });
 
-categoryRouter.put("/:id", async (req, res) => {
+categoryRouter.put("/:user/:id", async (req, res) => {
   try {
     const id = req.params.id;
+    const user = req.params.user;
     const category = req.body;
-    const query = { _id: new mongodb.ObjectId(id) };
-    const result = await collections.categories.updateOne(query, {
-      $set: category,
-    });
+    const query = { 
+        _id: new mongodb.ObjectId(id),
+        userid: user,
+    };
+    const result = await collections.categories.updateOne(query, {$set: category,});
 
     if (result && result.matchedCount > 0) {
       res.status(200).send(`Updated a category: ID ${id}.`);
