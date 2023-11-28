@@ -9,7 +9,7 @@ const OptimizedSchedule = () => {
     // Function to fetch data from the backend
     const fetchAndSortData = async () => {
       try {
-        const response = await fetch("http://localhost:5200/tasks");
+        const response = await fetch("http://localhost:5200/tasks/zxu4@case.edu");
 
         // Check if the response is successful (status code 200)
         if (!response.ok) {

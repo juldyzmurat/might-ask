@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
+import Button from "@mui/material/Button";
 
 const daysOfWeek = [
   "Monday",
@@ -16,11 +17,17 @@ const daysOfWeek = [
 
 function PinnedSubheaderList({ data }) {
   const getColorForItem = (item) => {
-    // Add your logic here to determine the color based on item properties
-    // For example, you can check if the item has a specific property or value
-    // and return a corresponding color.
-    // This is just a placeholder, make sure to customize it based on your data.
     return item.priority === "high" ? "red" : "blue";
+  };
+
+  const [hoveredItemId, setHoveredItemId] = useState(null);
+
+  const handleMouseEnter = (itemId) => {
+    setHoveredItemId(itemId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredItemId(null);
   };
 
   return (
@@ -43,8 +50,15 @@ function PinnedSubheaderList({ data }) {
               <ListItem
                 key={`item-${index}-${item._id}`}
                 style={{ color: getColorForItem(item) }}
+                onMouseEnter={() => handleMouseEnter(item._id)}
+                onMouseLeave={handleMouseLeave}
               >
                 <ListItemText primary={item.name} />
+                {hoveredItemId === item._id && (
+                  <Button variant="contained" color="primary">
+                    :
+                  </Button>
+                )}
               </ListItem>
             ))}
           </ul>
@@ -55,3 +69,4 @@ function PinnedSubheaderList({ data }) {
 }
 
 export default PinnedSubheaderList;
+
