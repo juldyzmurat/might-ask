@@ -1,6 +1,6 @@
 import React from "react";
-import CategoryDashboard from "../Dashboard/CategoryDashboard"; // Import the CategoryDashboard component
-import AchievementDashboard from "../Dashboard/AchievementDashboard"; // Import the CategoryDashboard component
+import CategoryDashboard from "../Dashboard/CategoryDashboard";
+import AchievementDashboard from "../Dashboard/AchievementDashboard";
 import "../../Styles/DashboardPage.css";
 const DashboardPage = () => {
   return (
