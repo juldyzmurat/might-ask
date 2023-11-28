@@ -45,7 +45,7 @@ const OptimizedSchedule = () => {
   }, []);
 
   return (
-    <div className="FirstTab">
+    <div className="OptimizedSchedule">
       {/* First tab content will go here */}
       <div style={{ height: "500px" }}>
         <PinnedSubheaderList data={data} />
