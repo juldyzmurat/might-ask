@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { Nav, NavLink, NavMenu, LoginButton } from "./NavbarElements";
+import { Nav, NavLink, NavMenu } from "./NavbarElements";
 import AccountIcon from "./AccountIcon";
+
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const location = useLocation();
