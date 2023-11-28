@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PieChart, Pie, Cell, Label, Legend, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
 
 const CategoryDashboard = () => {
   const [taskData, setData] = useState([]); //The full task data incase we need it

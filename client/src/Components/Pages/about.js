@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import gif from "../../aboutcat.gif";
+import gif from "../../Assets/aboutcat.gif";
 
 const AboutContainer = styled.div`
   max-width: 600px; /* Set a maximum width for the container */

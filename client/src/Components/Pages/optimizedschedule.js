@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TaskComponent from "../TaskVisComponents/taskcomponent";
 import PinnedSubheaderList from "../TaskVisComponents/listscroller";
-//import Google from "../Login/LoginAPI";
-//import { GoogleOAuthProvider } from '@react-oauth/google';
-//import gif from '../../80cat.gif';
-//import CalendarComponent from '../GoogleCalenderComponents/Calender';
 
 const OptimizedSchedule = () => {
   const [data, setData] = useState([]);

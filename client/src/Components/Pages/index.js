@@ -1,5 +1,5 @@
 import React from "react";
-import gif from "../../80cat.gif";
+import gif from "../../Assets/80cat.gif";
 import { LoginButton } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
 
@@ -19,7 +19,7 @@ function Home() {
         });
       }
 
-      const authInstance = gapi.auth2.getAuthInstance();
+      // const authInstance = gapi.auth2.getAuthInstance();
     }
     gapi.load("client: auth2", start);
   });
