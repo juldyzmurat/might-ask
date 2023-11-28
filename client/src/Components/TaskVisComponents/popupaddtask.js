@@ -3,6 +3,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   //getLatLng,
 } from 'react-places-autocomplete';
+import { GoogleData } from '../Login/LoginAPI';
+// GoogleData.profileObj.email
 
 const TaskForm = ({ onClose }) => {
   const [taskName, setTaskName] = useState('');
