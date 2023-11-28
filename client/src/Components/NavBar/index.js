@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  Nav,
-  NavLink,
-  NavMenu,
-  CircleButtonWrapper,
-  LoginButton,
-} from "./NavbarElements";
-import CircleButton from "../TaskVisComponents/accounticon";
 import { useLocation } from "react-router-dom";
 
+import { Nav, NavLink, NavMenu, LoginButton } from "./NavbarElements";
+import AccountIcon from "./AccountIcon";
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const location = useLocation();
@@ -20,9 +14,7 @@ const Navbar = () => {
   return (
     <>
       <Nav shownavbar={showNavbar}>
-        <CircleButtonWrapper>
-          <CircleButton />
-        </CircleButtonWrapper>
+        <AccountIcon />
         <NavMenu>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/TasksViewPage">TaskView</NavLink>
