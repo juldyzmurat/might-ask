@@ -1,4 +1,4 @@
-import PinnedSubheaderList from "../Tasks/listscroller";
+import PinnedSubheaderList from "../TaskList/ListScroller";
 import React from "react";
 
 const TaskList = ({ tasks }) => {
