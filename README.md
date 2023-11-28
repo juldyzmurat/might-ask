@@ -2,6 +2,12 @@
 
 This is a simple task/schedule manager built as a class project.
 
+## Developer Setup
+
+1. Run `npm install` to install dependencies
+1. See the README files in the `server` and `client` directories for further
+   instructions
+
 ## Contribution Guidelines
 
 These are the guidelines that project members will adhere to when contributing
@@ -10,7 +16,7 @@ to the project.
 ### Database Modification
 
 1. Exercise extreme caution when modifying the database directly because it is
-not backed up
+   not backed up
 
 ### Version Control
 
@@ -25,6 +31,9 @@ not backed up
 ### Coding Standards
 
 1. Document code using appropriate comments and meaningful names
+1. Coding style is enforced using `Prettier` -- This is done automatically by
+   `husky` and `lint-staged` when committing
+   - Styling can be applied to the entire project by running `npm run lint`
 
 ### Issue Tracking
 
@@ -33,4 +42,4 @@ not backed up
 ### Documentation
 
 1. Maintain a README file for major directories with explanations and
-instructions for future contributions
+   instructions for future contributions

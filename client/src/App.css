@@ -1,43 +1,34 @@
-
-
-
-
-
-
- .App {
+.App {
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
- }
+}
 
- .App-logo{
+.App-logo {
   width: 200px;
   height: 200px;
+}
 
- }
-
-.Aboutcat{
+.Aboutcat {
   width: 200px;
   height: 200px;
- }
-
+}
 
 /* Tab Container */
 .Tabs {
-  
   width: 600px;
   height: 600px;
   min-height: 400px;
   background: #f1b6dc;
   margin: 3.5rem auto 1.5rem;
   padding: 2rem 1rem;
-  color: #E8F0F2;
+  color: #e8f0f2;
   border-radius: 2rem;
   @media (max-width: 769px) {
-   padding: 2rem 0;
+    padding: 2rem 0;
   }
 }
 
@@ -48,7 +39,7 @@ ul.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #39A2DB;
+  border: 1px solid #39a2db;
   border-radius: 2rem;
   padding-left: 0px;
   @media (max-width: 768px) {
@@ -74,22 +65,18 @@ ul.nav li:hover {
   background: rgba(50, 224, 196, 0.15);
 }
 ul.nav li.active {
-  background: #39A2DB;
+  background: #39a2db;
 }
 
-.FirstTab p{
-
+.ListView p {
   font-size: 2rem;
   text-align: center;
 }
 
-.SecondTab p {
+.BoardView p {
   font-size: 2rem;
   text-align: center;
 }
-
-
-
 
 /*Google Maps CSS*/
 
@@ -165,16 +152,15 @@ input:focus::placeholder {
   font-family: Roboto, sans-serif;
   border: 0;
   border-radius: 3px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.48);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.48);
   cursor: pointer;
 }
-
 
 /*Google Maps CSS*/
 
 /* CSS for NavBar class */
 .NavBar {
-  background-color: #2196F3; /* Set your desired background color */
+  background-color: #2196f3; /* Set your desired background color */
   padding: 10px; /* Adjust padding as needed */
   color: white; /* Set the text color */
   display: flex;

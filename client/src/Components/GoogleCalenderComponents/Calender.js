@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Calendar } from 'react-calendar';
-import { google } from 'googleapis';
+import React, { useState, useEffect } from "react";
+import { Calendar } from "react-calendar";
+import { google } from "googleapis";
 
 const CalendarComponent = () => {
   const [events, setEvents] = useState([]);
@@ -9,26 +9,38 @@ const CalendarComponent = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       // Set up Google Calendar API credentials
-      const clientId = 'the sercret codes';
-      const clientSecret = 'the sercret codes';
-      const redirectUri = 'http://localhost:3000';
+      const clientId = "the sercret codes";
+      const clientSecret = "the sercret codes";
+      const redirectUri = "http://localhost:3000";
 
-      const oauth2Client = new google.auth.OAuth2(clientId, clientSecret, redirectUri);
+      const oauth2Client = new google.auth.OAuth2(
+        clientId,
+        clientSecret,
+        redirectUri,
+      );
 
       // Set your access token (you should implement OAuth in a production environment)
-      const accessToken = 'YOUR_ACCESS_TOKEN';
+      const accessToken = "YOUR_ACCESS_TOKEN";
       oauth2Client.setCredentials({ access_token: accessToken });
 
       // Set up the Google Calendar API
-      const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
+      const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
       // Fetch events from the primary calendar
       const response = await calendar.events.list({
-        calendarId: 'primary',
-        timeMin: new Date(date.getFullYear(), date.getMonth(), date.getDate()).toISOString(),
-        timeMax: new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).toISOString(),
+        calendarId: "primary",
+        timeMin: new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          date.getDate(),
+        ).toISOString(),
+        timeMax: new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          date.getDate() + 1,
+        ).toISOString(),
         singleEvents: true,
-        orderBy: 'startTime',
+        orderBy: "startTime",
       });
 
       const fetchedEvents = response.data.items || [];

@@ -1,8 +1,6 @@
-import React from 'react';
-import '../../App.css';
+import React from "react";
+import "../../App.css";
 import Tabs from "../TabComponent/Tabs";
-
-
 
 function TaskView() {
   return (
