@@ -30,8 +30,6 @@ const ListView = () => {
     fetchData();
   }, []);
 
-  console.log(data);
-
   return (
     <div className="ListView">
       {/* First tab content will go here */}
