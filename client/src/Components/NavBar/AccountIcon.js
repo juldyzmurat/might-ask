@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import kittyImage from "../../kitty.jpeg";
 import LogoutButton from "../Login/LogoutAPI";
-import DropdownMenu from '../DropDownMenu/DDMenu';
+import DropdownMenu from "../DropDownMenu/DDMenu";
 
-const CircleButton = () => {
+import { CircleButtonWrapper } from "./NavbarElements";
+
+const AccountIcon = () => {
   const handleButtonClick = () => {
     // Add your button click logic here
     console.log("Button clicked!");
@@ -20,19 +22,19 @@ const CircleButton = () => {
     setIsDropdownOpen(false);
   };
 
-
   return (
-    
-    <div style={circleStyle} onClick={handleButtonClick}>
-      <img src={kittyImage} alt="" style={imageStyle} />
-      <div>
-        {isDropdownOpen && (
-          <DropdownMenu items={dropdownItems} onItemClick={handleItemClick} />
-        )}
+    <CircleButtonWrapper>
+      <div style={circleStyle} onClick={handleButtonClick}>
+        <img src={kittyImage} alt="" style={imageStyle} />
+        <div>
+          {isDropdownOpen && (
+            <DropdownMenu items={dropdownItems} onItemClick={handleItemClick} />
+          )}
 
-        {selectedItem && <p>You selected: {selectedItem}</p>}
+          {selectedItem && <p>You selected: {selectedItem}</p>}
+        </div>
       </div>
-    </div>
+    </CircleButtonWrapper>
   );
 };
 
@@ -50,4 +52,4 @@ const imageStyle = {
   objectFit: "cover",
 };
 
-export default CircleButton;
+export default AccountIcon;
