@@ -12,7 +12,7 @@ const OptimizedSchedule = () => {
 
     useEffect(() => {
     // Function to fetch data from the backend
-    const fetchData = async () => {
+    const fetchAndSortData = async () => {
         try {
           const response = await fetch('http://localhost:5200/tasks');
           
@@ -23,6 +23,7 @@ const OptimizedSchedule = () => {
   
           // Parse the response body as JSON
           const sortedData = await response.json();
+          console.log(sortedData)
 
           // Sorting function
           function compareByDeadline(a, b) {
@@ -31,6 +32,7 @@ const OptimizedSchedule = () => {
 
           // Sort data
           sortedData.sort(compareByDeadline);
+          console.log(sortedData)
   
           // Update the state with the fetched data
           setData(sortedData);
@@ -40,7 +42,7 @@ const OptimizedSchedule = () => {
       };
   
       // Call the fetchData function when the component mounts
-      fetchData();
+      fetchAndSortData();
     }, []);
 
     return (
