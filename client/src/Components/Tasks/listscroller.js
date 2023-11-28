@@ -16,10 +16,6 @@ const daysOfWeek = [
 
 function PinnedSubheaderList({ tasks }) {
   const getColorForTask = (task) => {
-    // Add your logic here to determine the color based on item properties
-    // For example, you can check if the item has a specific property or value
-    // and return a corresponding color.
-    // This is just a placeholder, make sure to customize it based on your data.
     return task.priority === "high" ? "red" : "blue";
   };
 
