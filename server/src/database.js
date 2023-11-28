@@ -14,8 +14,16 @@ async function connectToDatabase(uri) {
 
   const userCollection = db.collection("user");
   const taskCollection = db.collection("task");
+  const categoryCollection = db.collection("category");
+  const scheduleCollection = db.collection("schedule");
+  const notificationCollection = db.collection("notification");
+  const taskToScheduleCollection = db.collection("schedule_task");
   collections.users = userCollection;
   collections.tasks = taskCollection;
+  collections.categories = categoryCollection;
+  collections.schedules = scheduleCollection;
+  collections.notifications = notificationCollection;
+  collections.taskstoschedules = taskToScheduleCollection;
 }
 
 async function applyUserSchemaValidation(db) {
@@ -51,7 +59,7 @@ async function applyUserSchemaValidation(db) {
 
   async function applyTaskSchemaValidation(db) {
     const jsonSchema = {
-    $jsonSchema: {
+      $jsonSchema: {
         bsonType: "object",
         required: ["name", "user"],
         additionalProperties: false,
@@ -64,8 +72,8 @@ async function applyUserSchemaValidation(db) {
           },
         },
       },
-    }
-  };
+    };
+  }
 
   await db
     .command({

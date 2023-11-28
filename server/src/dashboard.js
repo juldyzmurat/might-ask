@@ -8,11 +8,11 @@ const { collections } = require("./database");
 // userRouter.use(express.json());
 
 async function getUserData() {
-    // console.log(collections);
-    const data = await collections.tasks.find({}).toArray();
-    const numData = data.length
-    console.log(numData);
-    // res.status(200).send(users);
-};
+  // console.log(collections);
+  const data = await collections.tasks.find({}).toArray();
+  const numData = data.length;
+  console.log(numData);
+  // res.status(200).send(users);
+}
 
 module.exports = getUserData;

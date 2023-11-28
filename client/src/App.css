@@ -1,0 +1,185 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.App-logo {
+  width: 200px;
+  height: 200px;
+}
+
+.Aboutcat {
+  width: 200px;
+  height: 200px;
+}
+
+/* Tab Container */
+.Tabs {
+  width: 600px;
+  height: 600px;
+  min-height: 400px;
+  background: #f1b6dc;
+  margin: 3.5rem auto 1.5rem;
+  padding: 2rem 1rem;
+  color: #e8f0f2;
+  border-radius: 2rem;
+  @media (max-width: 769px) {
+    padding: 2rem 0;
+  }
+}
+
+/* Tab Navigation */
+ul.nav {
+  width: 60%;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #39a2db;
+  border-radius: 2rem;
+  padding-left: 0px;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+}
+ul.nav li {
+  width: 50%;
+  padding: 1rem;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.7s;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+ul.nav li:nth-child(2) {
+  border-radius: 0;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+ul.nav li:hover {
+  background: rgba(50, 224, 196, 0.15);
+}
+ul.nav li.active {
+  background: #39a2db;
+}
+
+.ListView p {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.BoardView p {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/*Google Maps CSS*/
+
+.sb-title {
+  position: relative;
+  top: -12px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+}
+
+.sb-title-icon {
+  position: relative;
+  top: -5px;
+}
+
+.card-container {
+  display: flex;
+  height: 500px;
+  width: 600px;
+}
+
+.panel {
+  background: white;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.half-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.half-input {
+  max-width: 120px;
+}
+
+.map {
+  width: 300px;
+}
+
+h2 {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+input {
+  height: 30px;
+}
+
+input {
+  border: 0;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+input:focus::placeholder {
+  color: white;
+}
+
+.button-cta {
+  height: 40px;
+  width: 40%;
+  background: #3367d6;
+  color: white;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Roboto, sans-serif;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.48);
+  cursor: pointer;
+}
+
+/*Google Maps CSS*/
+
+/* CSS for NavBar class */
+.NavBar {
+  background-color: #2196f3; /* Set your desired background color */
+  padding: 10px; /* Adjust padding as needed */
+  color: white; /* Set the text color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.NavBar a {
+  text-decoration: none;
+  color: white; /* Set link color */
+  margin: 0 10px; /* Add some space between links */
+  font-weight: bold; /* Optionally make the text bold */
+}
+
+.NavBar a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Optionally add a box shadow for a subtle effect */
+.NavBar {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}

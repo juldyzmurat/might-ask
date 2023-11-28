@@ -10,10 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.3.10",
     "cors": "^2.8.5",
+    "create-react-app": "^1.2.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongodb": "^6.2.0"
+    "gapi-script": "^1.2.0",
+    "install": "^0.13.0",
+    "mocha": "^10.2.0",
+    "mongodb": "^6.2.0",
+    "npm": "^10.2.3",
+    "react-google-login": "^5.2.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.15",
