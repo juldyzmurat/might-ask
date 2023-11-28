@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import kittyImage from "../../kitty.jpeg";
+import kittyImage from "../../Assets/kitty.jpeg";
 import { GoogleData } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
 import DropdownMenu from "../DropDownMenu/DDMenu";

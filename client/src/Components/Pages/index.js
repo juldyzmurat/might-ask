@@ -1,5 +1,5 @@
 import React from "react";
-import gif from "../../80cat.gif";
+import gif from "../../Assets/80cat.gif";
 import { LoginButton } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
 

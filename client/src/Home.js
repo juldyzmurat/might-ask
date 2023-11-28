@@ -5,8 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { LoginButton, googleData } from "./Components/Login/LoginAPI";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import gif from "./20cat.gif";
+import gif from "./Assets/20cat.gif";
+
 var Google = LoginButton;
+
 function Home() {
   return (
     <div className="App">
