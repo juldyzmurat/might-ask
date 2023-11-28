@@ -1,5 +1,4 @@
 import PinnedSubheaderList from "../TaskVisComponents/listscroller";
-import TaskComponent from "../TaskVisComponents/taskcomponent";
 import React, { useState, useEffect } from "react";
 
 const ListView = () => {
