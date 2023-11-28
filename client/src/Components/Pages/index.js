@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import gif from "../../80cat.gif";
 import { Nav } from "../NavBar/NavbarElements";
-import LoginButton from "../Login/LoginAPI";
+import { LoginButton, googleData } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
 
 import { useEffect } from "react";

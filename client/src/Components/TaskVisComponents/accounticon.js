@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import kittyImage from "../../kitty.jpeg";
+import { LoginButton, GoogleData } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
 import DropdownMenu from '../DropDownMenu/DDMenu';
+
+var loginImage = kittyImage;
 
 const CircleButton = () => {
   const handleButtonClick = () => {
@@ -20,11 +23,15 @@ const CircleButton = () => {
     setIsDropdownOpen(false);
   };
 
+  if (GoogleData !== undefined) {
+    loginImage = GoogleData.profileObj.imageUrl;
+    console.log(GoogleData);
+  }
 
   return (
     
     <div style={circleStyle} onClick={handleButtonClick}>
-      <img src={kittyImage} alt="" style={imageStyle} />
+      <img src={loginImage} alt="" style={imageStyle} />
       <div>
         {isDropdownOpen && (
           <DropdownMenu items={dropdownItems} onItemClick={handleItemClick} />
