@@ -19,7 +19,7 @@ function Home() {
         });
       }
 
-      const authInstance = gapi.auth2.getAuthInstance();
+      // const authInstance = gapi.auth2.getAuthInstance();
     }
     gapi.load("client: auth2", start);
   });
