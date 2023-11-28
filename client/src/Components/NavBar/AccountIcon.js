@@ -10,8 +10,6 @@ const AccountIcon = () => {
   var loginImage = kittyImage;
 
   const handleButtonClick = () => {
-    // Add your button click logic here
-    console.log("Button clicked!");
     setIsDropdownOpen(!isDropdownOpen);
   };
 
