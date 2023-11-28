@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import kittyImage from "../../kitty.jpeg";
-import { LoginButton, GoogleData } from "../Login/LoginAPI";
+import { GoogleData } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
-import DropdownMenu from '../DropDownMenu/DDMenu';
+import DropdownMenu from "../DropDownMenu/DDMenu";
 
-var loginImage = kittyImage;
+import { CircleButtonWrapper } from "./NavbarElements";
 
-const CircleButton = () => {
+const AccountIcon = () => {
+  var loginImage = kittyImage;
+
   const handleButtonClick = () => {
     // Add your button click logic here
     console.log("Button clicked!");
@@ -29,17 +31,17 @@ const CircleButton = () => {
   }
 
   return (
-    
-    <div style={circleStyle} onClick={handleButtonClick}>
-      <img src={loginImage} alt="" style={imageStyle} />
-      <div>
-        {isDropdownOpen && (
-          <DropdownMenu items={dropdownItems} onItemClick={handleItemClick} />
-        )}
-
-        {selectedItem && <p>You selected: {selectedItem}</p>}
+    <CircleButtonWrapper>
+      <div style={circleStyle} onClick={handleButtonClick}>
+        <img src={loginImage} alt="" style={imageStyle} />
+        <div>
+          {isDropdownOpen && (
+            <DropdownMenu items={dropdownItems} onItemClick={handleItemClick} />
+          )}
+          {selectedItem && <p>You selected: {selectedItem}</p>}
+        </div>
       </div>
-    </div>
+    </CircleButtonWrapper>
   );
 };
 
@@ -57,4 +59,4 @@ const imageStyle = {
   objectFit: "cover",
 };
 
-export default CircleButton;
+export default AccountIcon;

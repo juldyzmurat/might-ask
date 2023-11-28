@@ -1,6 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
+import Google from "./Components/Login/LoginAPI";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { LoginButton, googleData } from "./Components/Login/LoginAPI";
@@ -21,5 +21,3 @@ function Home() {
 }
 
 export default Home;
-
-// For the cat  <img src={gif} className="App-logo" alt="gif" />
