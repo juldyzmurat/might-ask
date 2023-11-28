@@ -14,13 +14,13 @@ const daysOfWeek = [
   "Sunday",
 ];
 
-function PinnedSubheaderList({ data }) {
-  const getColorForItem = (item) => {
+function PinnedSubheaderList({ tasks }) {
+  const getColorForTask = (task) => {
     // Add your logic here to determine the color based on item properties
     // For example, you can check if the item has a specific property or value
     // and return a corresponding color.
     // This is just a placeholder, make sure to customize it based on your data.
-    return item.priority === "high" ? "red" : "blue";
+    return task.priority === "high" ? "red" : "blue";
   };
 
   return (
@@ -39,12 +39,12 @@ function PinnedSubheaderList({ data }) {
         <li key={`section-${index}`}>
           <ul>
             <ListSubheader>{`${day}`}</ListSubheader>
-            {data.map((item) => (
+            {tasks.map((task) => (
               <ListItem
-                key={`item-${index}-${item._id}`}
-                style={{ color: getColorForItem(item) }}
+                key={`task-${index}-${task._id}`}
+                style={{ color: getColorForTask(task) }}
               >
-                <ListItemText primary={item.name} />
+                <ListItemText primary={task.name} />
               </ListItem>
             ))}
           </ul>

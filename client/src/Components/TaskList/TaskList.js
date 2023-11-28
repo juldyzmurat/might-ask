@@ -1,14 +1,10 @@
 import PinnedSubheaderList from "../Tasks/listscroller";
-import React, { useState } from "react";
+import React from "react";
 
-const TaskList = () => {
-  const [data, setData] = useState([]);
-
-  const tasks = data; //This is all of the task handle as needed
-
+const TaskList = ({ tasks }) => {
   return (
     <div className="TaskList" style={{ height: "500px" }}>
-      <PinnedSubheaderList data={tasks} />
+      <PinnedSubheaderList tasks={tasks} />
     </div>
   );
 };

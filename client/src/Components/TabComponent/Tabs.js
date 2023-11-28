@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TaskList from "../TaskList/TaskList";
 import Kanban from "../Kanban/Kanban";
 
@@ -13,32 +13,32 @@ const Tabs = ({ categories }) => {
     setActiveTab("Kanban");
   };
 
-  const [data, setData] = useState([]);
+  const [userTasks, setUserTasks] = useState([]);
 
-  useEffect(() => {
-    // Function to fetch data from the backend
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:5200/tasks");
+  // Function to fetch data from the backend
+  const fetchTaskData = async () => {
+    try {
+      const response = await fetch("http://localhost:5200/tasks");
 
-        // Check if the response is successful (status code 200)
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        // Parse the response body as JSON
-        const jsonData = await response.json();
-
-        // Update the state with the fetched data
-        setData(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
       }
-    };
 
-    // Call the fetchData function when the component mounts
-    fetchData();
-  }, []);
+      const jsonData = await response.json();
+      setUserTasks(jsonData);
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
+
+  useEffect(
+    () => {
+      fetchTaskData();
+    },
+    [
+      /* add dependencies here; if this changes, data will be fetched again*/
+    ],
+  );
 
   return (
     <div className="Tabs">
@@ -58,7 +58,7 @@ const Tabs = ({ categories }) => {
       </ul>
       <div className="outlet">
         {activeTab === "TaskList" ? (
-          <TaskList />
+          <TaskList tasks={userTasks} />
         ) : (
           <Kanban categories={categories} />
         )}
