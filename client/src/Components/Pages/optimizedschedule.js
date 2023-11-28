@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import TaskComponent from "../TaskVisComponents/taskcomponent";
-import PinnedSubheaderList from "../TaskVisComponents/listscroller";
+import PinnedSubheaderList from "../TaskList/ListScroller";
+// import TaskComponent from "../TaskList/TaskComponent";
 
 const OptimizedSchedule = () => {
   const [data, setData] = useState([]);
