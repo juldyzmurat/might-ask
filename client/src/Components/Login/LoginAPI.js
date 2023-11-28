@@ -4,10 +4,14 @@ import { GoogleLogin } from "react-google-login";
 const clientID =
   "613216441734-0c8nmpfakholp4jm5v5jp14occlu232i.apps.googleusercontent.com";
 
+let googleData;
+
 function LoginButton() {
   const navigate = useNavigate();
+
   const onSuccess = (res) => {
     console.log("LOGIN SUCCESS Current user: ", res);
+    googleData = res;
     navigate("/TasksViewPage");
   };
 
@@ -29,4 +33,4 @@ function LoginButton() {
   );
 }
 
-export default LoginButton;
+export { LoginButton, googleData as GoogleData };
