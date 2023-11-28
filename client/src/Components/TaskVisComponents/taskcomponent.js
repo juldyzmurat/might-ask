@@ -35,7 +35,6 @@ const TaskComponent = () => {
         {/* Map over the data and render each item */}
         {data.map((item) => (
           <li key={item._id}>{item.name}</li>
-          // Replace "id" and "name" with the actual properties of your data
         ))}
       </ul>
     </div>
