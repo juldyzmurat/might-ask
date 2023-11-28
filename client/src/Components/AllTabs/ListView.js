@@ -30,7 +30,7 @@ const FirstTab = () => {
     fetchData();
   }, []);
 
-    
+    console.log(data);
 
     return (
       <div className="FirstTab">
