@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   //getLatLng,
@@ -13,6 +13,25 @@ const TaskForm = ({ onClose }) => {
   const [description, setDescription] = useState('');
   const [startTime, setStartTime] = useState('');
   const [category, setCategory] = useState('');
+
+  const [categoryID, setCategoryID] = useState([]);
+  useEffect(() => {
+      const fetchCategory = async() => {
+          try {
+                const request = "http://localhost:5200/categories/".concat(GoogleData.profileObj.email);
+                const response = await fetch(request);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+                const jsonData = await response.json();
+                setCategoryID(jsonData);
+            } catch (error) {
+                console.error("Error fetching data: ", error.message);
+            }
+        };
+        fetchCategory();
+  }, []);
+  // console.log(categoryID);
 
   const handleSelect = async (address) => {
     try {
@@ -35,6 +54,37 @@ const TaskForm = ({ onClose }) => {
       startTime,
       category,
     });
+
+    const taskFormData = {
+        name: taskName,
+        due: Date.parse(dueDate),
+        location: location,
+        description: description,
+        start: Date.parse(startTime),
+        categoryid: category,
+        userid: GoogleData.profileObj.email,
+    };
+
+    const fetchTask = async() => {
+        try {
+            const request = "http://localhost:5200/tasks/";
+            const data = JSON.stringify(taskFormData);
+            const response = await fetch(request, {
+                method: "post",
+                // mode: "cors",
+                headers: {'Content-Type': 'application/json'},
+                body: data,
+            });
+            // console.log(data);
+            console.log("fetch");
+            if (!response.ok) {
+                throw new Error("Failed to fetch data");
+            }
+        } catch (error) {
+            console.error("Error fetching data: ", error.message);
+        }
+    };
+    fetchTask();
 
     // Close the form after submitting
     onClose();

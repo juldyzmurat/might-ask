@@ -40,6 +40,8 @@ taskRouter.post("/", async (req, res) => {
   try {
     // const user = req.params.user;
     const task = req.body;
+    console.log("post");
+    // console.log(req);
     const result = await collections.tasks.insertOne(task);
 
     if (result.acknowledged) {
