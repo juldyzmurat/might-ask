@@ -1,7 +1,7 @@
 import PinnedSubheaderList from "../Tasks/listscroller";
 import React, { useState, useEffect } from "react";
 
-const ListView = () => {
+const TaskList = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const ListView = () => {
   }, []);
 
   return (
-    <div className="ListView">
+    <div className="TaskList">
       {/* First tab content will go here */}
       <div style={{ height: "500px" }}>
         <PinnedSubheaderList data={data} />
@@ -38,4 +38,4 @@ const ListView = () => {
     </div>
   );
 };
-export default ListView;
+export default TaskList;

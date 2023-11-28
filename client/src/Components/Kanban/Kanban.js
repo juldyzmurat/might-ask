@@ -1,7 +1,7 @@
 import Stack from "@mui/material/Stack";
 import TaskCard from "../Tasks/TaskCard";
 
-const BoardView = ({ categories }) => {
+const Kanban = ({ categories }) => {
   const tasks = [
     { name: "Presentation", dueDate: "2022-11-30", category: "School" },
     { name: "Meeting", dueDate: "2022-11-27", category: "Work" },
@@ -13,7 +13,7 @@ const BoardView = ({ categories }) => {
   ];
 
   return (
-    <div className="BoardView">
+    <div className="Kanban">
       <Stack spacing={2}>
         {tasks.map((task, index) => (
           <TaskCard key={index} task={task} categories={categories} />
@@ -23,4 +23,4 @@ const BoardView = ({ categories }) => {
   );
 };
 
-export default BoardView;
+export default Kanban;

@@ -1,38 +1,38 @@
 import React, { useState } from "react";
-import ListView from "../AllTabs/ListView";
-import BoardView from "../AllTabs/BoardView";
+import TaskList from "../TaskList/TaskList";
+import Kanban from "../Kanban/Kanban";
 
 const Tabs = ({ categories }) => {
-  const [activeTab, setActiveTab] = useState("ListView");
+  const [activeTab, setActiveTab] = useState("TaskList");
   const handleTab1 = () => {
     // update the state to tab1
-    setActiveTab("ListView");
+    setActiveTab("TaskList");
   };
   const handleTab2 = () => {
     // update the state to tab2
-    setActiveTab("BoardView");
+    setActiveTab("Kanban");
   };
   return (
     <div className="Tabs">
       <ul className="nav">
         <li
-          className={activeTab === "ListView" ? "active" : ""}
+          className={activeTab === "TaskList" ? "active" : ""}
           onClick={handleTab1}
         >
-          ListView
+          Task List
         </li>
         <li
-          className={activeTab === "BoardView" ? "active" : ""}
+          className={activeTab === "Kanban" ? "active" : ""}
           onClick={handleTab2}
         >
-          BoardView
+          Kanban
         </li>
       </ul>
       <div className="outlet">
-        {activeTab === "ListView" ? (
-          <ListView />
+        {activeTab === "TaskList" ? (
+          <TaskList />
         ) : (
-          <BoardView categories={categories} />
+          <Kanban categories={categories} />
         )}
       </div>
     </div>
