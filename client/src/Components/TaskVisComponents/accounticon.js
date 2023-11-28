@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import kittyImage from "../../kitty.jpeg";
 import LogoutButton from "../Login/LogoutAPI";
-import DropdownMenu from '../DropDownMenu/DDMenu';
+import DropdownMenu from "../DropDownMenu/DDMenu";
 
 const CircleButton = () => {
   const handleButtonClick = () => {
@@ -20,9 +20,7 @@ const CircleButton = () => {
     setIsDropdownOpen(false);
   };
 
-
   return (
-    
     <div style={circleStyle} onClick={handleButtonClick}>
       <img src={kittyImage} alt="" style={imageStyle} />
       <div>
