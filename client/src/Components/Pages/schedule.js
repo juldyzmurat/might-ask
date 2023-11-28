@@ -7,6 +7,7 @@ const Schedule = () => {
   return (
     <div>
       <iframe
+        title="calendar"
         src={calendarUrl}
         style={{
           border: "0",
