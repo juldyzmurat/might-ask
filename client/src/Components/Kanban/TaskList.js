@@ -3,7 +3,7 @@ import { useMediaQuery, Typography } from "@mui/material";
 
 import { TaskListContent } from ".";
 
-const TaskList = () => {
+const TaskList = ({ tasks }) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
@@ -12,7 +12,7 @@ const TaskList = () => {
       pagination={false}
       component="div"
     >
-      {isSmall ? <FallbackForMobile /> : <TaskListContent />}
+      {isSmall ? <FallbackForMobile /> : <TaskListContent tasks={tasks}/>}
     </List>
   );
 };

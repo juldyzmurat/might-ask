@@ -1,7 +1,7 @@
 import TaskList from "./TaskList";
 
-const Kanban = ({ categories }) => {
-  return <TaskList />;
+const Kanban = ({ tasks }) => {
+  return <TaskList tasks={tasks}/>;
 };
 
 export default Kanban;

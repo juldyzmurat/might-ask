@@ -60,7 +60,7 @@ const Tabs = ({ categories }) => {
         {activeTab === "TaskList" ? (
           <TaskList tasks={userTasks} />
         ) : (
-          <Kanban categories={categories} />
+          <Kanban tasks={userTasks} />
         )}
       </div>
     </div>

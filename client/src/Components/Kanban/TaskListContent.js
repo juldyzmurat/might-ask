@@ -8,7 +8,7 @@ import { useMutation } from "react-query";
 import { getTasksByStatus, statuses } from ".";
 import { TaskColumn } from "./TaskColumn";
 
-export const TaskListContent = () => {
+export const TaskListContent = ({ tasks }) => {
   const { data: unorderedTasks, isLoading, refetch } = useListContext();
   const dataProvider = useDataProvider();
 
