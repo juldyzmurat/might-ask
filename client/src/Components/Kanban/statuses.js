@@ -1,32 +1,24 @@
-export const statuses = [
-  "draft",
-  "to_review",
-  "to_be_fixed",
-  "to_publish",
-  "published",
-];
+export const statuses = ["to_do", "in_progress", "done"];
 
 export const statusNames = {
-  draft: "Draft",
-  to_review: "To Review",
-  to_be_fixed: "To Be Fixed",
-  to_publish: "To Publish",
-  published: "Published",
+  to_do: "To Do",
+  in_progress: "In Progress",
+  done: "Done",
 };
 
-export const getPostsByStatus = (unorderedPosts) => {
-  const postsByStatus = unorderedPosts.reduce(
-    (acc, post) => {
-      acc[post.status].push(post);
+export const getTasksByStatus = (unorderedTasks) => {
+  const tasksByStatus = unorderedTasks.reduce(
+    (acc, task) => {
+      acc[task.status].push(task);
       return acc;
     },
     statuses.reduce((obj, status) => ({ ...obj, [status]: [] }), {}),
   );
   // order each column by index
   statuses.forEach((status) => {
-    postsByStatus[status] = postsByStatus[status].sort(
+    tasksByStatus[status] = tasksByStatus[status].sort(
       (recordA, recordB) => recordA.index - recordB.index,
     );
   });
-  return postsByStatus;
+  return tasksByStatus;
 };

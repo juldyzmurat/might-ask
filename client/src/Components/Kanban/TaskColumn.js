@@ -2,9 +2,9 @@ import { Droppable } from "@hello-pangea/dnd";
 import { Box, Typography } from "@mui/material";
 
 import { statusNames } from ".";
-import { PostCard } from "./PostCard";
+import { TaskCard } from "./TaskCard";
 
-export const PostColumn = ({ status, posts }) => (
+export const TaskColumn = ({ status, tasks }) => (
   <Box
     sx={{
       flex: 1,
@@ -40,8 +40,8 @@ export const PostColumn = ({ status, posts }) => (
             },
           }}
         >
-          {posts.map((post, index) => (
-            <PostCard key={post.id} post={post} index={index} />
+          {tasks.map((task, index) => (
+            <TaskCard key={task.id} task={task} index={index} />
           ))}
           {droppableProvided.placeholder}
         </Box>

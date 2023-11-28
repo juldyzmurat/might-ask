@@ -1,24 +1,18 @@
-import { List, SearchInput } from "react-admin";
+import { List } from "react-admin";
 import { useMediaQuery, Typography } from "@mui/material";
 
-import { PostListContent } from "./Task";
+import { TaskListContent } from "./Task";
 
-const postFilters = [
-  // eslint-disable-next-line react/jsx-key
-  <SearchInput source="q" alwaysOn />,
-];
-
-export const PostList = () => {
+export const TaskList = () => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
-      filters={postFilters}
       perPage={100}
       sort={{ field: "index", order: "ASC" }}
       pagination={false}
       component="div"
     >
-      {isSmall ? <FallbackForMobile /> : <PostListContent />}
+      {isSmall ? <FallbackForMobile /> : <TaskListContent />}
     </List>
   );
 };

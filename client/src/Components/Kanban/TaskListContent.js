@@ -4,28 +4,29 @@ import { isEqual } from "lodash";
 import { useEffect, useState } from "react";
 import { useDataProvider, useListContext } from "react-admin";
 import { useMutation } from "react-query";
-import { getPostsByStatus, statuses } from ".";
-import { PostColumn } from "./PostColumn";
 
-export const PostListContent = () => {
-  const { data: unorderedPosts, isLoading, refetch } = useListContext();
+import { getTasksByStatus, statuses } from ".";
+import { TaskColumn } from "./TaskColumn";
+
+export const TaskListContent = () => {
+  const { data: unorderedTasks, isLoading, refetch } = useListContext();
   const dataProvider = useDataProvider();
 
-  const [postsByStatus, setPostsByStatus] = useState(getPostsByStatus([]));
+  const [tasksByStatus, setTasksByStatus] = useState(getTasksByStatus([]));
 
   useEffect(() => {
-    if (unorderedPosts) {
-      const newPostsByStatus = getPostsByStatus(unorderedPosts);
-      if (!isEqual(newPostsByStatus, postsByStatus)) {
-        setPostsByStatus(newPostsByStatus);
+    if (unorderedTasks) {
+      const newTasksByStatus = getTasksByStatus(unorderedTasks);
+      if (!isEqual(newTasksByStatus, tasksByStatus)) {
+        setTasksByStatus(newTasksByStatus);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [unorderedPosts]);
+  }, [unorderedTasks]);
 
   const mutation = useMutation(
     ({ source, destination }) =>
-      dataProvider.updatePostStatus(source, destination),
+      dataProvider.updateTaskStatus(source, destination),
     { onSettled: () => refetch() },
   );
 
@@ -47,8 +48,8 @@ export const PostListContent = () => {
 
     const sourceStatus = source.droppableId;
     const destinationStatus = destination.droppableId;
-    const sourcePost = postsByStatus[sourceStatus][source.index];
-    const destinationPost = postsByStatus[destinationStatus][
+    const sourceTask = tasksByStatus[sourceStatus][source.index];
+    const destinationTask = tasksByStatus[destinationStatus][
       destination.index
     ] ?? {
       status: destinationStatus,
@@ -56,19 +57,19 @@ export const PostListContent = () => {
     };
 
     // compute local state change synchronously
-    setPostsByStatus(
-      updatePostStatusLocal(
-        sourcePost,
+    setTasksByStatus(
+      updateTaskStatusLocal(
+        sourceTask,
         { status: sourceStatus, index: source.index },
         { status: destinationStatus, index: destination.index },
-        postsByStatus,
+        tasksByStatus,
       ),
     );
 
     // trigger the mutation to persist the changes
     mutation.mutateAsync({
-      source: sourcePost,
-      destination: destinationPost,
+      source: sourceTask,
+      destination: destinationTask,
     });
   };
 
@@ -76,9 +77,9 @@ export const PostListContent = () => {
     <DragDropContext onDragEnd={onDragEnd}>
       <Box display="flex">
         {statuses.map((status) => (
-          <PostColumn
+          <TaskColumn
             status={status}
-            posts={postsByStatus[status]}
+            tasks={tasksByStatus[status]}
             key={status}
           />
         ))}
@@ -87,33 +88,33 @@ export const PostListContent = () => {
   );
 };
 
-const updatePostStatusLocal = (
-  sourcePost,
+const updateTaskStatusLocal = (
+  sourceTask,
   source,
   destination,
-  postsByStatus,
+  tasksByStatus,
 ) => {
   if (source.status === destination.status) {
     // moving deal inside the same column
-    const column = postsByStatus[source.status];
+    const column = tasksByStatus[source.status];
     column.splice(source.index, 1);
-    column.splice(destination.index ?? column.length + 1, 0, sourcePost);
+    column.splice(destination.index ?? column.length + 1, 0, sourceTask);
     return {
-      ...postsByStatus,
+      ...tasksByStatus,
       [destination.status]: column,
     };
   } else {
     // moving deal across columns
-    const sourceColumn = postsByStatus[source.status];
-    const destinationColumn = postsByStatus[destination.status];
+    const sourceColumn = tasksByStatus[source.status];
+    const destinationColumn = tasksByStatus[destination.status];
     sourceColumn.splice(source.index, 1);
     destinationColumn.splice(
       destination.index ?? destinationColumn.length + 1,
       0,
-      sourcePost,
+      sourceTask,
     );
     return {
-      ...postsByStatus,
+      ...tasksByStatus,
       [source.status]: sourceColumn,
       [destination.status]: destinationColumn,
     };
