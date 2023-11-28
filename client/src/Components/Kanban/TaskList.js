@@ -1,9 +1,9 @@
 import { List } from "react-admin";
 import { useMediaQuery, Typography } from "@mui/material";
 
-import { TaskListContent } from "./Task";
+import { TaskListContent } from ".";
 
-export const TaskList = () => {
+const TaskList = () => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
@@ -22,3 +22,5 @@ const FallbackForMobile = () => (
     The Kanban board demo is not available on mobile
   </Typography>
 );
+
+export default TaskList;
