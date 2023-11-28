@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "react-google-login": "^5.2.2"
-  },
   "devDependencies": {
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",

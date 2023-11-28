@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import kittyImage from "../../kitty.jpeg";
+import { GoogleData } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
 import DropdownMenu from "../DropDownMenu/DDMenu";
 
-const CircleButton = () => {
+import { CircleButtonWrapper } from "./NavbarElements";
+
+const AccountIcon = () => {
+  var loginImage = kittyImage;
+
   const handleButtonClick = () => {
     // Add your button click logic here
     console.log("Button clicked!");
@@ -20,17 +25,23 @@ const CircleButton = () => {
     setIsDropdownOpen(false);
   };
 
-  return (
-    <div style={circleStyle} onClick={handleButtonClick}>
-      <img src={kittyImage} alt="" style={imageStyle} />
-      <div>
-        {isDropdownOpen && (
-          <DropdownMenu items={dropdownItems} onItemClick={handleItemClick} />
-        )}
+  if (GoogleData !== undefined) {
+    loginImage = GoogleData.profileObj.imageUrl;
+    console.log(GoogleData);
+  }
 
-        {selectedItem && <p>You selected: {selectedItem}</p>}
+  return (
+    <CircleButtonWrapper>
+      <div style={circleStyle} onClick={handleButtonClick}>
+        <img src={loginImage} alt="" style={imageStyle} />
+        <div>
+          {isDropdownOpen && (
+            <DropdownMenu items={dropdownItems} onItemClick={handleItemClick} />
+          )}
+          {selectedItem && <p>You selected: {selectedItem}</p>}
+        </div>
       </div>
-    </div>
+    </CircleButtonWrapper>
   );
 };
 
@@ -48,4 +59,4 @@ const imageStyle = {
   objectFit: "cover",
 };
 
-export default CircleButton;
+export default AccountIcon;
