@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PlacesAutocomplete, {
   geocodeByAddress,
-  getLatLng,
+  //getLatLng,
 } from 'react-places-autocomplete';
 
-const TaskForm = () => {
+const TaskForm = ({ onClose }) => {
   const [taskName, setTaskName] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [location, setLocation] = useState('');
@@ -15,7 +15,7 @@ const TaskForm = () => {
   const handleSelect = async (address) => {
     try {
       const results = await geocodeByAddress(address);
-      const latLng = await getLatLng(results[0]);
+      //const latLng = await getLatLng(results[0]);
       setLocation(address);
       // You can also store the coordinates if needed: setCoordinates(latLng);
     } catch (error) {
@@ -33,7 +33,11 @@ const TaskForm = () => {
       startTime,
       category,
     });
+
+    // Close the form after submitting
+    onClose();
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
