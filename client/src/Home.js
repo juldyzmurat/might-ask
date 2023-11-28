@@ -1,8 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import Google from "./Components/Login/LoginAPI";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import gif from "./20cat.gif";
@@ -21,5 +18,3 @@ function Home() {
 }
 
 export default Home;
-
-// For the cat  <img src={gif} className="App-logo" alt="gif" />

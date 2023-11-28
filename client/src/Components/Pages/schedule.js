@@ -1,8 +1,4 @@
 import React from "react";
-//import Google from "../Login/LoginAPI";
-//import { GoogleOAuthProvider } from '@react-oauth/google';
-//import gif from '../../80cat.gif';
-//import CalendarComponent from '../GoogleCalenderComponents/Calender';
 
 const Schedule = () => {
   const calendarUrl =
