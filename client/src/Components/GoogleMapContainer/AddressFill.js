@@ -30,13 +30,13 @@ const AddressAutofill = () => {
       },
     };
 
-    const componentForm = [
-      "location",
-      "locality",
-      "administrative_area_level_1",
-      "country",
-      "postal_code",
-    ];
+    // const componentForm = [
+    //   "location",
+    //   "locality",
+    //   "administrative_area_level_1",
+    //   "country",
+    //   "postal_code",
+    // ];
 
     const getFormInputElement = (component) =>
       document.getElementById(component + "-input");
