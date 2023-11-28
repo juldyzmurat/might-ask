@@ -1,14 +1,10 @@
 import React from "react";
+import OptimizedSchedule from "./optimizedschedule";
 
 const Schedule = () => {
-  const calendarUrl =
-    "https://calendar.google.com/calendar/embed?src=enh1NEBjYXNlLmVkdQ";
-
   return (
-    <div>
-      <iframe
-        title="calendar"
-        src={calendarUrl}
+    <div className="Schedule">
+      <div
         style={{
           border: "0",
           width: "800px",
@@ -16,7 +12,9 @@ const Schedule = () => {
           frameborder: "0",
           scrolling: "no",
         }}
-      />
+      >
+        <OptimizedSchedule />
+      </div>
     </div>
   );
 };
