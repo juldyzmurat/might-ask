@@ -1,5 +1,5 @@
 import PinnedSubheaderList from "../Tasks/listscroller";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const TaskList = () => {
   const [data, setData] = useState([]);
@@ -7,11 +7,8 @@ const TaskList = () => {
   const tasks = data; //This is all of the task handle as needed
 
   return (
-    <div className="TaskList">
-      {/* First tab content will go here */}
-      <div style={{ height: "500px" }}>
-        <PinnedSubheaderList data={tasks} />
-      </div>
+    <div className="TaskList" style={{ height: "500px" }}>
+      <PinnedSubheaderList data={tasks} />
     </div>
   );
 };
