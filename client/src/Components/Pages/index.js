@@ -1,6 +1,6 @@
 import React from "react";
 import gif from "../../80cat.gif";
-import LoginButton from "../Login/LoginAPI";
+import { LoginButton } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
 
 import { useEffect } from "react";
