@@ -10,7 +10,8 @@ const CategoryDashboard = () => {
     // Function to fetch data from the backend
     const fetchData = async () => {
       try {
-        const taskResponse = await fetch("http://localhost:5200/tasks");
+        const request = "http://localhost:5200/tasks".concat(GoogleData.profileObj.email);
+        const taskResponse = await fetch(request);
 
         // Check if the response is successful (status code 200)
         if (!taskResponse.ok) {
