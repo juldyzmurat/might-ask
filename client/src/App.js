@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import TaskView from "./Components/Pages/TasksViewPage";
+import TaskViews from "./Components/Pages/TaskViews";
 import Navbar from "./Components/NavBar/";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Pages/";
@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/TasksViewPage" element={<TaskView />} />
+          <Route path="/task-views" element={<TaskViews />} />
           <Route path="/DashboardPage" element={<Dashboard />} />
           <Route path="/schedule" element={<Schedule />} />
         </Routes>
