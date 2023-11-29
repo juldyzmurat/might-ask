@@ -54,15 +54,9 @@ export const NavMenu = styled.div`
 `;
 
 export const CircleButtonWrapper = styled.div`
-<<<<<<< HEAD
   position: fixed;
   right: 3%; /* Adjust the positioning as needed */
   top: 5%; /* Adjust the positioning as needed */
-=======
-  position: absolute;
-  right: 30px;
-  top: 50%;
->>>>>>> main
   transform: translateY(-50%);
   z-index: 13;
 `;
