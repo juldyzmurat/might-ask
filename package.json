@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0"
@@ -11,5 +12,12 @@
     "postinstall": "husky install",
     "pre-commit": "lint-staged",
     "lint": "prettier --write -u ."
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.18",
+    "@mui/material": "^5.14.18",
+    "react-places-autocomplete": "^7.3.0"
   }
 }
