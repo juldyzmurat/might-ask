@@ -1,14 +1,7 @@
-import React from "react";
-import MapAutocomplete from "../GoogleMapContainer/AddressFill";
+import TaskList from "./TaskList";
 
-const BoardView = ({ data }) => {
-  const tasks = data; //This is all of the task handle as needed
-
-  return (
-    <div className="BoardView">
-      <MapAutocomplete />
-    </div>
-  );
+const BoardView = ({ tasks }) => {
+  return <TaskList tasks={tasks}/>;
 };
 
 export default BoardView;
