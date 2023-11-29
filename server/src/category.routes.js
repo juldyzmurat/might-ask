@@ -9,6 +9,7 @@ categoryRouter.get("/:user", async (req, res) => {
   try {
     const user = req.params.user;
     const query = { userid: user };
+    console.log(query);
     const categories = await collections.categories.find(query).toArray();
     res.status(200).send(categories);
   } catch (error) {
