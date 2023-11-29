@@ -18,8 +18,8 @@ const Navbar = () => {
         <AccountIcon />
         <NavMenu>
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/TasksViewPage">TaskView</NavLink>
-          <NavLink to="/DashboardPage">Dashboard</NavLink>
+          <NavLink to="/tasks">TaskView</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
           <NavLink to="/schedule">Schedule</NavLink>
         </NavMenu>
       </Nav>
