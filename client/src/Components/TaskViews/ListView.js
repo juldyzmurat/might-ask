@@ -7,7 +7,7 @@ import "../../Styles/TaskForm.css";
 const ListView = ({ data }) => {
   const [showTaskForm, setShowTaskForm] = useState(false);
 
-  const tasks = data; //This is all of the task handle as needed
+  const tasks = data;
 
   const handleAddTaskClick = () => {
     setShowTaskForm(true);

@@ -79,12 +79,10 @@ function PinnedSubheaderList({ data }) {
                     onMouseEnter={() => handleMouseEnter(item._id)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    {/* console.log(daysOfWeek[((new Date(item.due)).getDay()-1)%7]) */}
-                    {/* Pass the hover state and delete function to EditDeleteButtons */}
                     <ListItemText primary={item.name} />
                     {hoveredItemId === item._id && (
                       <EditDeleteButtons
-                        onEditClick={() => handleEdit(item._id)} // Add edit functionality if needed
+                        onEditClick={() => handleEdit(item._id)}
                         onDeleteClick={() => handleDelete(item._id)}
                       />
                     )}

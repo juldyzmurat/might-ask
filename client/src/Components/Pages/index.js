@@ -18,8 +18,6 @@ function Home() {
           scope: "profile email",
         });
       }
-
-      // const authInstance = gapi.auth2.getAuthInstance();
     }
     gapi.load("client: auth2", start);
   });
