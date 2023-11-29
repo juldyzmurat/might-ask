@@ -5,6 +5,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import EditDeleteButtons from "./editdelete";
 import TaskForm from "./popupaddtask";
+import { GoogleData } from "../Login/LoginAPI";
 
 
 const daysOfWeek = [
@@ -20,7 +21,7 @@ const daysOfWeek = [
 function PinnedSubheaderList({ data }) {
   const [hoveredItemId, setHoveredItemId] = useState(null);
   const [isEditClicked, setIsEditClicked] = useState(false); // New state for tracking edit button click
-
+  const [isDeleteClicked, setIsDeleteClicked] = useState(false);
   const handleMouseEnter = (itemId) => {
     setHoveredItemId(itemId);
   };
@@ -35,12 +36,6 @@ function PinnedSubheaderList({ data }) {
      return item.priority === "high" ? "red" : "blue";
   };
 
-  const handleDelete = (itemId) => {
-    // Add logic to delete the task from the database
-    // For example, you might want to call an API endpoint to delete the task
-    console.log(`Deleting task with ID ${itemId}`);
-  };
-
   const handleEdit = (itemId) => {
     
     setIsEditClicked(true); // Set the state to true when edit is clicked
@@ -48,7 +43,29 @@ function PinnedSubheaderList({ data }) {
   };
 
   const handleCloseTaskForm = () => {
-    setIsEditClicked(false); // Set the state back to false when the TaskForm is closed
+    setIsEditClicked(false); 
+  };
+
+  const handleDelete = async (itemId) => {
+    try {
+      const request = `http://localhost:5200/tasks/${GoogleData.profileObj.email}/${itemId}`;
+      
+      const response = await fetch(request, {
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      console.log('Server Response Status:', response.status);
+  
+      if (!response.ok) {
+        console.log('Failed to delete data');
+      } else {
+        console.log('Data deleted successfully');
+      }
+    } catch (error) {
+      console.error('Error deleting data: ', error.message);
+    }
+  
   };
 
   
@@ -110,7 +127,9 @@ function PinnedSubheaderList({ data }) {
             taskId={hoveredItemId} 
           />
         </div>
-    )}
+      )}
+
+  
       
     </>
     
