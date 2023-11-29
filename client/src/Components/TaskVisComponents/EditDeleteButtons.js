@@ -23,4 +23,5 @@ function EditDeleteButtons({ onEditClick, onDeleteClick }) {
     </div>
   );
 }
+
 export default EditDeleteButtons;
