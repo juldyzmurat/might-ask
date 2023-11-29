@@ -24,10 +24,10 @@ const ListView = ({ data }) => {
         {!showTaskForm && <PinnedSubheaderList data={tasks} />}
       </div>
       <div>
-        <AddTask onClick={handleAddTaskClick} />
+        <Addtask onClick={handleAddTaskClick} />
         {showTaskForm && (
           <div className="task-form-overlay">
-            <TaskForm onClose={handleCloseTaskForm} editordelete="Delete" />
+            <TaskForm onClose={handleCloseTaskForm} editoradd="Add" />
           </div>
         )}
       </div>
