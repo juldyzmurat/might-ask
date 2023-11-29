@@ -3,7 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import penIcon from "./pen.png";
 import recycleBinIcon from "./recycle-bin.png";
 
-function EditDeleteButtons({ onEditClick, onDeleteClick}) {
+function EditDeleteButtons({ onEditClick, onDeleteClick }) {
   return (
     <div>
       <IconButton onClick={onEditClick} color="primary">
