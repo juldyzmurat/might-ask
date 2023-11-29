@@ -44,8 +44,8 @@ const AccountIcon = () => {
 };
 
 const circleStyle = {
-  width: "70px",
-  height: "70px",
+  width: "60px",
+  height: "60px",
   borderRadius: "50%",
   overflow: "hidden",
   cursor: "pointer",
