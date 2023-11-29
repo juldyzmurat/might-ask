@@ -26,9 +26,9 @@ function PinnedSubheaderList({ data }) {
     setHoveredItemId(null);
   };
 
-  const getColorForItem = (item) => {
-    return item.priority === "high" ? "red" : "blue";
-  };
+  // const getColorForItem = (item) => {
+  //   return item.priority === "high" ? "red" : "blue";
+  // };
 
   const handleDelete = (itemId) => {
     // Add logic to delete the task from the database
