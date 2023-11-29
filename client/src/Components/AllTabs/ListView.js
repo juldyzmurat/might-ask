@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PinnedSubheaderList from "../TaskVisComponents/listscroller";
-import AddTask from "../TaskVisComponents/addtask";
+import PlusButton from "../TaskVisComponents/PlusButton";
 import TaskForm from "../TaskVisComponents/popupaddtask";
 import "../../Styles/popupaddtask.css";
 
@@ -24,7 +24,7 @@ const ListView = ({ data }) => {
         {!showTaskForm && <PinnedSubheaderList data={tasks} />}
       </div>
       <div>
-        <AddTask onClick={handleAddTaskClick} />
+        <PlusButton onClick={handleAddTaskClick} />
         {showTaskForm && (
           <div className="task-form-overlay">
             <TaskForm onClose={handleCloseTaskForm} editordelete="Delete" />
