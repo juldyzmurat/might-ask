@@ -15,6 +15,7 @@ const TaskForm = ({ onClose, editoradd }) => {
   const [dueDate, setDueDate] = useState("");
   const [endTime, setEndTime] = useState("");
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [selectedCategoryName, setSelectedCategoryName] = useState("");
 
   const formatDateTime = (dateTimeString) => {
     const options = {
@@ -52,7 +53,6 @@ const TaskForm = ({ onClose, editoradd }) => {
     };
     fetchCategory();
   }, []);
-  // console.log(categoryIDs);
 
   const handleSelect = async (address) => {
     try {
@@ -115,6 +115,16 @@ const TaskForm = ({ onClose, editoradd }) => {
   const handleCategoryClick = () => {
     // Toggle dropdown visibility
     setDropdownVisible(!isDropdownVisible);
+  };
+
+  const handleCategorySelect = (selectedCategoryName) => {
+    setDropdownVisible(false);
+    const selectedCategory = categoryIDs.find(category => category.name === selectedCategoryName);
+    if (selectedCategory) {
+      setCategory(selectedCategory._id);
+      setSelectedCategoryName(selectedCategoryName);
+      setDropdownVisible(false);
+    };
   };
 
   return (
@@ -230,21 +240,17 @@ const TaskForm = ({ onClose, editoradd }) => {
           Category:
           <input
             type="text"
-            value={category}
+            value={selectedCategoryName}
             onClick={handleCategoryClick}
-            readOnly // Make the input read-only to prevent typing
+            readOnly // Make the input read-only to prevent typing for now
           />
           {/* Render the dropdown only if isDropdownVisible is true */}
           {isDropdownVisible && (
             <DropdownMenu
-              items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
-              onItemClick={(selectedCategory) => {
-                setCategory(selectedCategory);
-                // Close dropdown after selecting a category
-                setDropdownVisible(false);
-              }}
-            />
-          )}
+            items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
+            onItemClick={handleCategorySelect}
+          />
+        )}
         </label>
       </div>
 
