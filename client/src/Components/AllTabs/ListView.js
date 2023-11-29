@@ -7,7 +7,7 @@ import "../../Styles/popupaddtask.css";
 const ListView = ({ data }) => {
   const [showTaskForm, setShowTaskForm] = useState(false);
 
-  const tasks = data; //This is all of the task handle as needed
+  const tasks = data;
 
   const handleAddTaskClick = () => {
     setShowTaskForm(true);
@@ -19,7 +19,6 @@ const ListView = ({ data }) => {
 
   return (
     <div className="ListView">
-      {/* First tab content will go here */}
       <div style={{ height: "500px" }}>
         {!showTaskForm && <PinnedSubheaderList data={tasks} />}
       </div>
