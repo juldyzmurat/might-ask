@@ -48,27 +48,28 @@ export const NavMenu = styled.div`
   width: 50%;
   align-items: center;
   margin-right: -24px;
-  /* Second Nav */
-  /* margin-right: 24px; */
-  /* Third Nav */
-  /* width: 100vw;
-white-space: nowrap; */
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
 export const CircleButtonWrapper = styled.div`
+<<<<<<< HEAD
   position: fixed;
   right: 3%; /* Adjust the positioning as needed */
   top: 5%; /* Adjust the positioning as needed */
+=======
+  position: absolute;
+  right: 30px;
+  top: 50%;
+>>>>>>> main
   transform: translateY(-50%);
   z-index: 13;
 `;
 
 export const TaskView = styled.div`
-  width: 100%; /* Set a fixed width */
-  height: 100vh; /* Set a fixed height (100% of the viewport height) */
+  width: 100%;
+  height: 100vh;
   overflow: hidden; /* Hide overflow if content exceeds the fixed height */
 `;
 

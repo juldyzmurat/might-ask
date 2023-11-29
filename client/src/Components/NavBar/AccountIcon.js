@@ -49,7 +49,7 @@ const circleStyle = {
   borderRadius: "50%",
   overflow: "hidden",
   cursor: "pointer",
-  backgroundColor: "red", // Add a background color for testing
+  backgroundColor: "red",
 };
 const imageStyle = {
   width: "100%",

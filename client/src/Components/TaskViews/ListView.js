@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PinnedSubheaderList from "../TaskVisComponents/listscroller";
-import AddTask from "../TaskVisComponents/addtask";
-import TaskForm from "../TaskVisComponents/popupaddtask";
-import "../../Styles/popupaddtask.css";
+import PlusButton from "../TaskVisComponents/PlusButton";
+import TaskForm from "../TaskVisComponents/TaskForm";
+import "../../Styles/TaskForm.css";
 
 const ListView = ({ data }) => {
   const [showTaskForm, setShowTaskForm] = useState(false);
 
-  const tasks = data; //This is all of the task handle as needed
+  const tasks = data;
 
   const handleAddTaskClick = () => {
     setShowTaskForm(true);
@@ -19,15 +19,14 @@ const ListView = ({ data }) => {
 
   return (
     <div className="ListView">
-      {/* First tab content will go here */}
       <div style={{ height: "500px" }}>
         {!showTaskForm && <PinnedSubheaderList data={tasks} />}
       </div>
       <div>
-        <AddTask onClick={handleAddTaskClick} />
+        <PlusButton onClick={handleAddTaskClick} />
         {showTaskForm && (
           <div className="task-form-overlay">
-            <TaskForm onClose={handleCloseTaskForm} editordelete="Delete" />
+            <TaskForm onClose={handleCloseTaskForm} editoradd="Add" />
           </div>
         )}
       </div>
