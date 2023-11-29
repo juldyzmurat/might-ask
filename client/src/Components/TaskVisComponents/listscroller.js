@@ -3,8 +3,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
-import EditDeleteButtons from "./editdelete";
-import TaskForm from "./popupaddtask";
+import EditDeleteButtons from "./EditDeleteButtons";
+import TaskForm from "./TaskForm";
 
 const daysOfWeek = [
   "Monday",
