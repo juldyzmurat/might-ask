@@ -13,7 +13,7 @@ function LoginButton() {
   const onSuccess = (res) => {
     console.log("LOGIN SUCCESS Current user: ", res);
     GoogleData = res;
-    navigate("/TasksViewPage");
+    navigate("/task-views");
 
     // check user with database
     var currentUser = false;

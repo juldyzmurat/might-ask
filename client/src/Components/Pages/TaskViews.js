@@ -3,7 +3,7 @@ import ListView from "../TaskViews/ListView";
 import BoardView from "../TaskViews/BoardView";
 import { GoogleData } from "../Login/LoginAPI";
 
-const Tabs = () => {
+const TaskViews = () => {
   const [activeTab, setActiveTab] = useState("ListView");
   const handleTab1 = () => {
     // update the state to tab1
@@ -45,7 +45,7 @@ const Tabs = () => {
   }, []);
 
   return (
-    <div className="Tabs">
+    <div className="TaskViews">
       <ul className="nav">
         <li
           className={activeTab === "ListView" ? "active" : ""}
@@ -71,4 +71,4 @@ const Tabs = () => {
   );
 };
 
-export default Tabs;
+export default TaskViews;
