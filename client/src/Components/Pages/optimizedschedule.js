@@ -60,18 +60,18 @@ const OptimizedSchedule = () => {
       }}
     >
       {
-          <ul>
-            {console.log(data)}
-            {data.map((item, index) => (
-              <ListItem
-                key={`item-${index}-${item._id}`}
-                style={{ color: "blue" }}
-              >
-                <ListItemText primary={item.name} />
-                <ListItemText primary={(new Date(item.due)).toString()} />
-              </ListItem>
-            ))}
-          </ul>
+        <ul>
+          {console.log(data)}
+          {data.map((item, index) => (
+            <ListItem
+              key={`item-${index}-${item._id}`}
+              style={{ color: "blue" }}
+            >
+              <ListItemText primary={item.name} />
+              <ListItemText primary={new Date(item.due).toString()} />
+            </ListItem>
+          ))}
+        </ul>
       }
     </List>
   );

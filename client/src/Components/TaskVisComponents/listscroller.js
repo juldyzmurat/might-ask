@@ -6,7 +6,6 @@ import ListSubheader from "@mui/material/ListSubheader";
 import EditDeleteButtons from "./EditDeleteButtons";
 import TaskForm from "./TaskForm";
 
-
 const daysOfWeek = [
   "Monday",
   "Tuesday",
@@ -32,7 +31,7 @@ function PinnedSubheaderList({ data }) {
   };
 
   const getColorForItem = (item) => {
-     return item.priority === "high" ? "red" : "blue";
+    return item.priority === "high" ? "red" : "blue";
   };
 
   const handleDelete = (itemId) => {
@@ -42,7 +41,6 @@ function PinnedSubheaderList({ data }) {
   };
 
   const handleEdit = (itemId) => {
-    
     setIsEditClicked(true); // Set the state to true when edit is clicked
     setHoveredItemId(itemId); // Optionally, you can set hoveredItemId for styling
   };
@@ -50,8 +48,6 @@ function PinnedSubheaderList({ data }) {
   const handleCloseTaskForm = () => {
     setIsEditClicked(false); // Set the state back to false when the TaskForm is closed
   };
-
-  
 
   return (
     <>
@@ -70,50 +66,56 @@ function PinnedSubheaderList({ data }) {
           <li key={`section-${index}`}>
             <ul>
               <ListSubheader>{`${day}`}</ListSubheader>
-              {data.map((item) => (
-                <ListItem
-                  key={`item-${index}-${item._id}`}
-                  style={{ color: getColorForItem(item) }}
-                  onMouseEnter={() => handleMouseEnter(item._id)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {/* Pass the hover state and delete function to EditDeleteButtons */}
-                  <ListItemText primary={item.name} />
-                  {hoveredItemId === item._id && (
-                    <EditDeleteButtons
-                      onEditClick={() => handleEdit(item._id)} // Add edit functionality if needed
-                      onDeleteClick={() => handleDelete(item._id)}
-                    />
-                    
-                  )}
-                </ListItem>
-              ))}
+              {data
+                .filter((item) => {
+                  return (
+                    day == daysOfWeek[(new Date(item.due).getDay() - 1) % 7]
+                  );
+                })
+                .map((item) => (
+                  <ListItem
+                    key={`item-${index}-${item._id}`}
+                    style={{ color: getColorForItem(item) }}
+                    onMouseEnter={() => handleMouseEnter(item._id)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {/* console.log(daysOfWeek[((new Date(item.due)).getDay()-1)%7]) */}
+                    {/* Pass the hover state and delete function to EditDeleteButtons */}
+                    <ListItemText primary={item.name} />
+                    {hoveredItemId === item._id && (
+                      <EditDeleteButtons
+                        onEditClick={() => handleEdit(item._id)} // Add edit functionality if needed
+                        onDeleteClick={() => handleDelete(item._id)}
+                      />
+                    )}
+                  </ListItem>
+                ))}
             </ul>
           </li>
         ))}
-
       </List>
 
       {isEditClicked && (
-        <div className="task-form-overlay" style={{
-          position: 'absolute',
-          zIndex: 1000,
-          top: 0, 
-          left: 0,
-          width: '100%',
-          height: '100%'
-        }}>
+        <div
+          className="task-form-overlay"
+          style={{
+            position: "absolute",
+            zIndex: 1000,
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        >
           {console.log("Hovered Item ID:", hoveredItemId)}
-          <TaskForm 
+          <TaskForm
             onClose={handleCloseTaskForm}
             editoradd="Edit"
-            taskId={hoveredItemId} 
+            taskId={hoveredItemId}
           />
         </div>
-    )}
-      
+      )}
     </>
-    
   );
 }
 

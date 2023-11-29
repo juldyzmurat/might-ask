@@ -63,9 +63,8 @@ const CategoryDashboard = () => {
       categoryData.find((categoryItem) => categoryItem._id === categoryId)
         ?.name || "Unkown",
     count,
-    color:
-    categoryData.find((categoryItem) => categoryItem._id === categoryId)
-        ?.color,
+    color: categoryData.find((categoryItem) => categoryItem._id === categoryId)
+      ?.color,
   }));
 
   // Convert the structure
@@ -74,10 +73,9 @@ const CategoryDashboard = () => {
     count: item.count,
     color: item.color,
   }));
-console.log(transformedJson);
+  console.log(transformedJson);
   //console.log(transformedJson);
 
- 
   return (
     //<PieChart width={700} height={700}>
     //    <Pie data={result} dataKey="students" outerRadius={250} fill="pink" />
