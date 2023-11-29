@@ -61,9 +61,6 @@ const CategoryDashboard = () => {
   console.log(transformedJson);
 
   return (
-    //<PieChart width={700} height={700}>
-    //    <Pie data={result} dataKey="students" outerRadius={250} fill="pink" />
-    //</PieChart>
 
     <div className="container">
       <div className="chart-container">
@@ -78,13 +75,6 @@ const CategoryDashboard = () => {
             {transformedJson.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
-            {/*
-                    <Label
-                        value={(entry) => `${entry.name}: ${entry.count}`}
-                        position="center"
-                        fill="white"
-                    />
-                    */}
           </Pie>
           <Tooltip formatter={(value) => `${value} tasks`} />
           <Legend />
