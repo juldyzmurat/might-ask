@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PinnedSubheaderList from "../TaskVisComponents/listscroller";
-import Addtask from "../TaskVisComponents/addtask";
+import AddTask from "../TaskVisComponents/addtask";
 import TaskForm from "../TaskVisComponents/popupaddtask";
 import "../../Styles/popupaddtask.css";
 
