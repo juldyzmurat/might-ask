@@ -4,7 +4,6 @@ import PlacesAutocomplete, {
   //getLatLng,
 } from "react-places-autocomplete";
 import { GoogleData } from "../Login/LoginAPI";
-// GoogleData.profileObj.email
 
 const TaskForm = ({ onClose, editoradd }) => {
   const [taskName, setTaskName] = useState("");
