@@ -60,7 +60,7 @@ white-space: nowrap; */
 
 export const CircleButtonWrapper = styled.div`
   position: fixed;
-  right: 5%; /* Adjust the positioning as needed */
+  right: 3%; /* Adjust the positioning as needed */
   top: 5%; /* Adjust the positioning as needed */
   transform: translateY(-50%);
   z-index: 13;
