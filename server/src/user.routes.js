@@ -5,16 +5,6 @@ const { collections } = require("./database");
 const userRouter = express.Router();
 userRouter.use(express.json());
 
-// userRouter.get("/", async (_req, res) => {
-//   try {
-//     //console.log("Hi");
-//     const users = await collections.users.find({}).toArray();
-//     res.status(200).send(users);
-//   } catch (error) {
-//     res.status(500).send(error.message);
-//   }
-// });
-
 userRouter.get("/:email", async (req, res) => {
   try {
     const email = req.params.email;
