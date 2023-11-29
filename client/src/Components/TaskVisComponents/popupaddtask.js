@@ -174,12 +174,11 @@ if (editoradd === "Edit") {
   
       <div>
         <label>
-          Due Date<span style={{ color: "red" }}>*</span>:
+          Due Date:
           <input
             type="datetime-local"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            required
           />
         </label>
       </div>
