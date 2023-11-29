@@ -32,7 +32,6 @@ const TaskViews = () => {
 
         // Parse the response body as JSON
         const jsonData = await response.json();
-
         // Update the state with the fetched data
         setData(jsonData);
       } catch (error) {
