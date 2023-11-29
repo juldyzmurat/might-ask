@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddTask = ({ onClick }) => {
+const PlusButton = ({ onClick }) => {
   return (
     <div>
       <button onClick={onClick}>+</button>
@@ -8,4 +8,4 @@ const AddTask = ({ onClick }) => {
   );
 };
 
-export default AddTask;
+export default PlusButton;
