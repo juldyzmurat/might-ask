@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const Nav = styled.nav`
   position: fixed;
   background: #ffb3ff;
-  width: 70%;
+  width: 100%;
   top: 0;
   left: 0;
   height: 85px;
@@ -54,10 +54,11 @@ export const NavMenu = styled.div`
 `;
 
 export const CircleButtonWrapper = styled.div`
-  position: absolute;
-  right: 30px;
-  top: 50%;
+  position: fixed;
+  right: 2%; /* Adjust the positioning as needed */
+  top: 5%; /* Adjust the positioning as needed */
   transform: translateY(-50%);
+  z-index: 13;
 `;
 
 export const TaskView = styled.div`
