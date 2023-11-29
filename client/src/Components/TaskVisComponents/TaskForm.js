@@ -84,7 +84,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       location: location,
       description: description,
       start: Date.parse(startTime),
-
+      status: "incomplete",
       categoryid: category,
       userid: GoogleData.profileObj.email,
     };
@@ -123,6 +123,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       location: location,
       description: description,
       start: Date.parse(startTime),
+      // status: status,
       categoryid: category,
       userid: GoogleData.profileObj.email,
     };
@@ -168,7 +169,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
   };
 
   const handleCategorySelect = (selectedCategoryName) => {
-    setDropdownVisible(false);
+    setDropdownVisible(true);
     const selectedCategory = categoryIDs.find(category => category.name === selectedCategoryName);
     if (selectedCategory) {
       setCategory(selectedCategory._id);
