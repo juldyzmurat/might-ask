@@ -18,7 +18,7 @@ userRouter.use(express.json());
 userRouter.get("/:email", async (req, res) => {
   try {
     const email = req.params.email;
-    const query = { email: new mongodb.ObjectId(email) };
+    const query = { email: email };
     const user = await collections.users.findOne(query);
 
     if (user) {
