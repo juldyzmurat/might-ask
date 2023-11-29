@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ListView from "../AllTabs/ListView";
-import BoardView from "../AllTabs/BoardView";
+import ListView from "../TaskViews/ListView";
+import BoardView from "../TaskViews/BoardView";
 import { GoogleData } from "../Login/LoginAPI";
 
 const Tabs = () => {
