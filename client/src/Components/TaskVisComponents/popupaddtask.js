@@ -36,7 +36,7 @@ const TaskForm = ({ onClose }) => {
   const handleSelect = async (address) => {
     try {
       const results = await geocodeByAddress(address);
-      //const latLng = await getLatLng(results[0]);
+      // const latLng = await getLatLng(results[0]);
       setLocation(address);
       // You can also store the coordinates if needed: setCoordinates(latLng);
     } catch (error) {
@@ -78,7 +78,7 @@ const TaskForm = ({ onClose }) => {
             // console.log(data);
             console.log("fetch");
             if (!response.ok) {
-                throw new Error("Failed to fetch data");
+                throw new Error("Failed to post data");
             }
         } catch (error) {
             console.error("Error fetching data: ", error.message);
