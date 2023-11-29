@@ -82,7 +82,7 @@ function LoginButton() {
           "#DF536B",
           "#61D04F",
           "#2297E6",
-          "##CDOBBC",
+          "#CD0BBC",
           "#F5C710",
           "#9E9E9E",
         ];

@@ -5,7 +5,8 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 import { GoogleData } from "../Login/LoginAPI";
 
-const TaskForm = ({ onClose, editoradd }) => {
+const TaskForm = ({ onClose, editoradd, taskId }) => {
+  console.log("Server Response:", taskId);
   const [taskName, setTaskName] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
@@ -63,7 +64,7 @@ const TaskForm = ({ onClose, editoradd }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmitAdd = (e) => {
     e.preventDefault();
     console.log("Form submitted with the following data:", {
       taskName,
@@ -75,43 +76,90 @@ const TaskForm = ({ onClose, editoradd }) => {
     });
 
     const taskFormData = {
-      name: taskName,
-      due: Date.parse(dueDate),
-      location: location,
-      description: description,
-      start: Date.parse(startTime),
-      end: Date.parse(endTime),
-      categoryid: category,
-      userid: GoogleData.profileObj.email,
+        name: taskName,
+        due: Date.parse(dueDate),
+        location: location,
+        description: description,
+        start: Date.parse(startTime),
+
+        categoryid: category,
+        userid: GoogleData.profileObj.email,
     };
 
-    const fetchTask = async () => {
+    const fetchTask = async() => {
       try {
-        const request = "http://localhost:5200/tasks/";
-        const data = JSON.stringify(taskFormData);
-        const response = await fetch(request, {
-          method: "post",
-          // mode: "cors",
-          headers: { "Content-Type": "application/json" },
-          body: data,
-        });
-        // console.log(data);
-        console.log("fetch");
-        if (!response.ok) {
-          throw new Error("Failed to post data");
-        }
+          const request = "http://localhost:5200/tasks/";
+          const data = JSON.stringify(taskFormData);
+          const response = await fetch(request, {
+              method: "post",
+              // mode: "cors",
+              headers: {'Content-Type': 'application/json'},
+              body: data,
+          });
+          // console.log(data);
+          console.log("fetch");
+          if (!response.ok) {
+              throw new Error("Failed to post data");
+          }
       } catch (error) {
-        console.error("Error fetching data: ", error.message);
+          console.error("Error fetching data: ", error.message);
       }
-    };
+  };
     fetchTask();
 
     // Close the form after submitting
     onClose();
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
+  const handleSubmitEdit = async (e) => {
+    e.preventDefault();
+
+    const taskFormData = {
+      name: taskName,
+      due: Date.parse(dueDate),
+      location: location,
+      description: description,
+      start: Date.parse(startTime),
+      categoryid: category,
+      userid: GoogleData.profileObj.email,
+    };
+
+    console.log("Task ID:", taskId);
+    console.log("Task Form Data:", taskFormData);
+
+    try {
+      const request = "http://localhost:5200/tasks/".concat(GoogleData.profileObj.email).concat("/").concat(`${taskId}`);
+      console.log(request);
+
+      const data = JSON.stringify(taskFormData);
+
+      const response = await fetch(request, {
+        method: "put",
+        headers: { 'Content-Type': 'application/json' },
+        body: data,
+      });
+
+      console.log("Server Response Status:", response.status);
+
+      console.log("Server Response:", response);
+
+      if (!response.ok) {
+        console.log("Failed to update data");
+      } else {
+        console.log("Data updated successfully");
+      }
+    } catch (error) {
+      console.error("Error updating data: ", error.message);
+    }
+
+    onClose();
+  };
+
+let formContent;
+
+if (editoradd === "Edit") {
+  formContent = (
+    <>
       <div>
         <label>
           Task Name<span style={{ color: "red" }}>*</span>:
@@ -123,19 +171,18 @@ const TaskForm = ({ onClose, editoradd }) => {
           />
         </label>
       </div>
-
+  
       <div>
         <label>
-          Due Date<span style={{ color: "red" }}>*</span>:
+          Due Date:
           <input
             type="datetime-local"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            required
           />
         </label>
       </div>
-
+  
       <div>
         <label>
           Location:
@@ -145,7 +192,7 @@ const TaskForm = ({ onClose, editoradd }) => {
             onSelect={handleSelect}
             googleCallbackName="initGooglePlaces"
             googlePlacesAutocomplete={{
-              apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0", // Replace with your actual API key
+              apiKey: 'AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0', // Replace with your actual API key
             }}
           >
             {({
@@ -183,7 +230,7 @@ const TaskForm = ({ onClose, editoradd }) => {
           </PlacesAutocomplete>
         </label>
       </div>
-
+  
       <div>
         <label>
           Description:
@@ -193,10 +240,10 @@ const TaskForm = ({ onClose, editoradd }) => {
           />
         </label>
       </div>
-
+  
       <div>
         <label>
-          Start Time<span style={{ color: "red" }}></span>:
+        Start Time<span style={{ color: 'red' }}></span>:
           <input
             type="datetime-local"
             value={startTime}
@@ -205,18 +252,21 @@ const TaskForm = ({ onClose, editoradd }) => {
         </label>
       </div>
 
-      {editoradd === "Edit" && (
-        <div>
-          <label>
-            End Time<span style={{ color: "red" }}></span>:
-            <input
-              type="datetime-local"
-              value={endTime}
-              onChange={(e) => setEndTime(e.target.value)}
-            />
-          </label>
-        </div>
-      )}
+
+      
+      <div>
+        <label>
+          End Time<span style={{ color: "red" }}></span>:
+          <input
+            type="datetime-local"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+          />
+        </label>
+      </div>
+    
+
+    
 
       <div>
         <label>
@@ -229,11 +279,129 @@ const TaskForm = ({ onClose, editoradd }) => {
         </label>
       </div>
 
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
+    </>
   );
+} else {
+  formContent = (
+    <>
+      <div>
+        <label>
+          Task Name<span style={{ color: "red" }}>*</span>:
+          <input
+            type="text"
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+            required
+          />
+        </label>
+      </div>
+  
+      <div>
+        <label>
+          Due Date<span style={{ color: "red" }}>*</span>:
+          <input
+            type="datetime-local"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            required
+          />
+        </label>
+      </div>
+  
+      <div>
+        <label>
+          Location:
+          <PlacesAutocomplete
+            value={location}
+            onChange={(value) => setLocation(value)}
+            onSelect={handleSelect}
+            googleCallbackName="initGooglePlaces"
+            googlePlacesAutocomplete={{
+              apiKey: 'AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0', // Replace with your actual API key
+            }}
+          >
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
+              <div>
+                <input
+                  {...getInputProps({
+                    placeholder: "Enter your address...",
+                    className: "location-search-input",
+                  })}
+                />
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map((suggestion) => {
+                    const style = {
+                      backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
+                    };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          style,
+                        })}
+                      >
+                        {suggestion.description}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </PlacesAutocomplete>
+        </label>
+      </div>
+  
+      <div>
+        <label>
+          Description:
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </label>
+      </div>
+  
+      <div>
+        <label>
+        Start Time<span style={{ color: 'red' }}></span>:
+          <input
+            type="datetime-local"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+          />
+        </label>
+      </div>
+
+      <div>
+        <label>
+          Category:
+          <input
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+        </label>
+      </div>
+
+    </>
+  );
+}
+
+return (
+  <form onSubmit={editoradd === "Edit" ? handleSubmitEdit : handleSubmitAdd}>
+    {formContent}
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+);
+
+  
 };
 
 export default TaskForm;
