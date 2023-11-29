@@ -195,7 +195,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               onSelect={handleSelect}
               googleCallbackName="initGooglePlaces"
               googlePlacesAutocomplete={{
-                apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0", // Replace with your actual API key
+                apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0",
               }}
             >
               {({
