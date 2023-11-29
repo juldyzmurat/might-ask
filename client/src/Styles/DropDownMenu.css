@@ -1,9 +1,11 @@
 .dropDownMenu {
-  border: 1px solid #ccc;
+  order: 1px solid #ccc;
   padding: 8px;
-  margin-top: 5px;
   background-color: #fff;
-  position: absolute;
+  position: fixed;
+  z-index: 100; /* Ensure it's above other elements */
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .dropDownMenu Div {

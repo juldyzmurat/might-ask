@@ -4,6 +4,7 @@ import PlacesAutocomplete, {
   //getLatLng,
 } from "react-places-autocomplete";
 import { GoogleData } from "../Login/LoginAPI";
+import DropdownMenu from "../DropDownMenu/DDMenu";
 
 const TaskForm = ({ onClose, editoradd }) => {
   const [taskName, setTaskName] = useState("");
@@ -13,6 +14,7 @@ const TaskForm = ({ onClose, editoradd }) => {
   const [category, setCategory] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const formatDateTime = (dateTimeString) => {
     const options = {
@@ -108,6 +110,11 @@ const TaskForm = ({ onClose, editoradd }) => {
 
     // Close the form after submitting
     onClose();
+  };
+
+  const handleCategoryClick = () => {
+    // Toggle dropdown visibility
+    setDropdownVisible(!isDropdownVisible);
   };
 
   return (
@@ -224,8 +231,20 @@ const TaskForm = ({ onClose, editoradd }) => {
           <input
             type="text"
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onClick={handleCategoryClick}
+            readOnly // Make the input read-only to prevent typing
           />
+          {/* Render the dropdown only if isDropdownVisible is true */}
+          {isDropdownVisible && (
+            <DropdownMenu
+              items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
+              onItemClick={(selectedCategory) => {
+                setCategory(selectedCategory);
+                // Close dropdown after selecting a category
+                setDropdownVisible(false);
+              }}
+            />
+          )}
         </label>
       </div>
 
