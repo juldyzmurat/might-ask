@@ -6,7 +6,6 @@ import ListSubheader from "@mui/material/ListSubheader";
 import EditDeleteButtons from "./editdelete";
 import TaskForm from "./popupaddtask";
 
-
 const daysOfWeek = [
   "Monday",
   "Tuesday",
@@ -32,7 +31,7 @@ function PinnedSubheaderList({ data }) {
   };
 
   const getColorForItem = (item) => {
-     return item.priority === "high" ? "red" : "blue";
+    return item.priority === "high" ? "red" : "blue";
   };
 
   const handleDelete = (itemId) => {
@@ -42,7 +41,6 @@ function PinnedSubheaderList({ data }) {
   };
 
   const handleEdit = (itemId) => {
-    
     setIsEditClicked(true); // Set the state to true when edit is clicked
     setHoveredItemId(itemId); // Optionally, you can set hoveredItemId for styling
   };
@@ -50,8 +48,6 @@ function PinnedSubheaderList({ data }) {
   const handleCloseTaskForm = () => {
     setIsEditClicked(false); // Set the state back to false when the TaskForm is closed
   };
-
-  
 
   return (
     <>
@@ -84,36 +80,35 @@ function PinnedSubheaderList({ data }) {
                       onEditClick={() => handleEdit(item._id)} // Add edit functionality if needed
                       onDeleteClick={() => handleDelete(item._id)}
                     />
-                    
                   )}
                 </ListItem>
               ))}
             </ul>
           </li>
         ))}
-
       </List>
 
       {isEditClicked && (
-        <div className="task-form-overlay" style={{
-          position: 'absolute',
-          zIndex: 1000,
-          top: 0, 
-          left: 0,
-          width: '100%',
-          height: '100%'
-        }}>
+        <div
+          className="task-form-overlay"
+          style={{
+            position: "absolute",
+            zIndex: 1000,
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        >
           {console.log("Hovered Item ID:", hoveredItemId)}
-          <TaskForm 
+          <TaskForm
             onClose={handleCloseTaskForm}
             editoradd="Edit"
-            taskId={hoveredItemId} 
+            taskId={hoveredItemId}
           />
         </div>
-    )}
-      
+      )}
     </>
-    
   );
 }
 
