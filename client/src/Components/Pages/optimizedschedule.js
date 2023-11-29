@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TaskComponent from "../TaskVisComponents/taskcomponent";
 import PinnedSubheaderList from "../TaskVisComponents/listscroller";
+import { GoogleData } from "../Login/LoginAPI";
 
 const OptimizedSchedule = () => {
   const [data, setData] = useState([]);
@@ -9,7 +10,8 @@ const OptimizedSchedule = () => {
     // Function to fetch data from the backend
     const fetchAndSortData = async () => {
       try {
-        const response = await fetch("http://localhost:5200/tasks/zxu4@case.edu");
+        const request = "http://localhost:5200/tasks/".concat(GoogleData.profileObj.email);
+        const response = await fetch(request);
 
         // Check if the response is successful (status code 200)
         if (!response.ok) {
