@@ -31,7 +31,7 @@ const TaskForm = ({ onClose, editoradd }) => {
     return formattedDate;
   };
 
-  const [categoryID, setCategoryID] = useState([]);
+  const [categoryIDs, setCategoryID] = useState([]);
   useEffect(() => {
     const fetchCategory = async () => {
       try {
@@ -50,7 +50,7 @@ const TaskForm = ({ onClose, editoradd }) => {
     };
     fetchCategory();
   }, []);
-  // console.log(categoryID);
+  // console.log(categoryIDs);
 
   const handleSelect = async (address) => {
     try {
