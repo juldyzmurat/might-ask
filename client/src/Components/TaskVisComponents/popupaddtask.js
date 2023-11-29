@@ -8,11 +8,27 @@ import { GoogleData } from '../Login/LoginAPI';
 
 const TaskForm = ({ onClose }) => {
   const [taskName, setTaskName] = useState('');
-  const [dueDate, setDueDate] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [startTime, setStartTime] = useState('');
   const [category, setCategory] = useState('');
+
+  const [dueDate, setDueDate] = useState('');
+
+  const formatDateTime = (dateTimeString) => {
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    };
+
+    const formattedDate = new Date(dateTimeString).toLocaleDateString('en-US', options);
+    return formattedDate;
+  };
+
 
   const [categoryID, setCategoryID] = useState([]);
   useEffect(() => {
@@ -109,7 +125,7 @@ const TaskForm = ({ onClose }) => {
         <label>
           Due Date<span style={{ color: 'red' }}>*</span>:
           <input
-            type="date"
+            type="datetime-local"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
             required
@@ -170,11 +186,12 @@ const TaskForm = ({ onClose }) => {
         </label>
       </div>
 
+
       <div>
         <label>
-          Start Time:
+        Start Time<span style={{ color: 'red' }}></span>:
           <input
-            type="time"
+            type="datetime-local"
             value={startTime}
             onChange={(e) => setStartTime(e.target.value)}
           />

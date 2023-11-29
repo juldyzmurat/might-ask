@@ -3,7 +3,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
-import Button from "@mui/material/Button";
+import EditDeleteButtons from "./editdelete";
 
 const daysOfWeek = [
   "Monday",
@@ -16,10 +16,6 @@ const daysOfWeek = [
 ];
 
 function PinnedSubheaderList({ data }) {
-  const getColorForItem = (item) => {
-    return item.priority === "high" ? "red" : "blue";
-  };
-
   const [hoveredItemId, setHoveredItemId] = useState(null);
 
   const handleMouseEnter = (itemId) => {
@@ -29,6 +25,24 @@ function PinnedSubheaderList({ data }) {
   const handleMouseLeave = () => {
     setHoveredItemId(null);
   };
+
+  const getColorForItem = (item) => {
+    return item.priority === "high" ? "red" : "blue";
+  };
+
+  const handleDelete = (itemId) => {
+    // Add logic to delete the task from the database
+    // For example, you might want to call an API endpoint to delete the task
+    console.log(`Deleting task with ID ${itemId}`);
+  };
+
+  const handleEdit = (itemId) => {
+    // Add logic to delete the task from the database
+    // For example, you might want to call an API endpoint to delete the task
+    console.log(`Editing task with ID ${itemId}`);
+  };
+
+
 
   return (
     <List
@@ -53,11 +67,13 @@ function PinnedSubheaderList({ data }) {
                 onMouseEnter={() => handleMouseEnter(item._id)}
                 onMouseLeave={handleMouseLeave}
               >
+                {/* Pass the hover state and delete function to EditDeleteButtons */}
                 <ListItemText primary={item.name} />
                 {hoveredItemId === item._id && (
-                  <Button variant="contained" color="primary">
-                    :
-                  </Button>
+                  <EditDeleteButtons
+                    onEditClick={() => handleEdit(item._id)}  // Add edit functionality if needed
+                    onDeleteClick={() => handleDelete(item._id)}
+                  />
                 )}
               </ListItem>
             ))}
@@ -69,4 +85,8 @@ function PinnedSubheaderList({ data }) {
 }
 
 export default PinnedSubheaderList;
+
+
+
+
 
