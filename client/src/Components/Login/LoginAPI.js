@@ -27,20 +27,6 @@ function LoginButton() {
         return currentUser;
     };
 
-    // const fetchCurrentUser = async() => {
-    //     try {
-    //         const request = "http://localhost:5200/users/".concat(GoogleData.profileObj.email);
-    //         const response = await fetch(request);
-    //           if (!response.ok) {
-    //               throw new Error("Failed to fetch data");
-    //           }
-    //           const jsonData = await response.json();
-    //           setCategoryID(jsonData);
-    //       } catch (error) {
-    //           console.error("Error fetching data: ", error.message);
-    //       }
-    //   };
-
     fetchCurrentUser()
     .then(
         (onResolved) => {
