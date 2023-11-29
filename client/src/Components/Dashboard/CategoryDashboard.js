@@ -50,41 +50,34 @@ const CategoryDashboard = () => {
   const categoryCount = {};
   taskData.forEach((item) => {
     const categoryId = item.categoryid;
+    console.log(item.categoryid);
     categoryCount[categoryId] = (categoryCount[categoryId] || 0) + 1;
   });
 
   // Create a new JSON object with Categoryid and count
   //const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({ categoryId, count }));
-  // Create a new JSON object with Categoryid, CategoryName, and count
+  // Create a new JSON object with Categoryid, CategoryName, color, and count
   const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({
     categoryId,
     categoryName:
       categoryData.find((categoryItem) => categoryItem._id === categoryId)
-        ?.name || "Unknown",
+        ?.name || "Unkown",
     count,
+    color:
+    categoryData.find((categoryItem) => categoryItem._id === categoryId)
+        ?.color,
   }));
 
   // Convert the structure
   const transformedJson = newJson.map((item) => ({
     name: `Category ${item.categoryName}`, // Can be customized
     count: item.count,
+    color: item.color,
   }));
-
+console.log(transformedJson);
   //console.log(transformedJson);
 
-  // Function to generate pastel colors dynamically
-  const generatePastelColors = (count) => {
-    const colors = [];
-    for (let i = 0; i < count; i++) {
-      const hue = (360 / count) * i;
-      const pastelColor = `hsl(${hue}, 70%, 80%)`; // Adjust saturation and lightness for pastel effect
-      colors.push(pastelColor);
-    }
-    return colors;
-  };
-
-  const COLORS = generatePastelColors(taskData.length);
-  //const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']; // Custom colors for the Pie Chart
+ 
   return (
     //<PieChart width={700} height={700}>
     //    <Pie data={result} dataKey="students" outerRadius={250} fill="pink" />
@@ -99,7 +92,7 @@ const CategoryDashboard = () => {
         label
       >
         {transformedJson.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          <Cell key={`cell-${index}`} fill={entry.color} />
         ))}
         {/*
                 <Label
