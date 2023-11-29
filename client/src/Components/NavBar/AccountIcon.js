@@ -44,12 +44,12 @@ const AccountIcon = () => {
 };
 
 const circleStyle = {
-  width: "90px",
-  height: "90px",
+  width: "60px",
+  height: "60px",
   borderRadius: "50%",
   overflow: "hidden",
   cursor: "pointer",
-  backgroundColor: "red", // Add a background color for testing
+  backgroundColor: "red",
 };
 const imageStyle = {
   width: "100%",

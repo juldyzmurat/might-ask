@@ -14,29 +14,20 @@ import { GoogleData } from "../Login/LoginAPI";
 const AchievementDashboard = () => {
   const [taskData, setData] = useState([]); //The full task data incase we need it
   const [categoryData, setCategoryData] = useState([]);
-  //const [result, setNewData] = useState([]); //Holds the data for the pie chart
 
   useEffect(() => {
-    // Function to fetch data from the backend
     const fetchData = async () => {
       try {
         const taskRequest = "http://localhost:5200/tasks/".concat(
           GoogleData.profileObj.email,
         );
         const taskResponse = await fetch(taskRequest);
-
-        // Check if the response is successful (status code 200)
         if (!taskResponse.ok) {
           throw new Error("Failed to fetch task data");
         }
-
-        // Parse the response body as JSON
         const taskData = await taskResponse.json();
-
-        // Update the state with the fetched data
         setData(taskData);
 
-        // Fetch category data
         const categoryRequest = "http://localhost:5200/categories/".concat(
           GoogleData.profileObj.email,
         );
@@ -51,7 +42,6 @@ const AchievementDashboard = () => {
       }
     };
 
-    // Call the fetchData function when the component mounts
     fetchData();
   }, []);
 
@@ -72,7 +62,7 @@ const AchievementDashboard = () => {
     if (!categoryTotals[categoryId]) {
       categoryTotals[categoryId] = {
         categoryId: categoryId,
-        categoryName: categoryIdToName[categoryId], // Get category name from mapping
+        categoryName: categoryIdToName[categoryId],
         totalEstimatedDuration: 0,
         totalActualDuration: 0,
       };
@@ -82,7 +72,6 @@ const AchievementDashboard = () => {
     categoryTotals[categoryId].totalActualDuration += actualDuration;
   });
 
-  // Calculate the "all" category totals by summing up all categories
   const allCategoryTotal = Object.values(categoryTotals).reduce(
     (acc, category) => {
       acc.totalEstimatedDuration += category.totalEstimatedDuration;
@@ -96,7 +85,6 @@ const AchievementDashboard = () => {
     },
   );
 
-  // Create an array of category totals including "all" category
   const categoryTotalsArray = [
     allCategoryTotal,
     ...Object.values(categoryTotals),

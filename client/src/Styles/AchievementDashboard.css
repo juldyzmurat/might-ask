@@ -4,4 +4,8 @@
   box-sizing: border-box;
   border: 1px solid #ccc;
   background-color: #f7f7f7;
+  margin: 0 auto; /* Add this line to center horizontally */
+  display: flex;
+  justify-content: center; /* Add this line to center horizontally */
+  align-items: center; /* Add this line to center vertically */
 }

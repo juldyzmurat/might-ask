@@ -30,14 +30,6 @@ const AddressAutofill = () => {
       },
     };
 
-    // const componentForm = [
-    //   "location",
-    //   "locality",
-    //   "administrative_area_level_1",
-    //   "country",
-    //   "postal_code",
-    // ];
-
     const getFormInputElement = (component) =>
       document.getElementById(component + "-input");
     const map = new window.google.maps.Map(document.getElementById("gmp-map"), {
@@ -111,7 +103,6 @@ const AddressAutofill = () => {
 
   return (
     <div>
-      {/* Input fields for address */}
       <input
         type="text"
         placeholder="Address"
@@ -157,7 +148,6 @@ const AddressAutofill = () => {
         value={address.country}
         onChange={(e) => handleManualInput(e, "country")}
       />
-      {/* Map */}
       <div id="gmp-map" style={{ height: "400px", width: "100%" }}></div>
     </div>
   );

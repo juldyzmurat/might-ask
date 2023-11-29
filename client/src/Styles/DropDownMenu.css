@@ -1,15 +1,17 @@
 .dropDownMenu {
-  border: 1px solid #ccc;
+  order: 1px solid #ccc;
   padding: 8px;
-  margin-top: 5px;
-  background-color: #fff;
-  position: absolute;
+  background-color: #ffffff00;
+  position: fixed;
+  z-index: 100; /* Ensure it's above other elements */
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .dropDownMenu Div {
   cursor: pointer;
   padding: 8px;
   &:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0cb;
   }
 }
