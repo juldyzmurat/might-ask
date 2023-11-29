@@ -66,23 +66,28 @@ function PinnedSubheaderList({ data }) {
           <li key={`section-${index}`}>
             <ul>
               <ListSubheader>{`${day}`}</ListSubheader>
-              {data.map((item) => (
-                <ListItem
-                  key={`item-${index}-${item._id}`}
-                  style={{ color: getColorForItem(item) }}
-                  onMouseEnter={() => handleMouseEnter(item._id)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {/* Pass the hover state and delete function to EditDeleteButtons */}
-                  <ListItemText primary={item.name} />
-                  {hoveredItemId === item._id && (
-                    <EditDeleteButtons
-                      onEditClick={() => handleEdit(item._id)} // Add edit functionality if needed
-                      onDeleteClick={() => handleDelete(item._id)}
-                    />
-                  )}
-                </ListItem>
-              ))}
+              {data
+                .filter((item) => {
+                  return (
+                    day == daysOfWeek[(new Date(item.due).getDay() - 1) % 7]
+                  );
+                })
+                .map((item) => (
+                  <ListItem
+                    key={`item-${index}-${item._id}`}
+                    style={{ color: getColorForItem(item) }}
+                    onMouseEnter={() => handleMouseEnter(item._id)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <ListItemText primary={item.name} />
+                    {hoveredItemId === item._id && (
+                      <EditDeleteButtons
+                        onEditClick={() => handleEdit(item._id)}
+                        onDeleteClick={() => handleDelete(item._id)}
+                      />
+                    )}
+                  </ListItem>
+                ))}
             </ul>
           </li>
         ))}
