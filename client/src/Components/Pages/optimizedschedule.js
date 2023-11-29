@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import TaskComponent from "../TaskVisComponents/taskcomponent";
 import PinnedSubheaderList from "../TaskVisComponents/listscroller";
 import { GoogleData } from "../Login/LoginAPI";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 
 const OptimizedSchedule = () => {
   const [data, setData] = useState([]);
@@ -26,14 +29,13 @@ const OptimizedSchedule = () => {
 
         // Sorting function
         function compareByDeadline(a, b) {
-          const dateOne = Date.parse(a.due);
-          const dateTwo = Date.parse(b.due);
+          const dateOne = a.due;
+          const dateTwo = b.due;
           return dateOne - dateTwo;
         }
 
         // Sort data
         sortedData.sort(compareByDeadline);
-        console.log(sortedData);
 
         // Update the state with the fetched data
         setData(sortedData);
@@ -47,12 +49,31 @@ const OptimizedSchedule = () => {
   }, []);
 
   return (
-    <div className="OptimizedSchedule">
-      {/* First tab content will go here */}
-      <div style={{ height: "500px" }}>
-        <PinnedSubheaderList data={data} />
-      </div>
-    </div>
+    <List
+      sx={{
+        width: "100%",
+        maxHeight: "100%",
+        bgcolor: "background.paper",
+        position: "relative",
+        overflow: "auto",
+        "& ul": { padding: 0 },
+      }}
+    >
+      {
+          <ul>
+            {console.log(data)}
+            {data.map((item, index) => (
+              <ListItem
+                key={`item-${index}-${item._id}`}
+                style={{ color: "blue" }}
+              >
+                <ListItemText primary={item.name} />
+                <ListItemText primary={(new Date(item.due)).toString()} />
+              </ListItem>
+            ))}
+          </ul>
+      }
+    </List>
   );
 };
 
