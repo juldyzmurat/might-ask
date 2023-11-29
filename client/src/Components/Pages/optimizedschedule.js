@@ -10,7 +10,9 @@ const OptimizedSchedule = () => {
     // Function to fetch data from the backend
     const fetchAndSortData = async () => {
       try {
-        const request = "http://localhost:5200/tasks/".concat(GoogleData.profileObj.email);
+        const request = "http://localhost:5200/tasks/".concat(
+          GoogleData.profileObj.email,
+        );
         const response = await fetch(request);
 
         // Check if the response is successful (status code 200)

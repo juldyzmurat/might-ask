@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ListView from "../AllTabs/ListView";
 import BoardView from "../AllTabs/BoardView";
-import { GoogleData } from '../Login/LoginAPI';
+import { GoogleData } from "../Login/LoginAPI";
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("ListView");
@@ -20,7 +20,9 @@ const Tabs = () => {
     // Function to fetch data from the backend
     const fetchData = async () => {
       try {
-        const request = "http://localhost:5200/tasks/".concat(GoogleData.profileObj.email);
+        const request = "http://localhost:5200/tasks/".concat(
+          GoogleData.profileObj.email,
+        );
         const response = await fetch(request);
 
         // Check if the response is successful (status code 200)
@@ -59,7 +61,11 @@ const Tabs = () => {
         </li>
       </ul>
       <div className="outlet">
-        {activeTab === "ListView" ? <ListView data = {data}/> : <BoardView data = {data} />}
+        {activeTab === "ListView" ? (
+          <ListView data={data} />
+        ) : (
+          <BoardView data={data} />
+        )}
       </div>
     </div>
   );

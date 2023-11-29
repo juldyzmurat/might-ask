@@ -11,7 +11,9 @@ const CategoryDashboard = () => {
     // Function to fetch data from the backend
     const fetchData = async () => {
       try {
-        const taskRequest = "http://localhost:5200/tasks/".concat(GoogleData.profileObj.email);
+        const taskRequest = "http://localhost:5200/tasks/".concat(
+          GoogleData.profileObj.email,
+        );
         const taskResponse = await fetch(taskRequest);
 
         // Check if the response is successful (status code 200)
@@ -26,7 +28,9 @@ const CategoryDashboard = () => {
         setData(taskData);
 
         // Fetch category data
-        const categoryRequest = "http://localhost:5200/categories/".concat(GoogleData.profileObj.email);
+        const categoryRequest = "http://localhost:5200/categories/".concat(
+          GoogleData.profileObj.email,
+        );
         const categoryResponse = await fetch(categoryRequest);
         if (!categoryResponse.ok) {
           throw new Error("Failed to fetch category data");

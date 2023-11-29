@@ -20,9 +20,9 @@ categoryRouter.get("/:user/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const user = req.params.user;
-    const query = { 
-        _id: new mongodb.ObjectId(id),
-        userid: user,
+    const query = {
+      _id: new mongodb.ObjectId(id),
+      userid: user,
     };
     const category = await collections.categories.findOne(query);
 
@@ -57,11 +57,13 @@ categoryRouter.put("/:user/:id", async (req, res) => {
     const id = req.params.id;
     const user = req.params.user;
     const category = req.body;
-    const query = { 
-        _id: new mongodb.ObjectId(id),
-        userid: user,
+    const query = {
+      _id: new mongodb.ObjectId(id),
+      userid: user,
     };
-    const result = await collections.categories.updateOne(query, {$set: category,});
+    const result = await collections.categories.updateOne(query, {
+      $set: category,
+    });
 
     if (result && result.matchedCount > 0) {
       res.status(200).send(`Updated a category: ID ${id}.`);

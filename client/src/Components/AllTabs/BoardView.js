@@ -2,7 +2,6 @@ import React from "react";
 import MapAutocomplete from "../GoogleMapContainer/AddressFill";
 
 const BoardView = ({ data }) => {
-
   const tasks = data; //This is all of the task handle as needed
 
   return (

@@ -2,50 +2,54 @@ import React, { useState, useEffect } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   //getLatLng,
-} from 'react-places-autocomplete';
-import { GoogleData } from '../Login/LoginAPI';
+} from "react-places-autocomplete";
+import { GoogleData } from "../Login/LoginAPI";
 // GoogleData.profileObj.email
 
 const TaskForm = ({ onClose, editoradd }) => {
-  const [taskName, setTaskName] = useState('');
-  const [location, setLocation] = useState('');
-  const [description, setDescription] = useState('');
-  const [startTime, setStartTime] = useState('');
-  const [category, setCategory] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [endTime, setEndTime] = useState('');
+  const [taskName, setTaskName] = useState("");
+  const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [category, setCategory] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [endTime, setEndTime] = useState("");
 
   const formatDateTime = (dateTimeString) => {
     const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
       hour12: true,
     };
 
-    const formattedDate = new Date(dateTimeString).toLocaleDateString('en-US', options);
+    const formattedDate = new Date(dateTimeString).toLocaleDateString(
+      "en-US",
+      options,
+    );
     return formattedDate;
   };
 
-
   const [categoryID, setCategoryID] = useState([]);
   useEffect(() => {
-      const fetchCategory = async() => {
-          try {
-                const request = "http://localhost:5200/categories/".concat(GoogleData.profileObj.email);
-                const response = await fetch(request);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch data");
-                }
-                const jsonData = await response.json();
-                setCategoryID(jsonData);
-            } catch (error) {
-                console.error("Error fetching data: ", error.message);
-            }
-        };
-        fetchCategory();
+    const fetchCategory = async () => {
+      try {
+        const request = "http://localhost:5200/categories/".concat(
+          GoogleData.profileObj.email,
+        );
+        const response = await fetch(request);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const jsonData = await response.json();
+        setCategoryID(jsonData);
+      } catch (error) {
+        console.error("Error fetching data: ", error.message);
+      }
+    };
+    fetchCategory();
   }, []);
   // console.log(categoryID);
 
@@ -56,13 +60,13 @@ const TaskForm = ({ onClose, editoradd }) => {
       setLocation(address);
       // You can also store the coordinates if needed: setCoordinates(latLng);
     } catch (error) {
-      console.error('Error', error);
+      console.error("Error", error);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted with the following data:', {
+    console.log("Form submitted with the following data:", {
       taskName,
       dueDate,
       location,
@@ -72,34 +76,34 @@ const TaskForm = ({ onClose, editoradd }) => {
     });
 
     const taskFormData = {
-        name: taskName,
-        due: Date.parse(dueDate),
-        location: location,
-        description: description,
-        start: Date.parse(startTime),
-        end: Date.parse(endTime), 
-        categoryid: category,
-        userid: GoogleData.profileObj.email,
+      name: taskName,
+      due: Date.parse(dueDate),
+      location: location,
+      description: description,
+      start: Date.parse(startTime),
+      end: Date.parse(endTime),
+      categoryid: category,
+      userid: GoogleData.profileObj.email,
     };
 
-    const fetchTask = async() => {
-        try {
-            const request = "http://localhost:5200/tasks/";
-            const data = JSON.stringify(taskFormData);
-            const response = await fetch(request, {
-                method: "post",
-                // mode: "cors",
-                headers: {'Content-Type': 'application/json'},
-                body: data,
-            });
-            // console.log(data);
-            console.log("fetch");
-            if (!response.ok) {
-                throw new Error("Failed to post data");
-            }
-        } catch (error) {
-            console.error("Error fetching data: ", error.message);
+    const fetchTask = async () => {
+      try {
+        const request = "http://localhost:5200/tasks/";
+        const data = JSON.stringify(taskFormData);
+        const response = await fetch(request, {
+          method: "post",
+          // mode: "cors",
+          headers: { "Content-Type": "application/json" },
+          body: data,
+        });
+        // console.log(data);
+        console.log("fetch");
+        if (!response.ok) {
+          throw new Error("Failed to post data");
         }
+      } catch (error) {
+        console.error("Error fetching data: ", error.message);
+      }
     };
     fetchTask();
 
@@ -107,12 +111,11 @@ const TaskForm = ({ onClose, editoradd }) => {
     onClose();
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>
-          Task Name<span style={{ color: 'red' }}>*</span>:
+          Task Name<span style={{ color: "red" }}>*</span>:
           <input
             type="text"
             value={taskName}
@@ -124,7 +127,7 @@ const TaskForm = ({ onClose, editoradd }) => {
 
       <div>
         <label>
-          Due Date<span style={{ color: 'red' }}>*</span>:
+          Due Date<span style={{ color: "red" }}>*</span>:
           <input
             type="datetime-local"
             value={dueDate}
@@ -143,22 +146,27 @@ const TaskForm = ({ onClose, editoradd }) => {
             onSelect={handleSelect}
             googleCallbackName="initGooglePlaces"
             googlePlacesAutocomplete={{
-              apiKey: 'AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0', // Replace with your actual API key
+              apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0", // Replace with your actual API key
             }}
           >
-            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
               <div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Enter your address...',
-                    className: 'location-search-input',
+                    placeholder: "Enter your address...",
+                    className: "location-search-input",
                   })}
                 />
                 <div className="autocomplete-dropdown-container">
                   {loading && <div>Loading...</div>}
                   {suggestions.map((suggestion) => {
                     const style = {
-                      backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
+                      backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
                     };
                     return (
                       <div
@@ -189,7 +197,7 @@ const TaskForm = ({ onClose, editoradd }) => {
 
       <div>
         <label>
-        Start Time<span style={{ color: 'red' }}></span>:
+          Start Time<span style={{ color: "red" }}></span>:
           <input
             type="datetime-local"
             value={startTime}
@@ -198,11 +206,10 @@ const TaskForm = ({ onClose, editoradd }) => {
         </label>
       </div>
 
-
       {editoradd === "Edit" && (
         <div>
           <label>
-            End Time<span style={{ color: 'red' }}></span>:
+            End Time<span style={{ color: "red" }}></span>:
             <input
               type="datetime-local"
               value={endTime}
@@ -211,8 +218,6 @@ const TaskForm = ({ onClose, editoradd }) => {
           </label>
         </div>
       )}
-
-    
 
       <div>
         <label>
@@ -225,7 +230,6 @@ const TaskForm = ({ onClose, editoradd }) => {
         </label>
       </div>
 
-
       <div>
         <button type="submit">Submit</button>
       </div>
@@ -234,4 +238,3 @@ const TaskForm = ({ onClose, editoradd }) => {
 };
 
 export default TaskForm;
-

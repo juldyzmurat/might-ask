@@ -4,8 +4,6 @@ import Addtask from "../TaskVisComponents/addtask";
 import TaskForm from "../TaskVisComponents/popupaddtask";
 import "../../Styles/popupaddtask.css";
 
-
-
 const ListView = ({ data }) => {
   const [showTaskForm, setShowTaskForm] = useState(false);
 
@@ -38,4 +36,3 @@ const ListView = ({ data }) => {
 };
 
 export default ListView;
-

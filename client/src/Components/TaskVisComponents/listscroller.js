@@ -42,8 +42,6 @@ function PinnedSubheaderList({ data }) {
     console.log(`Editing task with ID ${itemId}`);
   };
 
-
-
   return (
     <List
       sx={{
@@ -71,7 +69,7 @@ function PinnedSubheaderList({ data }) {
                 <ListItemText primary={item.name} />
                 {hoveredItemId === item._id && (
                   <EditDeleteButtons
-                    onEditClick={() => handleEdit(item._id)}  // Add edit functionality if needed
+                    onEditClick={() => handleEdit(item._id)} // Add edit functionality if needed
                     onDeleteClick={() => handleDelete(item._id)}
                   />
                 )}
@@ -85,8 +83,3 @@ function PinnedSubheaderList({ data }) {
 }
 
 export default PinnedSubheaderList;
-
-
-
-
-

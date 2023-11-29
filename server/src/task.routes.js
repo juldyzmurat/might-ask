@@ -20,9 +20,9 @@ taskRouter.get("/:user/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const user = req.params.user;
-    const query = { 
-        _id: new mongodb.ObjectId(id), 
-        userid: user,
+    const query = {
+      _id: new mongodb.ObjectId(id),
+      userid: user,
     };
     const task = await collections.tasks.findOne(query);
 
@@ -60,9 +60,9 @@ taskRouter.put("/:user/:id", async (req, res) => {
     const id = req.params.id;
     const user = req.params.user;
     const task = req.body;
-    const query = { 
-        _id: new mongodb.ObjectId(id),
-        userid: user,
+    const query = {
+      _id: new mongodb.ObjectId(id),
+      userid: user,
     };
     const result = await collections.tasks.updateOne(query, { $set: task });
 
@@ -83,9 +83,9 @@ taskRouter.delete("/:user/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const user = req.params.user;
-    const query = { 
-        _id: new mongodb.ObjectId(id),
-        userid: user,
+    const query = {
+      _id: new mongodb.ObjectId(id),
+      userid: user,
     };
     const result = await collections.tasks.deleteOne(query);
 

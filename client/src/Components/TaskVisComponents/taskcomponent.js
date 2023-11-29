@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GoogleData } from '../Login/LoginAPI';
+import { GoogleData } from "../Login/LoginAPI";
 
 const TaskComponent = () => {
   // State to store the fetched data
@@ -9,7 +9,9 @@ const TaskComponent = () => {
     // Function to fetch data from the backend
     const fetchData = async () => {
       try {
-        const request = "http://localhost:5200/tasks/".concat(GoogleData.profileObj.email);
+        const request = "http://localhost:5200/tasks/".concat(
+          GoogleData.profileObj.email,
+        );
         const response = await fetch(request);
 
         // Check if the response is successful (status code 200)
