@@ -19,7 +19,6 @@ const ListView = ({ data }) => {
 
   return (
     <div className="ListView">
-      {/* First tab content will go here */}
       <div style={{ height: "500px" }}>
         {!showTaskForm && <PinnedSubheaderList data={tasks} />}
       </div>
