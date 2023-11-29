@@ -29,7 +29,7 @@ const ListView = ({ data }) => {
         <Addtask onClick={handleAddTaskClick} />
         {showTaskForm && (
           <div className="task-form-overlay">
-            <TaskForm onClose={handleCloseTaskForm} />
+            <TaskForm onClose={handleCloseTaskForm} editordelete="Delete" />
           </div>
         )}
       </div>

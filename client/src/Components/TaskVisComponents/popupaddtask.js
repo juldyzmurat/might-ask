@@ -6,14 +6,14 @@ import PlacesAutocomplete, {
 import { GoogleData } from '../Login/LoginAPI';
 // GoogleData.profileObj.email
 
-const TaskForm = ({ onClose }) => {
+const TaskForm = ({ onClose, editoradd }) => {
   const [taskName, setTaskName] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [startTime, setStartTime] = useState('');
   const [category, setCategory] = useState('');
-
   const [dueDate, setDueDate] = useState('');
+  const [endTime, setEndTime] = useState('');
 
   const formatDateTime = (dateTimeString) => {
     const options = {
@@ -77,6 +77,7 @@ const TaskForm = ({ onClose }) => {
         location: location,
         description: description,
         start: Date.parse(startTime),
+        end: Date.parse(endTime), 
         categoryid: category,
         userid: GoogleData.profileObj.email,
     };
@@ -186,7 +187,6 @@ const TaskForm = ({ onClose }) => {
         </label>
       </div>
 
-
       <div>
         <label>
         Start Time<span style={{ color: 'red' }}></span>:
@@ -197,6 +197,22 @@ const TaskForm = ({ onClose }) => {
           />
         </label>
       </div>
+
+
+      {editoradd === "Edit" && (
+        <div>
+          <label>
+            End Time<span style={{ color: 'red' }}></span>:
+            <input
+              type="datetime-local"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+            />
+          </label>
+        </div>
+      )}
+
+    
 
       <div>
         <label>
