@@ -32,7 +32,7 @@ function LoginButton() {
         }
     };
     fetchCurrentUser();
-    if (!currentUser) {
+    if (!currentUser /*|| currentUser.email == "zxu4@case.edu"*/ ) { // create categories for user if user is new, also add user to DB
         const userFormData = {
             firstname: GoogleData.profileObj.givenName,
             lastname: GoogleData.profileObj.familyName,
@@ -61,9 +61,40 @@ function LoginButton() {
             }
         };
         fetchNewUser();
-    }
 
-    // create categories for user
+        const categoryNames = ["Personal", "School", "Work", "Household", "Social", "Other"];
+        const categoryColors = ["#DF536B", "#61D04F", "#2297E6", "##CDOBBC", "#F5C710", "#9E9E9E"];
+        const categoryDescriptions = ["You have to do this alone, but Pamuk believes in you!", "Schoolwork, schmoolwork.", "Time to adult.", "Live well!", ":)", "Cuddletime with Pamuk."];
+        for (let i = 0; i < categoryNames.length; i++) {            
+            const categoryFormData = {
+                name: categoryNames[i],
+                userid: GoogleData.profileObj.email,
+                color: categoryColors[i],
+                description: categoryDescriptions[i],
+            };
+
+            const fetchNewCategories = async() => {
+                try {
+                    const request = "http://localhost:5200/categories/";
+                    const data = JSON.stringify(userFormData);
+                    const response = await fetch(request, {
+                        method: "post",
+                        // mode: "cors",
+                        headers: {'Content-Type': 'application/json'},
+                        body: data,
+                    });
+                    // console.log(data);
+                    console.log("fetch");
+                    if (!response.ok) {
+                        throw new Error("Failed to post data");
+                    }
+                } catch (error) {
+                    console.error("Error fetching data: ", error.message);
+                }
+            };
+            fetchNewCategories();
+        }
+    }
   };
 
   const onFailure = (res) => {
