@@ -9,6 +9,7 @@ import {
   Legend,
 } from "recharts";
 import "../../Styles/AchievementDashboard.css";
+import { GoogleData } from "../Login/LoginAPI";
 
 const AchievementDashboard = () => {
   const [taskData, setData] = useState([]); //The full task data incase we need it
@@ -19,7 +20,8 @@ const AchievementDashboard = () => {
     // Function to fetch data from the backend
     const fetchData = async () => {
       try {
-        const taskResponse = await fetch("http://localhost:5200/tasks");
+        const taskRequest = "http://localhost:5200/tasks/".concat(GoogleData.profileObj.email);
+        const taskResponse = await fetch(taskRequest);
 
         // Check if the response is successful (status code 200)
         if (!taskResponse.ok) {
@@ -33,9 +35,8 @@ const AchievementDashboard = () => {
         setData(taskData);
 
         // Fetch category data
-        const categoryResponse = await fetch(
-          "http://localhost:5200/categories",
-        );
+        const categoryRequest = "http://localhost:5200/categories/".concat(GoogleData.profileObj.email);
+        const categoryResponse = await fetch(categoryRequest);
         if (!categoryResponse.ok) {
           throw new Error("Failed to fetch category data");
         }
