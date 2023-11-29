@@ -17,8 +17,8 @@
   height: 200px;
 }
 
-/* Tab Container */
-.Tabs {
+/* Task view container */
+.TaskViews {
   width: 600px;
   height: 600px;
   min-height: 400px;
