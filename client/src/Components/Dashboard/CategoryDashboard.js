@@ -61,10 +61,13 @@ const CategoryDashboard = () => {
   console.log(transformedJson);
 
   return (
-
     <div className="container">
       <div className="chart-container">
-        <PieChart width={600} height={600} style={{ backgroundColor: "#f1b6dc" }}>
+        <PieChart
+          width={600}
+          height={600}
+          style={{ backgroundColor: "#f1b6dc" }}
+        >
           <Pie
             data={transformedJson}
             dataKey="count"
@@ -79,7 +82,7 @@ const CategoryDashboard = () => {
           <Tooltip formatter={(value) => `${value} tasks`} />
           <Legend />
         </PieChart>
-    </div>
+      </div>
     </div>
   );
 };

@@ -161,7 +161,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     onClose();
   };
 
-
   const handleCategoryClick = () => {
     // Toggle dropdown visibility
     setDropdownVisible(!isDropdownVisible);
@@ -169,12 +168,14 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
   const handleCategorySelect = (selectedCategoryName) => {
     setDropdownVisible(false);
-    const selectedCategory = categoryIDs.find(category => category.name === selectedCategoryName);
+    const selectedCategory = categoryIDs.find(
+      (category) => category.name === selectedCategoryName,
+    );
     if (selectedCategory) {
       setCategory(selectedCategory._id);
       setSelectedCategoryName(selectedCategoryName);
       setDropdownVisible(false);
-    };
+    }
   };
 
   let formContent;
@@ -397,18 +398,18 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           <label>
             Category:
             <input
-            type="text"
-            value={selectedCategoryName}
-            onClick={handleCategoryClick}
-            readOnly // Make the input read-only to prevent typing for now
-          />
-          {/* Render the dropdown only if isDropdownVisible is true */}
-          {isDropdownVisible && (
-            <DropdownMenu
-            items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
-            onItemClick={handleCategorySelect}
-          />
-        )}
+              type="text"
+              value={selectedCategoryName}
+              onClick={handleCategoryClick}
+              readOnly // Make the input read-only to prevent typing for now
+            />
+            {/* Render the dropdown only if isDropdownVisible is true */}
+            {isDropdownVisible && (
+              <DropdownMenu
+                items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
+                onItemClick={handleCategorySelect}
+              />
+            )}
           </label>
         </div>
       </>
