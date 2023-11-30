@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { GoogleData } from "../Login/LoginAPI";
 import List from "@mui/material/List";
 import approveIcon from "./approve.png";
-import "./optimizedschedule.css";
 
 const OptimizedSchedule = () => {
   const [data, setData] = useState([]);
@@ -23,21 +22,20 @@ const OptimizedSchedule = () => {
     const fetchAndSortData = async () => {
       try {
         // Fetch tasks based on the logged-in user
-        // const response = await fetch(
-        //   `http://localhost:5200/tasks/${GoogleData.profileObj.email}`,
-        // );
-
-        let userEmail = localStorage.getItem('email');
-        const request = "http://localhost:5200/tasks/".concat(
-          userEmail,
+        const response = await fetch(
+          `http://localhost:5200/tasks/${GoogleData.profileObj.email}`,
         );
-        const response = await fetch(request);
+
+        // let userEmail = localStorage.getItem('email');
+        // const request = "http://localhost:5200/tasks/".concat(
+        //   userEmail,
+        // );
+        // const response = await fetch(request);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
 
         const sortedData = await response.json();
-        console.log(sortedData);
 
         // Sorting function by deadline
         function compareByDeadline(a, b) {
@@ -124,8 +122,7 @@ const OptimizedSchedule = () => {
   };
 
   return (
-   
-    <div className="container">
+    <div>
       <List
         sx={{
           width: "100%",
