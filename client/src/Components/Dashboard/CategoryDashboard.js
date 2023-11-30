@@ -9,8 +9,9 @@ const CategoryDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+         let userEmail = localStorage.getItem('email');
         const taskRequest = "http://localhost:5200/tasks/".concat(
-          GoogleData.profileObj.email,
+         userEmail,
         );
         const taskResponse = await fetch(taskRequest);
         if (!taskResponse.ok) {
@@ -29,11 +30,9 @@ const CategoryDashboard = () => {
   const categoryCount = {};
   taskData.forEach((item) => {
     const categoryId = item.categoryid;
-    console.log(item.categoryid);
     categoryCount[categoryId] = (categoryCount[categoryId] || 0) + 1;
   });
 
-  console.log("cc",categoryCount);
 
   const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({
     categoryId,

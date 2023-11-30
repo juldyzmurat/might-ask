@@ -13,19 +13,23 @@ function LoginButton() {
   const onSuccess = (res) => {
     console.log("LOGIN SUCCESS Current user: ", res);
     GoogleData = res;
+    
+    localStorage.setItem('isLoggedIn', true);
+    localStorage.setItem('imgUrl', res.profileObj.imageUrl);
+    localStorage.setItem('email', res.profileObj.email);
+    
     navigate("/task-views");
 
     // check user with database
     var currentUser = false;
     const fetchCurrentUser = async () => {
       const request = "http://localhost:5200/users/".concat(
-        GoogleData.profileObj.email,
+       GoogleData.profileObj.email,
       );
       const response = await fetch(request);
       const jsonData = await response.json();
       currentUser = jsonData;
-      console.log("usernameee");
-      console.log(currentUser);
+
       return currentUser;
     };
 
@@ -34,6 +38,10 @@ function LoginButton() {
         console.log("user");
         console.log(currentUser);
         console.log("name");
+
+        
+
+      
       },
       (onRejection) => {
         console.log("user");
