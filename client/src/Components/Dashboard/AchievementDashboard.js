@@ -29,15 +29,15 @@ const AchievementDashboard = () => {
         const taskData = await taskResponse.json();
         setData(taskData);
 
-        const categoryRequest = "http://localhost:5200/categories/".concat(
-          userEmail,
-        );
-        const categoryResponse = await fetch(categoryRequest);
-        if (!categoryResponse.ok) {
-          throw new Error("Failed to fetch category data");
-        }
-        const categoryJsonData = await categoryResponse.json();
-        setCategoryData(categoryJsonData);
+        // const categoryRequest = "http://localhost:5200/categories/".concat(
+        //   userEmail,
+        // );
+        // const categoryResponse = await fetch(categoryRequest);
+        // if (!categoryResponse.ok) {
+        //   throw new Error("Failed to fetch category data");
+        // }
+        // const categoryJsonData = await categoryResponse.json();
+        // setCategoryData(categoryJsonData);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
@@ -46,14 +46,27 @@ const AchievementDashboard = () => {
     fetchData();
   }, []);
 
-  const categoryIdToName = {};
-  categoryData.forEach((category) => {
-    categoryIdToName[category._id] = category.name;
-  });
+  // const categoryIdToName = {};
+  // categoryData.forEach((category) => {
+  //   categoryIdToName[category._id] = category.name;
+  // });
 
-  // Initialize an object to store category-wise totals
+  // // Initialize an object to store category-wise totals
   const categoryTotals = {};
 
+  
+  const categoryCount = {};
+  taskData.forEach((item) => {
+    const categoryId = item.categoryid;
+    categoryCount[categoryId] = (categoryCount[categoryId] || 0) + 1;
+  });
+
+
+  const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({
+    categoryId,
+    count,
+    
+  }));
   // Iterate through the task data and accumulate totals
   taskData.forEach((task) => {
     const categoryId = task.categoryid;
@@ -62,8 +75,7 @@ const AchievementDashboard = () => {
 
     if (!categoryTotals[categoryId]) {
       categoryTotals[categoryId] = {
-        categoryId: categoryId,
-        categoryName: categoryIdToName[categoryId],
+        categoryName: categoryId,
         totalEstimatedDuration: 0,
         totalActualDuration: 0,
       };
@@ -90,6 +102,7 @@ const AchievementDashboard = () => {
     allCategoryTotal,
     ...Object.values(categoryTotals),
   ];
+  console.log(categoryTotalsArray);
 
   return (
     <div className="container">

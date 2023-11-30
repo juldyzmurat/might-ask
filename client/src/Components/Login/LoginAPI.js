@@ -24,7 +24,7 @@ function LoginButton() {
     var currentUser = false;
     const fetchCurrentUser = async () => {
       const request = "http://localhost:5200/users/".concat(
-        GoogleData.profileObj.email,
+        res.profileObj.email,
       );
       const response = await fetch(request);
       const jsonData = await response.json();

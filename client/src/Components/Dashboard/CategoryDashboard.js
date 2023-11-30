@@ -33,7 +33,6 @@ const CategoryDashboard = () => {
     categoryCount[categoryId] = (categoryCount[categoryId] || 0) + 1;
   });
 
-  console.log("cc",categoryCount);
 
   const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({
     categoryId,
