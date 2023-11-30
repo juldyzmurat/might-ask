@@ -5,9 +5,10 @@ import { MoreHorizontal } from "react-feather";
 import Editable from "../Editable/Editable";
 import Dropdown from "../Dropdown/Dropdown";
 import { Droppable } from "react-beautiful-dnd";
+// ... (existing imports)
+
 export default function Board(props) {
   const [show, setShow] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
 
   useEffect(() => {
     document.addEventListener("keypress", (e) => {
@@ -20,51 +21,20 @@ export default function Board(props) {
     };
   });
 
+  // Define names for the three static boards
+  const boardNames = {
+    1: "Board One",
+    2: "Board Two",
+    3: "Board Three",
+  };
+
+  // Check if the board's id is within the range [1, 3]
+  if (props.id < 1 || props.id > 3) {
+    return null; // Do not render the board if outside the range
+  }
+
   return (
     <div className="board">
-      <div className="board__top">
-        {show ? (
-          <div>
-            <input
-              className="title__input"
-              type={"text"}
-              defaultValue={props.name}
-              onChange={(e) => {
-                props.setName(e.target.value, props.id);
-              }}
-            />
-          </div>
-        ) : (
-          <div>
-            <p
-              onClick={() => {
-                setShow(true);
-              }}
-              className="board__title"
-            >
-              {props?.name || "Name of Board"}
-              <span className="total__cards">{props.card?.length}</span>
-            </p>
-          </div>
-        )}
-        <div
-          onClick={() => {
-            setDropdown(true);
-          }}
-        >
-          <MoreHorizontal />
-          {dropdown && (
-            <Dropdown
-              class="board__dropdown"
-              onClose={() => {
-                setDropdown(false);
-              }}
-            >
-              <p onClick={() => props.removeBoard(props.id)}>Delete Board</p>
-            </Dropdown>
-          )}
-        </div>
-      </div>
       <Droppable droppableId={props.id.toString()}>
         {(provided) => (
           <div
@@ -72,31 +42,35 @@ export default function Board(props) {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {props.card?.map((items, index) => (
-              <Card
-                bid={props.id}
-                id={items.id}
-                index={index}
-                key={items.id}
-                title={items.title}
-                tags={items.tags}
-                updateCard={props.updateCard}
-                removeCard={props.removeCard}
-                card={items}
-              />
-            ))}
+            <div className="board__top">
+              {show ? (
+                <div>
+                  <input
+                    className="title__input"
+                    type={"text"}
+                    defaultValue={boardNames[props.id]}
+                    onChange={(e) => {
+                      props.setName(e.target.value, props.id);
+                    }}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <p
+                    onClick={() => {
+                      setShow(true);
+                    }}
+                    className="board__title"
+                  >
+                    {boardNames[props.id] || "Name of Board"}
+                  </p>
+                </div>
+              )}
+            </div>
             {provided.placeholder}
           </div>
         )}
       </Droppable>
-      <div className="board__footer">
-        <Editable
-          name={"Add Card"}
-          btnName={"Add Card"}
-          placeholder={"Enter Card Title"}
-          onSubmit={(value) => props.addCard(value, props.id)}
-        />
-      </div>
     </div>
   );
 }
