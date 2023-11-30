@@ -1,7 +1,5 @@
 import React from "react";
 import gif from "../../Assets/80cat.gif";
-import logo from "../../Assets/mightasklogo.png";
-import text from "../../Assets/mightasktext_2.png";
 import { LoginButton } from "../Login/LoginAPI";
 import LogoutButton from "../Login/LogoutAPI";
 
@@ -25,10 +23,10 @@ function Home() {
   });
 
   return (
-     <div>
+    <div>
       <img src={gif} className="App-logo" alt="gif" />
       <LoginButton />
-      {/* <LogoutButton /> */}
+      <LogoutButton />
     </div>
   );
 }
