@@ -55,8 +55,8 @@ const AchievementDashboard = () => {
   // Iterate through the task data and accumulate totals
   taskData.forEach((task) => {
     const categoryId = task.categoryid;
-    const estimatedDuration = task.estimated_duration;
-    const actualDuration = task.actual_duration;
+    const estimatedDuration = task.estDur;
+    const actualDuration = task.actDur;
 
     if (!categoryTotals[categoryId]) {
       categoryTotals[categoryId] = {
@@ -87,7 +87,6 @@ const AchievementDashboard = () => {
     allCategoryTotal,
     ...Object.values(categoryTotals),
   ];
-  console.log(categoryTotalsArray);
 
   return (
     <div className="container">
