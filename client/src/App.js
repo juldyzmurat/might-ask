@@ -1,6 +1,6 @@
 import React from "react";
-import { Admin } from "react-admin";
-import simpleRestProvider from "ra-data-simple-rest";
+// import { Admin } from "react-admin";
+// import simpleRestProvider from "ra-data-simple-rest";
 
 import "./App.css";
 import TaskViews from "./Components/Pages/TaskViews";
@@ -11,11 +11,11 @@ import About from "./Components/Pages/about";
 import Schedule from "./Components/Pages/schedule";
 import Dashboard from "./Components/Pages/DashboardPage";
 
-const dataProvider = simpleRestProvider("http://localhost:5200/");
+// const dataProvider = simpleRestProvider("http://localhost:5200/");
 
 function App() {
   return (
-    <Admin dataProvider={dataProvider}>
+    // <Admin dataProvider={dataProvider}>
       <div className="App">
         <header className="App-header"></header>
         <Router>
@@ -41,7 +41,7 @@ function App() {
           </div>
         </Router>
       </div>
-    </Admin>
+    // </Admin>
   );
 }
 
