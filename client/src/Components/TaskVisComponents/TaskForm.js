@@ -338,19 +338,17 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
         <div>
           <label>
             Category:
-            <input
-              type="text"
-              value={selectedCategoryName}
-              onClick={handleCategoryClick}
-              readOnly // Make the input read-only to prevent typing for now
-            />
-            {/* Render the dropdown only if isDropdownVisible is true */}
-            {isDropdownVisible && (
-              <DropdownMenu
-                items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
-                onItemClick={handleCategorySelect}
-              />
-            )}
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="Work">Work</option>
+              <option value="School">School</option>
+              <option value="Personal">Personal</option>
+              <option value="Extracurricular">Extracurricular</option>
+              <option value="Leisure">Leisure</option>
+              <option value="Other">Other</option>
+            </select>
           </label>
         </div>
 
@@ -482,19 +480,17 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
         <div>
           <label>
             Category:
-            <input
-              type="text"
-              value={selectedCategoryName}
-              onClick={handleCategoryClick}
-              readOnly // Make the input read-only to prevent typing for now
-            />
-            {/* Render the dropdown only if isDropdownVisible is true */}
-            {isDropdownVisible && (
-              <DropdownMenu
-                items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
-                onItemClick={handleCategorySelect}
-              />
-            )}
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="Work">Work</option>
+              <option value="School">School</option>
+              <option value="Personal">Personal</option>
+              <option value="Extracurricular">Extracurricular</option>
+              <option value="Leisure">Leisure</option>
+              <option value="Other">Other</option>
+            </select>
           </label>
         </div>
 
