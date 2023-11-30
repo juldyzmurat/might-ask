@@ -102,7 +102,11 @@ const AchievementDashboard = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="categoryName"
-            label={{ value: "Category", position: "insideBottom", fill: "black" }}
+            label={{
+              value: "Category",
+              position: "insideBottom",
+              fill: "black",
+            }}
             domain={[0, "dataMax"]}
           />
           <YAxis
@@ -119,8 +123,6 @@ const AchievementDashboard = () => {
             dataKey="totalEstimatedDuration"
             fill="lightpink"
             name="Estimated Duration"
-
-            
           />
           <Bar
             dataKey="totalActualDuration"
