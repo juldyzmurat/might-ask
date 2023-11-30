@@ -26,7 +26,7 @@ function Home() {
     <div>
       <img src={gif} className="App-logo" alt="gif" />
       <LoginButton />
-      <LogoutButton />
+      {/* <LogoutButton /> */}
     </div>
   );
 }
