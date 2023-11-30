@@ -76,7 +76,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       dueDate,
       location,
       description,
-      startTime,
+      //startTime,
       category,
     });
 
@@ -86,8 +86,8 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       estDur: estDur*60,
       location: location,
       description: description,
-      start: Date.parse(startTime),
-      end: Date.parse(endTime),
+      //start: Date.parse(startTime),
+      //end: Date.parse(endTime),
       categoryid: category,
       status: curStatus || "to do", 
       userid: GoogleData.profileObj.email,
@@ -145,13 +145,13 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       taskFormData.description = description;
     }
   
-    if (startTime) {
-      taskFormData.start = Date.parse(startTime);
-    }
+    //if (startTime) {
+      //taskFormData.start = Date.parse(startTime);
+    //}
 
-    if (endTime) {
-      taskFormData.end = Date.parse(endTime);
-    }
+    //if (endTime) {
+      //taskFormData.end = Date.parse(endTime);
+    //}
   
     if (category) {
       taskFormData.categoryid = category;
@@ -313,7 +313,9 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           </label>
         </div>
 
-        <div>
+        
+                    
+        {/* <div>
           <label>
             Start Time<span style={{ color: "red" }}></span>:
             <input
@@ -333,7 +335,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               onChange={(e) => setEndTime(e.target.value)}
             />
           </label>
-        </div>
+        </div> */}
 
         <div>
           <label>
@@ -367,7 +369,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
             </select>
           </label>
         </div>
-        
+
       </>
     );
   } else {
@@ -399,12 +401,13 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
         <div>
           <label>
-            Estimated Duration (in minutes):
+            Estimated Duration (in minutes)<span style={{ color: "red" }}>*</span>:
             <input
               type="number"
               value={estDur}
               onChange={(e) => setEstDur(e.target.value)}
               min="0" 
+              required
             />
           </label>
         </div>
@@ -467,7 +470,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           </label>
         </div>
 
-        <div>
+        {/* <div>
           <label>
             Start Time<span style={{ color: "red" }}></span>:
             <input
@@ -476,7 +479,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               onChange={(e) => setStartTime(e.target.value)}
             />
           </label>
-        </div>
+        </div> */}
 
         <div>
           <label>
