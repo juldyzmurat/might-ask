@@ -28,16 +28,6 @@ const AchievementDashboard = () => {
         }
         const taskData = await taskResponse.json();
         setData(taskData);
-
-        // const categoryRequest = "http://localhost:5200/categories/".concat(
-        //   userEmail,
-        // );
-        // const categoryResponse = await fetch(categoryRequest);
-        // if (!categoryResponse.ok) {
-        //   throw new Error("Failed to fetch category data");
-        // }
-        // const categoryJsonData = await categoryResponse.json();
-        // setCategoryData(categoryJsonData);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
