@@ -340,6 +340,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
   } else {
     formContent = (
       <>
+      <a href="/task-views">X</a>
         <div>
           <label>
             Task Name<span style={{ color: "red" }}>*</span>:
@@ -349,7 +350,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               onChange={(e) => setTaskName(e.target.value)}
               required
             />
-          </label>
+          </label>          
         </div>
 
         <div>

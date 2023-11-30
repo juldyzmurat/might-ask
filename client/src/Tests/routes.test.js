@@ -9,58 +9,7 @@ const sampleUser = {
   profile_path: "path/name",
 };
 
-const sampleTask = [
-  {
-    _id: "656786ca3691689dba5c860c",
-    name: "Gardening",
-    due: 1701549900000,
-    location: "",
-    description: "Grow nice",
-    start: 1701470700000,
-    categoryid: "Recreation",
-    userid: "axg1328@case.edu",
-  },
-  {
-    _id: "6567873b3691689dba5c860d",
-    name: "Software Engg presentation",
-    due: 1702576800000,
-    location: "",
-    description: "Headache",
-    start: null,
-    categoryid: "Work",
-    userid: "axg1328@case.edu",
-  },
-  {
-    _id: "656787a43691689dba5c860e",
-    name: "Comp Sec Exam",
-    due: 1701895800000,
-    location: "Cleveland, OH, USA",
-    description: "Another headache",
-    start: 1702050600000,
-    categoryid: "Work",
-    userid: "axg1328@case.edu",
-  },
-  {
-    _id: "656788123691689dba5c860f",
-    name: "Play football",
-    due: 1701900000000,
-    location: "",
-    description: "Concussion time",
-    start: 1701640200000,
-    categoryid: "Recreation",
-    userid: "axg1328@case.edu",
-  },
-  {
-    _id: "6567884a3691689dba5c8610",
-    name: "Fly to NY",
-    due: 1703555520000,
-    location: "",
-    description: "Christmas",
-    start: 1703530260000,
-    categoryid: "Travel",
-    userid: "axg1328@case.edu",
-  },
-];
+const sampleTask = [{"_id":"65686681aa942f957dd9223d","name":"cry about life","due":1701294600000,"estDur":300,"location":"Halluin, Nord, France","description":"","start":1701294600000,"categoryid":"Personal","userid":"axg1328@case.edu","actDur":500},{"_id":"656866a6aa942f957dd9223e","name":"be happy about life ","due":1701399360000,"estDur":7200,"location":"KSL Oval, Cleveland, OH, USA","description":"","start":null,"end":null,"categoryid":"Personal","userid":"axg1328@case.edu","actDur":7500},{"_id":"65687660a15d7db41d12fdb9","name":"make status work ","due":1701314400000,"estDur":5400,"actDur":5400,"location":"","description":"","start":null,"end":null,"categoryid":"Work","status":"done","userid":"axg1328@case.edu"},{"_id":"656876a2a15d7db41d12fdba","name":"figure it out","due":1701320340000,"estDur":5400,"actDur":6800,"location":"","description":"","categoryid":"Extracurricular","status":"to do","userid":"axg1328@case.edu"}];
 
 describe("GET /users/:email", () => {
   it("should retrieve a user by email", async () => {
