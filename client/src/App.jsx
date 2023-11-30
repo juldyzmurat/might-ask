@@ -8,6 +8,7 @@ import Home from "./Components/Pages/";
 import About from "./Components/Pages/about";
 import Schedule from "./Components/Pages/schedule";
 import Dashboard from "./Components/Pages/DashboardPage";
+import CatStats from "./Components/Pages/catstats";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
             <Route path="/task-views" element={<TaskViews />} />
             <Route path="/DashboardPage" element={<Dashboard />} />
             <Route path="/schedule" element={<Schedule />} />
+            <Route path="/catstats" element={<CatStats />} />
+            
           </Routes>
         </div>
       </Router>
