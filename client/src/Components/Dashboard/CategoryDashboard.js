@@ -18,9 +18,10 @@ const CategoryDashboard = () => {
         }
         const taskData = await taskResponse.json();
         setData(taskData);
-
+        
+        let userEmail = localStorage.getItem('email');
         const categoryRequest = "http://localhost:5200/categories/".concat(
-          GoogleData.profileObj.email,
+          userEmail,
         );
         const categoryResponse = await fetch(categoryRequest);
         if (!categoryResponse.ok) {
@@ -28,6 +29,7 @@ const CategoryDashboard = () => {
         }
         const categoryJsonData = await categoryResponse.json();
         setCategoryData(categoryJsonData);
+        console.log(categoryData);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
@@ -39,7 +41,6 @@ const CategoryDashboard = () => {
   const categoryCount = {};
   taskData.forEach((item) => {
     const categoryId = item.categoryid;
-    console.log(item.categoryid);
     categoryCount[categoryId] = (categoryCount[categoryId] || 0) + 1;
   });
 

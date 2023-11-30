@@ -18,8 +18,9 @@ const AchievementDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        let userEmail = localStorage.getItem('email');
         const taskRequest = "http://localhost:5200/tasks/".concat(
-          GoogleData.profileObj.email,
+          userEmail,
         );
         const taskResponse = await fetch(taskRequest);
         if (!taskResponse.ok) {
@@ -29,7 +30,7 @@ const AchievementDashboard = () => {
         setData(taskData);
 
         const categoryRequest = "http://localhost:5200/categories/".concat(
-          GoogleData.profileObj.email,
+          userEmail,
         );
         const categoryResponse = await fetch(categoryRequest);
         if (!categoryResponse.ok) {
