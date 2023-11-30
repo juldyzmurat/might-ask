@@ -7,7 +7,7 @@ const BoardView = ({ data }) => {
 
   return (
     <div className="BoardView">
-      <Board />
+      <Board id= {"To-Do","In-Progress","Done"}/>
     </div>
   );
 };
