@@ -1,43 +1,18 @@
 import React, { useState, useEffect } from "react";
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  //getLatLng,
-} from "react-places-autocomplete";
+import PlacesAutocomplete from "react-places-autocomplete";
 import { GoogleData } from "../Login/LoginAPI";
-import DropdownMenu from "../DropDownMenu/DDMenu";
 
 const TaskForm = ({ onClose, editoradd, taskId }) => {
   console.log("Server Response:", taskId);
   const [taskName, setTaskName] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
-  const [startTime, setStartTime] = useState("");
   const [category, setCategory] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [endTime, setEndTime] = useState("");
   const [estDur, setEstDur] = useState("");
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [selectedCategoryName, setSelectedCategoryName] = useState("");
   const [curStatus, setStatus] = useState("");
 
-  const formatDateTime = (dateTimeString) => {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    };
-
-    const formattedDate = new Date(dateTimeString).toLocaleDateString(
-      "en-US",
-      options,
-    );
-    return formattedDate;
-  };
-
-  const [categoryIDs, setCategoryID] = useState([]);
+  const [, setCategoryID] = useState([]);
   useEffect(() => {
     const fetchCategory = async () => {
       try {
@@ -60,10 +35,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
   const handleSelect = async (address) => {
     try {
-      const results = await geocodeByAddress(address);
-      // const latLng = await getLatLng(results[0]);
       setLocation(address);
-      // You can also store the coordinates if needed: setCoordinates(latLng);
     } catch (error) {
       console.error("Error", error);
     }
@@ -76,7 +48,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       dueDate,
       location,
       description,
-      //startTime,
       category,
     });
 
@@ -86,8 +57,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       estDur: estDur * 60,
       location: location,
       description: description,
-      //start: Date.parse(startTime),
-      //end: Date.parse(endTime),
       categoryid: category,
       status: curStatus || "to do",
       userid: GoogleData.profileObj.email,
@@ -197,23 +166,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     }
 
     onClose();
-  };
-
-  const handleCategoryClick = () => {
-    // Toggle dropdown visibility
-    setDropdownVisible(!isDropdownVisible);
-  };
-
-  const handleCategorySelect = (selectedCategoryName) => {
-    setDropdownVisible(false);
-    const selectedCategory = categoryIDs.find(
-      (category) => category.name === selectedCategoryName,
-    );
-    if (selectedCategory) {
-      setCategory(selectedCategory._id);
-      setSelectedCategoryName(selectedCategoryName);
-      setDropdownVisible(false);
-    }
   };
 
   let formContent;

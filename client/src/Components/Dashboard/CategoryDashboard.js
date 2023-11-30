@@ -4,7 +4,6 @@ import { GoogleData } from "../Login/LoginAPI";
 
 const CategoryDashboard = () => {
   const [taskData, setData] = useState([]); //The full task data incase we need it
-  const [categoryData, setCategoryData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {

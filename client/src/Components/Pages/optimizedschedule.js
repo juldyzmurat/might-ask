@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import TaskComponent from "../TaskVisComponents/taskcomponent";
-import PinnedSubheaderList from "../TaskVisComponents/listscroller";
 import { GoogleData } from "../Login/LoginAPI";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
