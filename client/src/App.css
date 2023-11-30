@@ -1,10 +1,7 @@
 .App {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  display: block;
 }
 
 .App-logo {
@@ -17,10 +14,18 @@
   height: 200px;
 }
 
+.main-box {
+  background: #f1b6dc;
+  margin: 1.5rem 85px 1.5rem 0px;
+  color: #e8f0f2;
+  display: flex;
+}
+
 /* Task view container */
 .TaskViews {
-  width: 600px;
-  height: 600px;
+  width: auto;
+  height: auto;
+  min-width: 400px;
   min-height: 400px;
   background: #f1b6dc;
   margin: 3.5rem auto 1.5rem;
