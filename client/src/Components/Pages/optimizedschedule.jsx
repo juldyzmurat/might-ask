@@ -48,12 +48,17 @@ const OptimizedSchedule = () => {
 
         sortedData.sort(compareByDeadline);
 
+        // Check only tasks that aren't done
+        const filteredData = sortedData.filter((task, index) => {
+            return task.status === "to do" || task.status === "in progress";
+        });
+
         // Set start and end times for each task
-        const updatedData = sortedData.map((task, index) => {
+        const updatedData = filteredData.map((task, index) => {
           const startTime =
             index === 0
               ? new Date(task.due)
-              : new Date(sortedData[index - 1].endTime);
+              : new Date(filteredData[index - 1].endTime);
           const taskDuration = task.estDur / 60; // Convert task duration to minutes
           let endTime = new Date(startTime.getTime() + taskDuration * 60000); // Convert task duration to milliseconds
 
