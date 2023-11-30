@@ -10,7 +10,7 @@ const BoardView = () => {
   const initialBoards = [
     {
       id: uuidv4(),
-      boardName: "Board One",
+      boardName: "To-DO",
       card: [
         { id: uuidv4(), title: "Card 1", tags: [], task: [] },
         { id: uuidv4(), title: "Card 2", tags: [], task: [] },
@@ -18,7 +18,7 @@ const BoardView = () => {
     },
     {
       id: uuidv4(),
-      boardName: "Board Two",
+      boardName: "In-Progress",
       card: [
         { id: uuidv4(), title: "Card 3", tags: [], task: [] },
         { id: uuidv4(), title: "Card 4", tags: [], task: [] },
@@ -26,7 +26,7 @@ const BoardView = () => {
     },
     {
       id: uuidv4(),
-      boardName: "Board Three",
+      boardName: "Done",
       card: [
         { id: uuidv4(), title: "Card 5", tags: [], task: [] },
         { id: uuidv4(), title: "Card 6", tags: [], task: [] },
