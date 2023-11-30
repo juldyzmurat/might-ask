@@ -18,6 +18,11 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
+    "axios": "^1.6.2",
+    "gaxios": "^6.1.1",
+    "googleapis": "^129.0.0",
+    "https-browserify": "^1.0.0",
+    "react": "^18.2.0",
     "react-places-autocomplete": "^7.3.0"
   }
 }

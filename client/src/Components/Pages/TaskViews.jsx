@@ -20,10 +20,8 @@ const TaskViews = () => {
     // Function to fetch data from the backend
     const fetchData = async () => {
       try {
-        let userEmail = localStorage.getItem('email');
-        const request = "http://localhost:5200/tasks/".concat(
-          userEmail,
-        );
+        let userEmail = localStorage.getItem("email");
+        const request = "http://localhost:5200/tasks/".concat(userEmail);
         const response = await fetch(request);
 
         // Check if the response is successful (status code 200)
