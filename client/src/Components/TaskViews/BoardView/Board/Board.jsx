@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Card from "../Card/Card";
+
 import "./Board.css";
-import { MoreHorizontal } from "react-feather";
-import Editable from "../Editable/Editable";
-import Dropdown from "../Dropdown/Dropdown";
+
 import { Droppable } from "react-beautiful-dnd";
 // ... (existing imports)
 
