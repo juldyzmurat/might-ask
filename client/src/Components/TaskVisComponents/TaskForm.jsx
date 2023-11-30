@@ -10,6 +10,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
   const [category, setCategory] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [estDur, setEstDur] = useState("");
+  const [actDur, setActDur] = useState("");
   const [curStatus, setStatus] = useState("");
 
   const [, setCategoryID] = useState([]);
@@ -104,6 +105,10 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
     if (estDur) {
       taskFormData.estDur = estDur * 60;
+    }
+
+    if (actDur) {
+        taskFormData.actDur = actDur * 60;
     }
 
     if (location) {
@@ -208,6 +213,18 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
         <div>
           <label>
+            Actual Duration (in minutes):
+            <input
+              type="number"
+              value={actDur}
+              onChange={(e) => setActDur(e.target.value)}
+              min="0"
+            />
+          </label>
+        </div>
+
+        <div>
+          <label>
             Location:
             <PlacesAutocomplete
               value={location}
@@ -293,6 +310,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
+              <option value="Default">—</option>
               <option value="Work">Work</option>
               <option value="School">School</option>
               <option value="Personal">Personal</option>
@@ -310,6 +328,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={curStatus}
               onChange={(e) => setStatus(e.target.value)}
             >
+              <option value="Default">—</option>
               <option value="to do">To Do</option>
               <option value="in progress">In Progress</option>
               <option value="done">Done</option>
@@ -435,6 +454,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
+              <option value="Default">—</option>
               <option value="Work">Work</option>
               <option value="School">School</option>
               <option value="Personal">Personal</option>
@@ -452,6 +472,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={curStatus}
               onChange={(e) => setStatus(e.target.value)}
             >
+              <option value="Default">—</option>
               <option value="to do">To Do</option>
               <option value="in progress">In Progress</option>
               <option value="done">Done</option>
