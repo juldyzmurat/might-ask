@@ -55,11 +55,17 @@ function PinnedSubheaderList({ data }) {
     }
   };
 
-  const daysOfWeek = []; 
+  const daysList = []; 
   data.map((task, index) => {
     const dayOfWeek = new Date(task.due).toDateString();
-    daysOfWeek.push(dayOfWeek);
+    daysList.push(dayOfWeek);
   });
+
+  function removeDuplicates(arr) {
+    return arr.filter((item,
+        index) => arr.indexOf(item) === index);
+  }
+  const daysOfWeek = removeDuplicates(daysList);
 
   // Sort by timestamp
   function sortByDate(a, b) {
