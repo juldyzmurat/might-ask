@@ -1,5 +1,6 @@
 import React from "react";
 import OptimizedSchedule from "./optimizedschedule";
+//import CalendarEvents from "./checkCalendarevents";
 
 const Schedule = () => {
   return (
@@ -10,7 +11,7 @@ const Schedule = () => {
           width: "800px",
           height: "600px",
           frameborder: "0",
-          scrolling: "no",
+          overflow: "hidden",
         }}
       >
         <OptimizedSchedule />

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const clientID =
   "613216441734-0c8nmpfakholp4jm5v5jp14occlu232i.apps.googleusercontent.com";
@@ -13,6 +13,11 @@ function LoginButton() {
   const onSuccess = (res) => {
     console.log("LOGIN SUCCESS Current user: ", res);
     GoogleData = res;
+
+    localStorage.setItem("isLoggedIn", true);
+    localStorage.setItem("imgUrl", res.profileObj.imageUrl);
+    localStorage.setItem("email", res.profileObj.email);
+
     navigate("/task-views");
 
     // check user with database
@@ -24,8 +29,7 @@ function LoginButton() {
       const response = await fetch(request);
       const jsonData = await response.json();
       currentUser = jsonData;
-      console.log("usernameee");
-      console.log(currentUser);
+
       return currentUser;
     };
 
