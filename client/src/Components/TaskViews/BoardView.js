@@ -45,21 +45,18 @@ const BoardView = () => {
     let tempData = [...data];
 
     const sourceBoardIdx = tempData.findIndex(
-      (item) => item.id.toString() === source.droppableId
+      (item) => item.id.toString() === source.droppableId,
     );
     const destinationBoardIdx = tempData.findIndex(
-      (item) => item.id.toString() === destination.droppableId
+      (item) => item.id.toString() === destination.droppableId,
     );
 
-    const [draggedCard] = tempData[sourceBoardIdx].card.splice(
-      source.index,
-      1
-    );
+    const [draggedCard] = tempData[sourceBoardIdx].card.splice(source.index, 1);
 
     tempData[destinationBoardIdx].card.splice(
       destination.index,
       0,
-      draggedCard
+      draggedCard,
     );
 
     setData(tempData);

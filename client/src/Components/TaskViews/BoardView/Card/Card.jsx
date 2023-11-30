@@ -65,7 +65,7 @@ const Card = (props) => {
                     {props.card.task.length !== 0
                       ? `${
                           (props.card.task?.filter(
-                            (item) => item.completed === true
+                            (item) => item.completed === true,
                           )).length
                         } / ${props.card.task.length}`
                       : `${"0/0"}`}

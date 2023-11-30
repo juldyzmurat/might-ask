@@ -21,9 +21,7 @@ export default function Board(props) {
           >
             <div className="board__top">
               <div>
-                <p className="board__title">
-                  {name || "Name of Board"}
-                </p>
+                <p className="board__title">{name || "Name of Board"}</p>
               </div>
             </div>
             {provided.placeholder}

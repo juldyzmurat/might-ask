@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Calendar, Check, CheckSquare, Clock, CreditCard, Trash } from "react-feather";
+import {
+  Calendar,
+  Check,
+  CheckSquare,
+  Clock,
+  CreditCard,
+  Trash,
+} from "react-feather";
 import Editable from "../../Editable/Editable";
 import Modal from "../../Modal/Modal";
 import { v4 as uuidv4 } from "uuid";
@@ -57,7 +64,9 @@ export default function CardDetails(props) {
 
   const calculatePercent = () => {
     const totalTask = values.task.length;
-    const completedTask = values.task.filter((item) => item.completed === true).length;
+    const completedTask = values.task.filter(
+      (item) => item.completed === true,
+    ).length;
 
     return Math.floor((completedTask * 100) / totalTask) || 0;
   };
@@ -80,11 +89,13 @@ export default function CardDetails(props) {
     if (props.updateCard) props.updateCard(props.bid, values.id, values);
   }, [values]);
 
-
   return (
     <Modal onClose={props.onClose}>
       <div className="local__bootstrap">
-        <div className="container" style={{ minWidth: "650px", position: "relative" }}>
+        <div
+          className="container"
+          style={{ minWidth: "650px", position: "relative" }}
+        >
           <div className="row pb-4">
             <div className="col-12">
               <div className="d-flex align-items-center pt-3 gap-2">
@@ -92,7 +103,10 @@ export default function CardDetails(props) {
                 {input ? (
                   <Input title={values.title} />
                 ) : (
-                  <h5 style={{ cursor: "pointer" }} onClick={() => setInput(true)}>
+                  <h5
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setInput(true)}
+                  >
                     {values.title}
                   </h5>
                 )}
