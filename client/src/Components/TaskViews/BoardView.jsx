@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import "../../Styles/BoardView.css";
+
 // import {
   //   Typography,
   //   Card as MuiCard,
@@ -7,8 +9,8 @@ import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
   // } from "@mui/material";
   
 const boards = [
-  { id: "to-do", display: "To Do" },
-  { id: "in-progress", display: "In Progress" },
+  { id: "t do", display: "To Do" },
+  { id: "in progress", display: "In Progress" },
   { id: "done", display: "Done" },
 ];
 
@@ -108,37 +110,45 @@ const BoardView = ({ tasks, setTasks }) => {
   // }
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      {boards.map((board) => (
-        <Droppable key={board.id} droppableId={board.id}>
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
-            >
-              {tasksByStatus[board.id].map((task, index) => (
-                <Draggable key={task._id} draggableId={task._id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                      )}
-                    >
-                      {task.name}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      ))}
-    </DragDropContext>
+    <div className="board-container">
+      <DragDropContext onDragEnd={onDragEnd}>
+        {boards.map((board) => (
+          <Droppable key={board.id} droppableId={board.id}>
+            {(provided, snapshot) => (
+              <div
+                className="board-list"
+                ref={provided.innerRef}
+                style={{
+                  background: snapshot.isDraggingOver ? "lightblue" : "lightgrey",
+                  padding: grid,
+                  width: 250,
+                }}
+              >
+                {tasksByStatus[board.id].map((task, index) => (
+                  <Draggable key={task._id} draggableId={task._id} index={index}>
+                    {(provided, snapshot) => (
+                      <div
+                        className={`board-item ${snapshot.isDragging ? 'board-item-dragging' : ''}`}
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        style={getItemStyle(
+                          snapshot.isDragging,
+                          provided.draggableProps.style
+                        )}
+                      >
+                        {task.name}
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        ))}
+      </DragDropContext>
+    </div>
   );
 };
 
