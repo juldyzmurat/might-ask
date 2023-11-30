@@ -83,13 +83,13 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     const taskFormData = {
       name: taskName,
       due: Date.parse(dueDate),
-      estDur: estDur*60,
+      estDur: estDur * 60,
       location: location,
       description: description,
       //start: Date.parse(startTime),
       //end: Date.parse(endTime),
       categoryid: category,
-      status: curStatus || "to do", 
+      status: curStatus || "to do",
       userid: GoogleData.profileObj.email,
     };
 
@@ -120,73 +120,73 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
   const handleSubmitEdit = async (e) => {
     e.preventDefault();
-  
+
     // Create an object to store the non-null fields
     const taskFormData = {};
-  
+
     // Add non-null fields to the taskFormData object
     if (taskName) {
       taskFormData.name = taskName;
     }
-  
+
     if (dueDate) {
       taskFormData.due = Date.parse(dueDate);
     }
 
     if (estDur) {
-      taskFormData.estDur = estDur*60;
+      taskFormData.estDur = estDur * 60;
     }
-  
+
     if (location) {
       taskFormData.location = location;
     }
-  
+
     if (description) {
       taskFormData.description = description;
     }
-  
+
     //if (startTime) {
-      //taskFormData.start = Date.parse(startTime);
+    //taskFormData.start = Date.parse(startTime);
     //}
 
     //if (endTime) {
-      //taskFormData.end = Date.parse(endTime);
+    //taskFormData.end = Date.parse(endTime);
     //}
-  
+
     if (category) {
       taskFormData.categoryid = category;
     }
 
-    if (curStatus){
+    if (curStatus) {
       taskFormData.status = curStatus;
     }
-  
+
     if (GoogleData.profileObj.email) {
       taskFormData.userid = GoogleData.profileObj.email;
     }
-  
+
     console.log("Task ID:", taskId);
     console.log("Task Form Data:", taskFormData);
-  
+
     try {
       const request = "http://localhost:5200/tasks/"
         .concat(GoogleData.profileObj.email)
         .concat("/")
         .concat(`${taskId}`);
       console.log(request);
-  
+
       const data = JSON.stringify(taskFormData);
-  
+
       const response = await fetch(request, {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: data,
       });
-  
+
       console.log("Server Response Status:", response.status);
-  
+
       console.log("Server Response:", response);
-  
+
       if (!response.ok) {
         console.log("Failed to update data");
       } else {
@@ -195,7 +195,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     } catch (error) {
       console.error("Error updating data: ", error.message);
     }
-  
+
     onClose();
   };
 
@@ -250,7 +250,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               type="number"
               value={estDur}
               onChange={(e) => setEstDur(e.target.value)}
-              min="0" 
+              min="0"
             />
           </label>
         </div>
@@ -313,8 +313,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           </label>
         </div>
 
-        
-                    
         {/* <div>
           <label>
             Start Time<span style={{ color: "red" }}></span>:
@@ -369,7 +367,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
             </select>
           </label>
         </div>
-
       </>
     );
   } else {
@@ -401,12 +398,13 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
         <div>
           <label>
-            Estimated Duration (in minutes)<span style={{ color: "red" }}>*</span>:
+            Estimated Duration (in minutes)
+            <span style={{ color: "red" }}>*</span>:
             <input
               type="number"
               value={estDur}
               onChange={(e) => setEstDur(e.target.value)}
-              min="0" 
+              min="0"
               required
             />
           </label>
@@ -513,7 +511,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
             </select>
           </label>
         </div>
-
       </>
     );
   }

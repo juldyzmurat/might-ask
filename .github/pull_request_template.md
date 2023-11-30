@@ -1,5 +1,5 @@
 - [ ] Describe what this PR accomplishes, and any context necessary to understand it
-  - *description goes here*
+  - _description goes here_
 - [ ] Ready for review
 - [ ] Author review
 - [ ] Non-author review
