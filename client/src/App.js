@@ -1,13 +1,14 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import TaskViews from "./Components/Pages/TaskViews";
 import Navbar from "./Components/NavBar/";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Pages/";
 import About from "./Components/Pages/about";
 import Schedule from "./Components/Pages/schedule";
 import Dashboard from "./Components/Pages/DashboardPage";
+import BoardView from "./Components/TaskViews/BoardView";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/task-views" element={<TaskViews />} />
+            <Route path="/task-views/kanban/*" element={<BoardView />} />
             <Route path="/DashboardPage" element={<Dashboard />} />
             <Route path="/schedule" element={<Schedule />} />
           </Routes>

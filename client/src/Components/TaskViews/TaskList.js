@@ -3,7 +3,7 @@ import { useMediaQuery, Typography } from "@mui/material";
 
 import { TaskListContent } from ".";
 
-const TaskList = ({ tasks }) => {
+export const TaskList = ({ tasks }) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List
@@ -12,7 +12,7 @@ const TaskList = ({ tasks }) => {
       pagination={false}
       component="div"
     >
-      {isSmall ? <FallbackForMobile /> : <TaskListContent tasks={tasks}/>}
+      {isSmall ? <FallbackForMobile /> : <TaskListContent tasks={tasks} />}
     </List>
   );
 };
@@ -22,5 +22,3 @@ const FallbackForMobile = () => (
     The Kanban board demo is not available on mobile
   </Typography>
 );
-
-export default TaskList;
