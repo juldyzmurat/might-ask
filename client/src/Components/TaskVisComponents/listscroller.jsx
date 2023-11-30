@@ -7,16 +7,6 @@ import EditDeleteButtons from "./EditDeleteButtons";
 import TaskForm from "./TaskForm";
 import { GoogleData } from "../Login/LoginAPI";
 
-const daysOfWeek = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
 function PinnedSubheaderList({ data }) {
   const [hoveredItemId, setHoveredItemId] = useState(null);
   const [isEditClicked, setIsEditClicked] = useState(false); // New state for tracking edit button click
@@ -65,6 +55,19 @@ function PinnedSubheaderList({ data }) {
     }
   };
 
+  const daysOfWeek = []; 
+  data.map((task, index) => {
+    const dayOfWeek = new Date(task.due).toDateString();
+    daysOfWeek.push(dayOfWeek);
+  });
+
+  // Sort by timestamp
+  function sortByDate(a, b) {
+    const dateOne = Date.parse(a);
+    const dateTwo = Date.parse(b);
+    return dateOne - dateTwo;
+  }
+
   return (
     <>
       <List
@@ -78,7 +81,7 @@ function PinnedSubheaderList({ data }) {
         }}
         subheader={<li />}
       >
-        {daysOfWeek.map((day, index) => (
+        {daysOfWeek.sort(sortByDate).map((day, index) => (
           <li key={`section-${index}`}>
             <ul>
               <ListSubheader>{`${day}`}</ListSubheader>
@@ -86,7 +89,7 @@ function PinnedSubheaderList({ data }) {
                 .filter((item) => {
                   return (
                     day ===
-                    daysOfWeek[(new Date(item.due).getDay() - 1 + 7) % 7]
+                    new Date(item.due).toDateString()
                   );
                 })
                 .map((item) => (
@@ -97,6 +100,7 @@ function PinnedSubheaderList({ data }) {
                     onMouseLeave={handleMouseLeave}
                   >
                     <ListItemText primary={item.name} />
+                    <ListItemText primary={new Date(item.due).toTimeString()} />
                     {hoveredItemId === item._id && (
                       <EditDeleteButtons
                         onEditClick={() => handleEdit(item._id)}
