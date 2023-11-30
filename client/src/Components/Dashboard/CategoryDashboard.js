@@ -64,14 +64,14 @@ const CategoryDashboard = () => {
     <div className="container">
       <div className="chart-container">
         <PieChart
-          width={600}
-          height={600}
+          width={500}
+          height={500}
           style={{ backgroundColor: "#f1b6dc" }}
         >
           <Pie
             data={transformedJson}
             dataKey="count"
-            outerRadius={250}
+            outerRadius={200}
             fill="pink"
             label
           >
