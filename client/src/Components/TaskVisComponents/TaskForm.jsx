@@ -293,6 +293,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
+              <option value="Default">—</option>
               <option value="Work">Work</option>
               <option value="School">School</option>
               <option value="Personal">Personal</option>
@@ -310,6 +311,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={curStatus}
               onChange={(e) => setStatus(e.target.value)}
             >
+              <option value="Default">—</option>
               <option value="to do">To Do</option>
               <option value="in progress">In Progress</option>
               <option value="done">Done</option>
@@ -435,6 +437,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
+              <option value="Default">—</option>
               <option value="Work">Work</option>
               <option value="School">School</option>
               <option value="Personal">Personal</option>
@@ -452,6 +455,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={curStatus}
               onChange={(e) => setStatus(e.target.value)}
             >
+              <option value="Default">—</option>
               <option value="to do">To Do</option>
               <option value="in progress">In Progress</option>
               <option value="done">Done</option>
