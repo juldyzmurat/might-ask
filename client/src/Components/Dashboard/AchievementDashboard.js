@@ -93,7 +93,12 @@ const AchievementDashboard = () => {
   return (
     <div className="container">
       <div className="chart-container">
-        <BarChart width={600} height={400} data={categoryTotalsArray}>
+        <BarChart
+          width={500}
+          height={500}
+          data={categoryTotalsArray}
+          style={{ backgroundColor: "#f1b6dc" }}
+        >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="categoryName"

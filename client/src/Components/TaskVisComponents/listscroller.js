@@ -41,29 +41,28 @@ function PinnedSubheaderList({ data }) {
   };
 
   const handleCloseTaskForm = () => {
-    setIsEditClicked(false); 
+    setIsEditClicked(false);
   };
 
   const handleDelete = async (itemId) => {
     try {
       const request = `http://localhost:5200/tasks/${GoogleData.profileObj.email}/${itemId}`;
-      
+
       const response = await fetch(request, {
-        method: 'delete',
-        headers: { 'Content-Type': 'application/json' },
+        method: "delete",
+        headers: { "Content-Type": "application/json" },
       });
-  
-      console.log('Server Response Status:', response.status);
-  
+
+      console.log("Server Response Status:", response.status);
+
       if (!response.ok) {
-        console.log('Failed to delete data');
+        console.log("Failed to delete data");
       } else {
-        console.log('Data deleted successfully');
+        console.log("Data deleted successfully");
       }
     } catch (error) {
-      console.error('Error deleting data: ', error.message);
+      console.error("Error deleting data: ", error.message);
     }
-  
   };
 
   return (
@@ -129,8 +128,7 @@ function PinnedSubheaderList({ data }) {
             taskId={hoveredItemId}
           />
         </div>
-    )}
-      
+      )}
     </>
   );
 }

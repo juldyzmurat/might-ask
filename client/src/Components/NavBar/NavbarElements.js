@@ -13,6 +13,7 @@ export const Nav = styled.nav`
   justify-content: center;
   padding: 0.2rem calc((100vw - 1000px) / 2);
   z-index: 12;
+  margin-bottom: 10%;
 `;
 
 export const NavLink = styled(Link)`
