@@ -7,16 +7,6 @@ import EditDeleteButtons from "./EditDeleteButtons";
 import TaskForm from "./TaskForm";
 import { GoogleData } from "../Login/LoginAPI";
 
-// const daysOfWeek = [
-//   "Monday",
-//   "Tuesday",
-//   "Wednesday",
-//   "Thursday",
-//   "Friday",
-//   "Saturday",
-//   "Sunday",
-// ];
-
 function PinnedSubheaderList({ data }) {
   const [hoveredItemId, setHoveredItemId] = useState(null);
   const [isEditClicked, setIsEditClicked] = useState(false); // New state for tracking edit button click
@@ -99,7 +89,6 @@ function PinnedSubheaderList({ data }) {
                 .filter((item) => {
                   return (
                     day ===
-                    // daysOfWeek[(new Date(item.due).getDay() - 1 + 7) % 7]
                     new Date(item.due).toDateString()
                   );
                 })
