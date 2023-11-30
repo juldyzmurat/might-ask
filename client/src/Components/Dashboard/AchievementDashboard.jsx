@@ -9,7 +9,7 @@ import {
   Legend,
 } from "recharts";
 import "../../Styles/AchievementDashboard.css";
-import { GoogleData } from "../Login/LoginAPI";
+// import { GoogleData } from "../Login/LoginAPI";
 
 const AchievementDashboard = () => {
   const [taskData, setData] = useState([]); //The full task data incase we need it
@@ -55,31 +55,45 @@ const AchievementDashboard = () => {
   // Iterate through the task data and accumulate totals
   taskData.forEach((task) => {
     const categoryId = task.categoryid;
-    const estimatedDuration = task.estimated_duration;
-    const actualDuration = task.actual_duration;
+    if (task.actDur) {
+        const estimatedDuration = task.estDur;
+        const actualDuration = task.actDur;
 
-    if (!categoryTotals[categoryId]) {
-      categoryTotals[categoryId] = {
-        categoryName: categoryId,
-        totalEstimatedDuration: 0,
-        totalActualDuration: 0,
-      };
+        if (!categoryTotals[categoryId]) {
+            categoryTotals[categoryId] = {
+              categoryName: categoryId,
+              totalEstimatedDuration: 0,
+              totalActualDuration: 0,
+              doneCount: 0,
+              averageEstimatedDuration: 0,
+              averageActualDuration: 0,
+            };
+        }
+
+        categoryTotals[categoryId].doneCount += 1;
+        categoryTotals[categoryId].totalEstimatedDuration += estimatedDuration;
+        categoryTotals[categoryId].totalActualDuration += actualDuration;
+        categoryTotals[categoryId].averageEstimatedDuration = categoryTotals[categoryId].totalEstimatedDuration / categoryTotals[categoryId].doneCount;
+        categoryTotals[categoryId].averageActualDuration = categoryTotals[categoryId].totalActualDuration / categoryTotals[categoryId].doneCount;
     }
-
-    categoryTotals[categoryId].totalEstimatedDuration += estimatedDuration;
-    categoryTotals[categoryId].totalActualDuration += actualDuration;
   });
 
   const allCategoryTotal = Object.values(categoryTotals).reduce(
     (acc, category) => {
       acc.totalEstimatedDuration += category.totalEstimatedDuration;
       acc.totalActualDuration += category.totalActualDuration;
+      acc.doneCount += category.doneCount;
+      acc.averageEstimatedDuration = acc.totalEstimatedDuration / acc.doneCount;
+      acc.averageActualDuration = acc.totalActualDuration / acc.doneCount;
       return acc;
     },
     {
       categoryName: "All", // Category name for "all" category
       totalEstimatedDuration: 0,
       totalActualDuration: 0,
+      doneCount: 0,
+      averageEstimatedDuration: 0,
+      averageEstimatedDuration: 0,
     },
   );
 
@@ -110,7 +124,7 @@ const AchievementDashboard = () => {
           />
           <YAxis
             label={{
-              value: "Time (seconds)",
+              value: "Average Time (seconds)",
               angle: -90,
               position: "insideLeft",
               fill: "black",
@@ -119,12 +133,12 @@ const AchievementDashboard = () => {
           <Tooltip />
           <Legend />
           <Bar
-            dataKey="totalEstimatedDuration"
+            dataKey="averageEstimatedDuration"
             fill="lightpink"
             name="Estimated Duration"
           />
           <Bar
-            dataKey="totalActualDuration"
+            dataKey="averageActualDuration"
             fill="lightblue"
             name="Actual Duration"
             stackId="a"
