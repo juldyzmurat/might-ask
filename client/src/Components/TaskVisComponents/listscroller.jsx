@@ -20,7 +20,7 @@ const daysOfWeek = [
 function PinnedSubheaderList({ data }) {
   const [hoveredItemId, setHoveredItemId] = useState(null);
   const [isEditClicked, setIsEditClicked] = useState(false); // New state for tracking edit button click
-  const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+
   const handleMouseEnter = (itemId) => {
     setHoveredItemId(itemId);
   };
@@ -85,7 +85,8 @@ function PinnedSubheaderList({ data }) {
               {data
                 .filter((item) => {
                   return (
-                    day == daysOfWeek[(new Date(item.due).getDay() - 1 + 7) % 7]
+                    day ===
+                    daysOfWeek[(new Date(item.due).getDay() - 1 + 7) % 7]
                   );
                 })
                 .map((item) => (
