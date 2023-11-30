@@ -100,6 +100,7 @@ function PinnedSubheaderList({ data }) {
                     onMouseLeave={handleMouseLeave}
                   >
                     <ListItemText primary={item.name} />
+                    <ListItemText primary={new Date(item.due).toTimeString()} />
                     {hoveredItemId === item._id && (
                       <EditDeleteButtons
                         onEditClick={() => handleEdit(item._id)}
