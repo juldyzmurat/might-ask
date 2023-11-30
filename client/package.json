@@ -19,6 +19,7 @@
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "querystring-es3": "^0.2.1",
+    "ra-data-simple-rest": "^4.16.1",
     "react": "^18.2.0",
     "react-calendar": "^4.6.1",
     "react-dom": "^18.2.0",
