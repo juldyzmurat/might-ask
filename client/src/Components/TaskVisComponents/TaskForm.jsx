@@ -213,7 +213,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
         <div>
           <label>
-            Actual Duration (in minutes):
+            Actual Duration (in minutes, if done):
             <input
               type="number"
               value={actDur}
@@ -465,7 +465,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           </label>
         </div>
 
-        <div>
+        {/* <div>
           <label>
             Status:
             <select
@@ -478,7 +478,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               <option value="done">Done</option>
             </select>
           </label>
-        </div>
+        </div> */}
       </>
     );
   }
