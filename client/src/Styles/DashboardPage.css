@@ -8,7 +8,7 @@ body,
 }
 
 .container {
-  top:5%;
+  top: 5%;
   display: flex;
   justify-content: space-between;
   height: auto;
