@@ -291,9 +291,17 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
             Category:
             <input
               type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              value={selectedCategoryName}
+              onClick={handleCategoryClick}
+              readOnly // Make the input read-only to prevent typing for now
             />
+            {/* Render the dropdown only if isDropdownVisible is true */}
+            {isDropdownVisible && (
+              <DropdownMenu
+                items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
+                onItemClick={handleCategorySelect}
+              />
+            )}
           </label>
         </div>
       </>
