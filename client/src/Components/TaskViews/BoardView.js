@@ -1,5 +1,5 @@
 import React from "react";
-import MapAutocomplete from "../../GoogleMapContainer/AddressFill";
+import MapAutocomplete from "../GoogleMapContainer/AddressFill";
 
 const BoardView = ({ data }) => {
   const tasks = data;
