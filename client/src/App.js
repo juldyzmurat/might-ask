@@ -16,31 +16,31 @@ const dataProvider = simpleRestProvider("http://localhost:5200/");
 function App() {
   return (
     <Admin dataProvider={dataProvider}>
-      <div className="App">
-        <header className="App-header"></header>
-        <Router>
-          <Navbar />
-          <div
-            classname="main-box"
-            style={{
-              background: "#f1b6dc",
-              margin: "3.5rem auto 1.5rem",
-              padding: "2rem 1rem",
-              color: "#e8f0f2",
-              borderRadius: "2rem",
-              paddingTop: "5%",
-            }}
-          >
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/task-views" element={<TaskViews />} />
-              <Route path="/DashboardPage" element={<Dashboard />} />
-              <Route path="/schedule" element={<Schedule />} />
-            </Routes>
-          </div>
-        </Router>
-      </div>
+    <div className="App">
+      <header className="App-header"></header>
+      <Router>
+        <Navbar />
+        <div
+          className="main-box"
+          style={{
+            background: "#f1b6dc",
+            margin: "3.5rem auto 1.5rem",
+            padding: "2rem 1rem",
+            color: "#e8f0f2",
+            borderRadius: "2rem",
+            paddingTop: "5%",
+          }}
+        >
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/task-views" element={<TaskViews />} />
+            <Route path="/DashboardPage" element={<Dashboard />} />
+            <Route path="/schedule" element={<Schedule />} />
+          </Routes>
+        </div>
+      </Router>
+    </div>
     </Admin>
   );
 }
