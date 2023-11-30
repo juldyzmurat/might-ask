@@ -142,7 +142,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
         .concat(GoogleData.profileObj.email)
         .concat("/")
         .concat(`${taskId}`);
-      console.log(request);
 
       const data = JSON.stringify(taskFormData);
 

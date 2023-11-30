@@ -8,6 +8,9 @@ function LogoutButton() {
   const navigate = useNavigate();
   const onSuccess = () => {
     console.log("Log out successfull!");
+
+    localStorage.setItem("isLoggedIn", false);
+    localStorage.removeItem("currentUser");
     navigate("/");
   };
 
