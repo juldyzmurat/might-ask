@@ -45,7 +45,7 @@ const CategoryDashboard = () => {
   ];
 
   const transformedJson = newJson.map((item, index) => ({
-    name: `Category ${item.categoryId}`,
+    name: `${item.categoryId}`,
     count: item.count,
     color: pastelColors[index % pastelColors.length],
   }));
