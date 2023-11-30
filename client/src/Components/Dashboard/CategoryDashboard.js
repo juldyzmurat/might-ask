@@ -9,10 +9,8 @@ const CategoryDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-         let userEmail = localStorage.getItem('email');
-        const taskRequest = "http://localhost:5200/tasks/".concat(
-         userEmail,
-        );
+        let userEmail = localStorage.getItem("email");
+        const taskRequest = "http://localhost:5200/tasks/".concat(userEmail);
         const taskResponse = await fetch(taskRequest);
         if (!taskResponse.ok) {
           throw new Error("Failed to fetch task data");
@@ -33,23 +31,25 @@ const CategoryDashboard = () => {
     categoryCount[categoryId] = (categoryCount[categoryId] || 0) + 1;
   });
 
-
   const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({
     categoryId,
     count,
-    
   }));
 
-  
-    const pastelColors = ['#FFB6C1', '#FFD700', '#87CEEB', '#98FB98', '#FFA07A', '#DDA0DD'];
-  
-    const transformedJson = newJson.map((item, index) => ({
-      name: `Category ${item.categoryId}`,
-      count: item.count,
-      color: pastelColors[index % pastelColors.length],
-    }));
+  const pastelColors = [
+    "#FFB6C1",
+    "#FFD700",
+    "#87CEEB",
+    "#98FB98",
+    "#FFA07A",
+    "#DDA0DD",
+  ];
 
-  
+  const transformedJson = newJson.map((item, index) => ({
+    name: `Category ${item.categoryId}`,
+    count: item.count,
+    color: pastelColors[index % pastelColors.length],
+  }));
 
   return (
     <div className="container">

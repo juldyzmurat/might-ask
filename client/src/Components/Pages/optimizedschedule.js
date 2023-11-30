@@ -7,18 +7,24 @@ const OptimizedSchedule = () => {
   const [data, setData] = useState([]);
   const [taskDurations, setTaskDurations] = useState([]);
   const formatDateTime = (dateTime) => {
-    const formattedDate = dateTime.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit' });
-    const formattedTime = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const formattedDate = dateTime.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+    });
+    const formattedTime = dateTime.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
     return `${formattedDate} ${formattedTime}`;
   };
-
-  
 
   useEffect(() => {
     const fetchAndSortData = async () => {
       try {
         // Fetch tasks based on the logged-in user
-        const response = await fetch(`http://localhost:5200/tasks/${GoogleData.profileObj.email}`);
+        const response = await fetch(
+          `http://localhost:5200/tasks/${GoogleData.profileObj.email}`,
+        );
 
         // let userEmail = localStorage.getItem('email');
         // const request = "http://localhost:5200/tasks/".concat(
@@ -26,7 +32,7 @@ const OptimizedSchedule = () => {
         // );
         // const response = await fetch(request);
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error("Failed to fetch data");
         }
 
         const sortedData = await response.json();
@@ -42,7 +48,10 @@ const OptimizedSchedule = () => {
 
         // Set start and end times for each task
         const updatedData = sortedData.map((task, index) => {
-          const startTime = index === 0 ? new Date(task.due) : new Date(sortedData[index - 1].endTime);
+          const startTime =
+            index === 0
+              ? new Date(task.due)
+              : new Date(sortedData[index - 1].endTime);
           const taskDuration = task.estDur / 60; // Convert task duration to minutes
           let endTime = new Date(startTime.getTime() + taskDuration * 60000); // Convert task duration to milliseconds
 
@@ -83,23 +92,27 @@ const OptimizedSchedule = () => {
 
         setData(updatedData);
       } catch (error) {
-        console.error('Error fetching data:', error.message);
+        console.error("Error fetching data:", error.message);
       }
     };
 
     fetchAndSortData();
-  },);
+  });
 
   const generateGoogleCalendarLink = (item) => {
     const formatGoogleCalendarDate = (date) => {
-      return date.toISOString().replace(/[-:.]/g, '');
+      return date.toISOString().replace(/[-:.]/g, "");
     };
-  
+
     const startTimeUTC = formatGoogleCalendarDate(item.startTime);
     const endTimeUTC = formatGoogleCalendarDate(item.endTime);
-  
-    const googleCalendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(item.name)}&dates=${startTimeUTC}/${endTimeUTC}&details=${encodeURIComponent(item.description)}&location=${encodeURIComponent(item.location)}`;
-  
+
+    const googleCalendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+      item.name,
+    )}&dates=${startTimeUTC}/${endTimeUTC}&details=${encodeURIComponent(
+      item.description,
+    )}&location=${encodeURIComponent(item.location)}`;
+
     return googleCalendarLink;
   };
 
@@ -107,12 +120,12 @@ const OptimizedSchedule = () => {
     <div>
       <List
         sx={{
-          width: '100%',
-          maxHeight: '100%',
-          bgcolor: 'background.paper',
-          position: 'relative',
-          overflow: 'auto',
-          '& ul': { padding: 0 },
+          width: "100%",
+          maxHeight: "100%",
+          bgcolor: "background.paper",
+          position: "relative",
+          overflow: "auto",
+          "& ul": { padding: 0 },
         }}
       >
         <table>
@@ -128,28 +141,38 @@ const OptimizedSchedule = () => {
           </thead>
           <tbody>
             {data.map((item, index) => (
-              <tr key={`item-${index}-${item._id}`} style={{ color: 'blue' }}>
+              <tr key={`item-${index}-${item._id}`} style={{ color: "blue" }}>
                 <td>{item.name}</td>
-                <td>{new Date(item.due).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit' })}</td>
+                <td>
+                  {new Date(item.due).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "2-digit",
+                  })}
+                </td>
                 <td>{formatDateTime(item.startTime)}</td>
                 <td>{formatDateTime(item.endTime)}</td>
                 <td>{`${taskDurations[index]} minutes`}</td>
                 <td>
                   {/* Add to Google Calendar Link */}
-                  <a href={generateGoogleCalendarLink(item)} target="_blank" rel="noopener noreferrer">
-                    <img src={approveIcon} alt="Add to Google Calendar" style={{ width: '24px', height: '24px' }} />
+                  <a
+                    href={generateGoogleCalendarLink(item)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={approveIcon}
+                      alt="Add to Google Calendar"
+                      style={{ width: "24px", height: "24px" }}
+                    />
                   </a>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-
       </List>
     </div>
   );
 };
 
 export default OptimizedSchedule;
-
-

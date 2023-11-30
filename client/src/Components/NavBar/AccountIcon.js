@@ -28,7 +28,7 @@ const AccountIcon = () => {
   //   console.log(GoogleData);
   // }
 
-  let imageUrl =  localStorage.getItem('imgUrl')
+  let imageUrl = localStorage.getItem("imgUrl");
   if (loginImage === kittyImage) {
     loginImage = imageUrl;
   }

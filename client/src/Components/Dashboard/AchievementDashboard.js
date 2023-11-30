@@ -18,10 +18,8 @@ const AchievementDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let userEmail = localStorage.getItem('email');
-        const taskRequest = "http://localhost:5200/tasks/".concat(
-          userEmail,
-        );
+        let userEmail = localStorage.getItem("email");
+        const taskRequest = "http://localhost:5200/tasks/".concat(userEmail);
         const taskResponse = await fetch(taskRequest);
         if (!taskResponse.ok) {
           throw new Error("Failed to fetch task data");
@@ -44,18 +42,15 @@ const AchievementDashboard = () => {
   // // Initialize an object to store category-wise totals
   const categoryTotals = {};
 
-  
   const categoryCount = {};
   taskData.forEach((item) => {
     const categoryId = item.categoryid;
     categoryCount[categoryId] = (categoryCount[categoryId] || 0) + 1;
   });
 
-
   const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({
     categoryId,
     count,
-    
   }));
   // Iterate through the task data and accumulate totals
   taskData.forEach((task) => {
@@ -106,7 +101,11 @@ const AchievementDashboard = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="categoryName"
-            label={{ value: "Category", position: "insideBottom", fill: "black" }}
+            label={{
+              value: "Category",
+              position: "insideBottom",
+              fill: "black",
+            }}
             domain={[0, "dataMax"]}
           />
           <YAxis
@@ -123,8 +122,6 @@ const AchievementDashboard = () => {
             dataKey="totalEstimatedDuration"
             fill="lightpink"
             name="Estimated Duration"
-
-            
           />
           <Bar
             dataKey="totalActualDuration"
