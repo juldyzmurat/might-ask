@@ -62,7 +62,7 @@ const TaskViews = () => {
         {activeTab === "ListView" ? (
           <ListView data={data} />
         ) : (
-          <BoardView data={data} />
+          <BoardView tasks={data} />
         )}
       </div>
     </div>

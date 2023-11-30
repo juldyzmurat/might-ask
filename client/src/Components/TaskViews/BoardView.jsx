@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 // import {
   //   Typography,
   //   Card as MuiCard,
@@ -62,52 +62,61 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle,
 });
 
-const BoardView = ({ data, setData }) => {
-  const [tasks, setTasks] = useState(
+const BoardView = ({ tasks, setTasks }) => {
+  const [tasksByStatus, setTasksByStatus] = useState(
     Object.fromEntries(
-      boards.map((board) => [board.id, filterTasksByStatus(data, board.id)])
+      boards.map((board) => [board.id, filterTasksByStatus(tasks, board.id)])
     )
   );
 
+  console.log(tasksByStatus);
+
   const onDragEnd = (result) => {
     const { source, destination } = result;
+
+    console.log(result)
+
     if (!destination) {
       return;
     } // to handle dropped outside of the list
     if (source.droppableId === destination.droppableId) {
       const items = reorder(
-        tasks[source.droppableId],
+        tasksByStatus[source.droppableId],
         source.index,
         destination.index
       );
 
-      setTasks({ ...tasks, [source.droppableId]: items });
+      setTasksByStatus({ ...tasksByStatus, [source.droppableId]: items });
     } else {
       const result = move(
-        tasks[source.droppableId],
-        tasks[destination.droppableId],
+        tasksByStatus[source.droppableId],
+        tasksByStatus[destination.droppableId],
         source,
         destination
       );
 
-      setTasks({
-        ...tasks,
+      setTasksByStatus({
+        ...tasksByStatus,
         [source.droppableId]: result[source.droppableId],
         [destination.droppableId]: result[destination.droppableId],
       });
     }
   };
 
+  // const onDragStart = (result) => {
+  //   console.log("onDragStart", result);
+  // }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       {boards.map((board) => (
-        <Droppable droppableId={board.id}>
+        <Droppable key={board.id} droppableId={board.id}>
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver)}
             >
-              {tasks[board.id].map((task, index) => (
+              {tasksByStatus[board.id].map((task, index) => (
                 <Draggable key={task._id} draggableId={task._id} index={index}>
                   {(provided, snapshot) => (
                     <div
