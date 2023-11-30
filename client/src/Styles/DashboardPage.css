@@ -12,12 +12,21 @@ body,
   top:5%;
   display: flex;
   justify-content: space-between;
-  height: 80%; /* Make the container take up full height of viewport */
+  height: 100%;
+  width: 100%;
+  background-color: "#f1b6dc";
+}
+
+.chart-container {
+  background-color: "#f1b6dc";
 }
 
 .box {
-  flex: 1;
-  margin: 10px;
-  padding: 20px;
+  flex: 1; /* To make it take up available space within the container */
+  margin: 5%;
+  padding-top: 5px; /* Add padding to the top */
+  padding-bottom: 5px; /* Add padding to the bottom */
   border: 1px solid #ccc;
+  overflow: auto; /* Enable scrolling when content overflows */
+  max-height: 90%; /* Set a maximum height if needed */
 }

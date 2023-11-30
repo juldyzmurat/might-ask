@@ -61,21 +61,29 @@ const CategoryDashboard = () => {
   console.log(transformedJson);
 
   return (
-    <PieChart width={700} height={700}>
-      <Pie
-        data={transformedJson}
-        dataKey="count"
-        outerRadius={250}
-        fill="pink"
-        label
-      >
-        {transformedJson.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={entry.color} />
-        ))}
-      </Pie>
-      <Tooltip formatter={(value) => `${value} tasks`} />
-      <Legend />
-    </PieChart>
+    <div className="container">
+      <div className="chart-container">
+        <PieChart
+          width={600}
+          height={600}
+          style={{ backgroundColor: "#f1b6dc" }}
+        >
+          <Pie
+            data={transformedJson}
+            dataKey="count"
+            outerRadius={250}
+            fill="pink"
+            label
+          >
+            {transformedJson.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          <Tooltip formatter={(value) => `${value} tasks`} />
+          <Legend />
+        </PieChart>
+      </div>
+    </div>
   );
 };
 
