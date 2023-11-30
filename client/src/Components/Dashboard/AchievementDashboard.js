@@ -98,12 +98,12 @@ const AchievementDashboard = () => {
           width={500}
           height={500}
           data={categoryTotalsArray}
-          style={{ backgroundColor: "#f1b6dc" }}
+          style={{ backgroundColor: "#ffffff" }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="categoryName"
-            label={{ value: "Category", position: "insideBottom" }}
+            label={{ value: "Category", position: "insideBottom", fill: "black" }}
             domain={[0, "dataMax"]}
           />
           <YAxis
@@ -111,14 +111,17 @@ const AchievementDashboard = () => {
               value: "Time (seconds)",
               angle: -90,
               position: "insideLeft",
+              fill: "black",
             }}
           />
           <Tooltip />
           <Legend />
           <Bar
             dataKey="totalEstimatedDuration"
-            fill="lightred"
+            fill="lightpink"
             name="Estimated Duration"
+
+            
           />
           <Bar
             dataKey="totalActualDuration"
