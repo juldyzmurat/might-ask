@@ -9,7 +9,7 @@ import "../../Styles/BoardView.css";
   // } from "@mui/material";
   
 const boards = [
-  { id: "t do", display: "To Do" },
+  { id: "to do", display: "To Do" },
   { id: "in progress", display: "In Progress" },
   { id: "done", display: "Done" },
 ];
