@@ -20,8 +20,9 @@ const TaskViews = () => {
     // Function to fetch data from the backend
     const fetchData = async () => {
       try {
+        let userEmail = localStorage.getItem('email');
         const request = "http://localhost:5200/tasks/".concat(
-          GoogleData.profileObj.email,
+          userEmail,
         );
         const response = await fetch(request);
 

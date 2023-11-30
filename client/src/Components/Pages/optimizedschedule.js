@@ -20,6 +20,11 @@ const OptimizedSchedule = () => {
         // Fetch tasks based on the logged-in user
         const response = await fetch(`http://localhost:5200/tasks/${GoogleData.profileObj.email}`);
 
+        // let userEmail = localStorage.getItem('email');
+        // const request = "http://localhost:5200/tasks/".concat(
+        //   userEmail,
+        // );
+        // const response = await fetch(request);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }

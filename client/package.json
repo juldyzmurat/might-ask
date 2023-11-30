@@ -11,11 +11,13 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "buffer": "^6.0.3",
+    "chai": "^4.3.10",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "gapi-script": "^1.2.0",
     "googleapis": "^128.0.0",
     "https-browserify": "^1.0.0",
+    "mocha": "^10.2.0",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "querystring-es3": "^0.2.1",
@@ -28,13 +30,14 @@
     "react-scripts": "^5.0.1",
     "recharts": "^2.10.1",
     "styled-components": "^6.1.1",
+    "supertest": "^6.3.3",
     "url": "^0.11.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "mocha  ./src/Tests/routes.test.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

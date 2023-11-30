@@ -23,9 +23,14 @@ const AccountIcon = () => {
     setIsDropdownOpen(false);
   };
 
-  if (GoogleData !== undefined) {
-    loginImage = GoogleData.profileObj.imageUrl;
-    console.log(GoogleData);
+  // if (GoogleData !== undefined) {
+  //   loginImage = GoogleData.profileObj.imageUrl;
+  //   console.log(GoogleData);
+  // }
+
+  let imageUrl =  localStorage.getItem('imgUrl')
+  if (loginImage === kittyImage) {
+    loginImage = imageUrl;
   }
 
   return (
