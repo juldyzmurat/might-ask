@@ -15,6 +15,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
   const [category, setCategory] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [estDur, setEstDur] = useState("");
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [selectedCategoryName, setSelectedCategoryName] = useState("");
 
@@ -81,10 +82,11 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     const taskFormData = {
       name: taskName,
       due: Date.parse(dueDate),
+      estDur: estDur*60,
       location: location,
       description: description,
       start: Date.parse(startTime),
-
+      end: Date.parse(endTime),
       categoryid: category,
       userid: GoogleData.profileObj.email,
     };
@@ -116,39 +118,69 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
   const handleSubmitEdit = async (e) => {
     e.preventDefault();
+  
+    // Create an object to store the non-null fields
+    const taskFormData = {};
+  
+    // Add non-null fields to the taskFormData object
+    if (taskName) {
+      taskFormData.name = taskName;
+    }
+  
+    if (dueDate) {
+      taskFormData.due = Date.parse(dueDate);
+    }
 
-    const taskFormData = {
-      name: taskName,
-      due: Date.parse(dueDate),
-      location: location,
-      description: description,
-      start: Date.parse(startTime),
-      categoryid: category,
-      userid: GoogleData.profileObj.email,
-    };
+    if (estDur) {
+      taskFormData.estDur = estDur*60;
+    }
+  
+    if (location) {
+      taskFormData.location = location;
+    }
+  
+    if (description) {
+      taskFormData.description = description;
+    }
+  
+    if (startTime) {
+      taskFormData.start = Date.parse(startTime);
+    }
 
+    if (endTime) {
+      taskFormData.end = Date.parse(endTime);
+    }
+  
+    if (category) {
+      taskFormData.categoryid = category;
+    }
+  
+    if (GoogleData.profileObj.email) {
+      taskFormData.userid = GoogleData.profileObj.email;
+    }
+  
     console.log("Task ID:", taskId);
     console.log("Task Form Data:", taskFormData);
-
+  
     try {
       const request = "http://localhost:5200/tasks/"
         .concat(GoogleData.profileObj.email)
         .concat("/")
         .concat(`${taskId}`);
       console.log(request);
-
+  
       const data = JSON.stringify(taskFormData);
-
+  
       const response = await fetch(request, {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: data,
       });
-
+  
       console.log("Server Response Status:", response.status);
-
+  
       console.log("Server Response:", response);
-
+  
       if (!response.ok) {
         console.log("Failed to update data");
       } else {
@@ -157,7 +189,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     } catch (error) {
       console.error("Error updating data: ", error.message);
     }
-
+  
     onClose();
   };
 
@@ -184,12 +216,11 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       <>
         <div>
           <label>
-            Task Name<span style={{ color: "red" }}>*</span>:
+            Task Name:
             <input
               type="text"
               value={taskName}
               onChange={(e) => setTaskName(e.target.value)}
-              required
             />
           </label>
         </div>
@@ -201,6 +232,18 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               type="datetime-local"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
+            />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Estimated Duration (in minutes):
+            <input
+              type="number"
+              value={estDur}
+              onChange={(e) => setEstDur(e.target.value)}
+              min="0" 
             />
           </label>
         </div>
@@ -289,10 +332,18 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           <label>
             Category:
             <input
-              type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
+            type="text"
+            value={selectedCategoryName}
+            onClick={handleCategoryClick}
+            readOnly // Make the input read-only to prevent typing for now
+          />
+          {/* Render the dropdown only if isDropdownVisible is true */}
+          {isDropdownVisible && (
+            <DropdownMenu
+            items={categoryIDs.map((categoryIDs) => categoryIDs.name)}
+            onItemClick={handleCategorySelect}
+          />
+        )}
           </label>
         </div>
       </>
@@ -320,6 +371,18 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
               required
+            />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Estimated Duration (in minutes):
+            <input
+              type="number"
+              value={estDur}
+              onChange={(e) => setEstDur(e.target.value)}
+              min="0" 
             />
           </label>
         </div>

@@ -86,7 +86,7 @@ function PinnedSubheaderList({ data }) {
               {data
                 .filter((item) => {
                   return (
-                    day == daysOfWeek[(new Date(item.due).getDay() - 1) % 7]
+                    day == daysOfWeek[(new Date(item.due).getDay() - 1 + 7) % 7]
                   );
                 })
                 .map((item) => (
