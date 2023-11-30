@@ -18,6 +18,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
   const [estDur, setEstDur] = useState("");
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [selectedCategoryName, setSelectedCategoryName] = useState("");
+  const [curStatus, setStatus] = useState("");
 
   const formatDateTime = (dateTimeString) => {
     const options = {
@@ -88,6 +89,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       start: Date.parse(startTime),
       end: Date.parse(endTime),
       categoryid: category,
+      status: curStatus || "to do", 
       userid: GoogleData.profileObj.email,
     };
 
@@ -153,6 +155,10 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
   
     if (category) {
       taskFormData.categoryid = category;
+    }
+
+    if (curStatus){
+      taskFormData.status = curStatus;
     }
   
     if (GoogleData.profileObj.email) {
@@ -347,6 +353,21 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
             )}
           </label>
         </div>
+
+        <div>
+          <label>
+            Status:
+            <select
+              value={curStatus}
+              onChange={(e) => setStatus(e.target.value)}
+            >
+              <option value="to do">To Do</option>
+              <option value="in progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </label>
+        </div>
+        
       </>
     );
   } else {
@@ -475,6 +496,21 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
             )}
           </label>
         </div>
+
+        <div>
+          <label>
+            Status:
+            <select
+              value={curStatus}
+              onChange={(e) => setStatus(e.target.value)}
+            >
+              <option value="to do">To Do</option>
+              <option value="in progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </label>
+        </div>
+
       </>
     );
   }
