@@ -15,7 +15,7 @@ function App() {
       <Router>
         <Navbar />
         <div
-          classname="main-box"
+          className="main-box"
           style={{
             background: "#f1b6dc",
             margin: "3.5rem auto 1.5rem",
