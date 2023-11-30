@@ -9,9 +9,8 @@ const CategoryDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const taskRequest = "http://localhost:5200/tasks/".concat(
-          GoogleData.profileObj.email,
-        );
+        let userEmail = localStorage.getItem("email");
+        const taskRequest = "http://localhost:5200/tasks/".concat(userEmail);
         const taskResponse = await fetch(taskRequest);
         if (!taskResponse.ok) {
           throw new Error("Failed to fetch task data");
@@ -29,11 +28,8 @@ const CategoryDashboard = () => {
   const categoryCount = {};
   taskData.forEach((item) => {
     const categoryId = item.categoryid;
-    console.log(item.categoryid);
     categoryCount[categoryId] = (categoryCount[categoryId] || 0) + 1;
   });
-
-  console.log("cc", categoryCount);
 
   const newJson = Object.entries(categoryCount).map(([categoryId, count]) => ({
     categoryId,
