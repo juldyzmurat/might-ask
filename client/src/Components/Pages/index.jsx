@@ -3,7 +3,7 @@ import gif from "../../Assets/80cat.gif";
 import { LoginButton } from "../Login/LoginAPI";
 import "./../../Styles/Common.css";
 import { gapi } from "gapi-script";
-import img from "../../Assets/mighTASK.PNG";
+import img from "../../Assets/mighTASK1.png";
 
 const clientId =
   "613216441734-0c8nmpfakholp4jm5v5jp14occlu232i.apps.googleusercontent.com";

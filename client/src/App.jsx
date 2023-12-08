@@ -18,7 +18,7 @@ function App() {
       <header className="App-header"></header>
       <Router>
         <Navbar />
-        <div className="main-box">
+        {/* <div className="main-box"> */}
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -27,7 +27,7 @@ function App() {
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/catstats" element={<CatStats />} />
           </Routes>
-        </div>
+        {/* </div> */}
       </Router>
     </div>
   );
