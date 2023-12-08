@@ -2,11 +2,11 @@
 
 .board-container {
   display: flex;
-  background: #f1b6dc;
+  background: #6821eb00;
 }
 
 .board-list {
-  background: #f1b6dc;
+  background: #6821eb;
   padding: 8px;
   margin-right: 16px;
   width: 250px;
@@ -18,9 +18,9 @@
   user-select: none;
   padding: 16px;
   margin-bottom: 8px;
-  background: #f1b6dc;
+  background: #ca21eb;
 }
 
 .board-item-dragging {
-  background: lightgreen;
+  background: #da1e7985;
 }

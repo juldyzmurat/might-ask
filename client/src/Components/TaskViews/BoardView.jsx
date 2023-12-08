@@ -120,10 +120,12 @@ const BoardView = ({ tasks, setTasks }) => {
                 ref={provided.innerRef}
                 style={{
                   background: snapshot.isDraggingOver
-                    ? "lightblue"
-                    : "lightgrey",
-                  padding: grid,
-                  width: 250,
+                    ? "#6821eb"
+                    : "fc00ff",
+                  padding: "8px",
+                  marginRight: "16px",
+                  width: "250px",
+                  borderRadius: "8px",
                 }}
               >
                 {tasksByStatus[board.id].map((task, index) => (
@@ -140,10 +142,13 @@ const BoardView = ({ tasks, setTasks }) => {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style,
-                        )}
+                        style={{
+                          userSelect: "none",
+                          padding: "16px",
+                          marginBottom: "8px",
+                          background: "fc00ff",
+                          ...provided.draggableProps.style,
+                        }}
                       >
                         {task.name}
                       </div>

@@ -9,7 +9,7 @@ import { GoogleData } from "../Login/LoginAPI";
 
 function PinnedSubheaderList({ data }) {
   const [hoveredItemId, setHoveredItemId] = useState(null);
-  const [isEditClicked, setIsEditClicked] = useState(false); // New state for tracking edit button click
+  const [isEditClicked, setIsEditClicked] = useState(false);
 
   const handleMouseEnter = (itemId) => {
     setHoveredItemId(itemId);
@@ -22,12 +22,12 @@ function PinnedSubheaderList({ data }) {
   };
 
   const getColorForItem = (item) => {
-    return item.priority === "high" ? "red" : "blue";
+    return item.priority === "high" ? "text-danger" : "text-primary";
   };
 
   const handleEdit = (itemId) => {
-    setIsEditClicked(true); // Set the state to true when edit is clicked
-    setHoveredItemId(itemId); // Optionally, you can set hoveredItemId for styling
+    setIsEditClicked(true);
+    setHoveredItemId(itemId);
   };
 
   const handleCloseTaskForm = () => {
@@ -66,7 +66,6 @@ function PinnedSubheaderList({ data }) {
   }
   const daysOfWeek = removeDuplicates(daysList);
 
-  // Sort by timestamp
   function sortByDate(a, b) {
     const dateOne = Date.parse(a);
     const dateTwo = Date.parse(b);
@@ -76,20 +75,19 @@ function PinnedSubheaderList({ data }) {
   return (
     <>
       <List
+        className="list-group"
         sx={{
           width: "100%",
           maxHeight: "100%",
-          bgcolor: "background.paper",
           position: "relative",
           overflow: "auto",
-          "& ul": { padding: 0 },
         }}
         subheader={<li />}
       >
         {daysOfWeek.sort(sortByDate).map((day, index) => (
-          <li key={`section-${index}`}>
-            <ul>
-              <ListSubheader>{`${day}`}</ListSubheader>
+          <li key={`section-${index}`} className="list-group-item">
+            <ul className="list-unstyled">
+              <ListSubheader className="bg-light">{`${day}`}</ListSubheader>
               {data
                 .filter((item) => {
                   return day === new Date(item.due).toDateString();
@@ -97,7 +95,7 @@ function PinnedSubheaderList({ data }) {
                 .map((item) => (
                   <ListItem
                     key={`item-${index}-${item._id}`}
-                    style={{ color: getColorForItem(item) }}
+                    className={`d-flex justify-content-between align-items-center ${getColorForItem(item)}`}
                     onMouseEnter={() => handleMouseEnter(item._id)}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -117,17 +115,7 @@ function PinnedSubheaderList({ data }) {
       </List>
 
       {isEditClicked && (
-        <div
-          className="task-form-overlay"
-          style={{
-            position: "absolute",
-            zIndex: 1000,
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        >
+        <div className="position-fixed top-0 start-0 w-100 h-100 bg-dark">
           {console.log("Hovered Item ID:", hoveredItemId)}
           <TaskForm
             onClose={handleCloseTaskForm}
