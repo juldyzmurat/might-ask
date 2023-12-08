@@ -9,6 +9,8 @@ import About from "./Components/Pages/about";
 import Schedule from "./Components/Pages/schedule";
 import Dashboard from "./Components/Pages/DashboardPage";
 import CatStats from "./Components/Pages/catstats";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   return (
@@ -24,7 +26,6 @@ function App() {
             <Route path="/DashboardPage" element={<Dashboard />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/catstats" element={<CatStats />} />
-            
           </Routes>
         </div>
       </Router>
