@@ -12,9 +12,7 @@ import CatTracker from "../TaskViews/cattracker";
 const CatStats = () => {
   return (
     <div>
-      
-        <CatTracker/>
-     
+      <CatTracker />
     </div>
   );
 };

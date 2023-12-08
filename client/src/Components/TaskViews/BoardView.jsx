@@ -3,11 +3,11 @@ import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import "../../Styles/BoardView.css";
 
 // import {
-  //   Typography,
-  //   Card as MuiCard,
-  //   CardContent as MuiCardContent,
-  // } from "@mui/material";
-  
+//   Typography,
+//   Card as MuiCard,
+//   CardContent as MuiCardContent,
+// } from "@mui/material";
+
 const boards = [
   { id: "to do", display: "To Do" },
   { id: "in progress", display: "In Progress" },
@@ -67,8 +67,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 const BoardView = ({ tasks, setTasks }) => {
   const [tasksByStatus, setTasksByStatus] = useState(
     Object.fromEntries(
-      boards.map((board) => [board.id, filterTasksByStatus(tasks, board.id)])
-    )
+      boards.map((board) => [board.id, filterTasksByStatus(tasks, board.id)]),
+    ),
   );
 
   console.log(tasksByStatus);
@@ -76,7 +76,7 @@ const BoardView = ({ tasks, setTasks }) => {
   const onDragEnd = (result) => {
     const { source, destination } = result;
 
-    console.log(result)
+    console.log(result);
 
     if (!destination) {
       return;
@@ -85,7 +85,7 @@ const BoardView = ({ tasks, setTasks }) => {
       const items = reorder(
         tasksByStatus[source.droppableId],
         source.index,
-        destination.index
+        destination.index,
       );
 
       setTasksByStatus({ ...tasksByStatus, [source.droppableId]: items });
@@ -94,7 +94,7 @@ const BoardView = ({ tasks, setTasks }) => {
         tasksByStatus[source.droppableId],
         tasksByStatus[destination.droppableId],
         source,
-        destination
+        destination,
       );
 
       setTasksByStatus({
@@ -119,22 +119,30 @@ const BoardView = ({ tasks, setTasks }) => {
                 className="board-list"
                 ref={provided.innerRef}
                 style={{
-                  background: snapshot.isDraggingOver ? "lightblue" : "lightgrey",
+                  background: snapshot.isDraggingOver
+                    ? "lightblue"
+                    : "lightgrey",
                   padding: grid,
                   width: 250,
                 }}
               >
                 {tasksByStatus[board.id].map((task, index) => (
-                  <Draggable key={task._id} draggableId={task._id} index={index}>
+                  <Draggable
+                    key={task._id}
+                    draggableId={task._id}
+                    index={index}
+                  >
                     {(provided, snapshot) => (
                       <div
-                        className={`board-item ${snapshot.isDragging ? 'board-item-dragging' : ''}`}
+                        className={`board-item ${
+                          snapshot.isDragging ? "board-item-dragging" : ""
+                        }`}
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         style={getItemStyle(
                           snapshot.isDragging,
-                          provided.draggableProps.style
+                          provided.draggableProps.style,
                         )}
                       >
                         {task.name}

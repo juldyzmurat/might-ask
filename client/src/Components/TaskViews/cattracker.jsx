@@ -1,8 +1,7 @@
 import { GoogleData } from "../Login/LoginAPI";
 import React, { useState, useEffect } from "react";
-//import cat20 from "./20cat.gif"; 
+//import cat20 from "./20cat.gif";
 import CatGif from "./catgifs";
-
 
 const CatTracker = () => {
   const [tasks, setTasks] = useState([]);
@@ -45,4 +44,3 @@ const CatTracker = () => {
 };
 
 export default CatTracker;
-

@@ -22,7 +22,6 @@ const Navbar = () => {
           <NavLink to="/DashboardPage">Dashboard</NavLink>
           <NavLink to="/schedule">Schedule</NavLink>
           <NavLink to="/catstats">Status</NavLink>
-          
         </NavMenu>
       </Nav>
     </>

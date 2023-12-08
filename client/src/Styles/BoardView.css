@@ -1,27 +1,26 @@
 /* BoardView.css */
 
 .board-container {
-    display: flex;
-    background: #f1b6dc;
-  }
-  
-  .board-list {
-    background: #f1b6dc;
-    padding: 8px;
-    margin-right: 16px;
-    width: 250px;
-    display: flex;
-    flex-direction: column; /* Display items vertically */
-  }
-  
-  .board-item {
-    user-select: none;
-    padding: 16px;
-    margin-bottom: 8px;
-    background: #f1b6dc;
-  }
-  
-  .board-item-dragging {
-    background: lightgreen;
-  }
-  
+  display: flex;
+  background: #f1b6dc;
+}
+
+.board-list {
+  background: #f1b6dc;
+  padding: 8px;
+  margin-right: 16px;
+  width: 250px;
+  display: flex;
+  flex-direction: column; /* Display items vertically */
+}
+
+.board-item {
+  user-select: none;
+  padding: 16px;
+  margin-bottom: 8px;
+  background: #f1b6dc;
+}
+
+.board-item-dragging {
+  background: lightgreen;
+}

@@ -108,7 +108,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     }
 
     if (actDur) {
-        taskFormData.actDur = actDur * 60;
+      taskFormData.actDur = actDur * 60;
     }
 
     if (location) {

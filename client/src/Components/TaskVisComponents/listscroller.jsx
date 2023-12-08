@@ -55,15 +55,14 @@ function PinnedSubheaderList({ data }) {
     }
   };
 
-  const daysList = []; 
+  const daysList = [];
   data.map((task, index) => {
     const dayOfWeek = new Date(task.due).toDateString();
     daysList.push(dayOfWeek);
   });
 
   function removeDuplicates(arr) {
-    return arr.filter((item,
-        index) => arr.indexOf(item) === index);
+    return arr.filter((item, index) => arr.indexOf(item) === index);
   }
   const daysOfWeek = removeDuplicates(daysList);
 
@@ -93,10 +92,7 @@ function PinnedSubheaderList({ data }) {
               <ListSubheader>{`${day}`}</ListSubheader>
               {data
                 .filter((item) => {
-                  return (
-                    day ===
-                    new Date(item.due).toDateString()
-                  );
+                  return day === new Date(item.due).toDateString();
                 })
                 .map((item) => (
                   <ListItem

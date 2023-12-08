@@ -48,7 +48,7 @@ const OptimizedSchedule = () => {
 
         // Check only tasks that aren't done
         const filteredData = sortedData.filter((task, index) => {
-            return task.status === "to do" || task.status === "in progress";
+          return task.status === "to do" || task.status === "in progress";
         });
 
         // Set start and end times for each task

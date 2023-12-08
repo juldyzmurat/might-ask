@@ -22,5 +22,3 @@ const CatGif = ({ completionPercentage }) => {
 };
 
 export default CatGif;
-
-
