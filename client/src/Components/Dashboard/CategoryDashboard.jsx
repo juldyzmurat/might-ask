@@ -35,19 +35,19 @@ const CategoryDashboard = () => {
     count,
   }));
 
-  const pastelColors = [
-    "#FFB6C1",
-    "#FFD700",
-    "#87CEEB",
-    "#98FB98",
-    "#FFA07A",
-    "#DDA0DD",
+  const dNeonColors = [
+    "#0020ff",
+    "#6821eb",
+    "#8200ff",
+    "#ca21eb",
+    "#fc00ff",
+    "#da1e79"
   ];
 
   const transformedJson = newJson.map((item, index) => ({
     name: `${item.categoryId}`,
     count: item.count,
-    color: pastelColors[index % pastelColors.length],
+    color: dNeonColors[index % dNeonColors.length],
   }));
 
   return (

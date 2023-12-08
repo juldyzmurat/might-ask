@@ -138,12 +138,12 @@ const AchievementDashboard = () => {
           <Legend />
           <Bar
             dataKey="averageEstimatedDuration"
-            fill="lightpink"
+            fill="#8200ff"
             name="Estimated Duration"
           />
           <Bar
             dataKey="averageActualDuration"
-            fill="lightblue"
+            fill="#da1e79"
             name="Actual Duration"
             stackId="a"
             animationDuration={300}
