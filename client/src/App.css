@@ -29,7 +29,10 @@
   border-radius: 2rem; /* Changed to camelCase */
 /* padding-top: 5%; /* Changed to hyphenated style */
 /* } */
-*/ */ */
+
+.carousel-item {
+  transform: none !important;
+}
 
 /* Task view container */
 .TaskViews {
