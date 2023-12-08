@@ -1,0 +1,12 @@
+
+/* Bootstrap for login*/
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #b811cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgb(203, 17, 163), rgb(173, 37, 252));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgb(203, 17, 163), rgb(173, 37, 252));
+    }
