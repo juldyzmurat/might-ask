@@ -34,13 +34,15 @@ const CatTracker = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Task Statistics</h2>
-      <p>Total Tasks: {tasks.length}</p>
-      <p>Complete Tasks: {completePercentage}%</p>
-      <CatGif completionPercentage={completePercentage} />
+    <div className="container d-flex flex-column align-items-center mt-4">
+      <h2 style={{ color: '#ffffff' }}>Task Statistics</h2>
+      <h3 className="lead" style={{ color: '#000000', fontWeight: 'bold' }}>Total Tasks: {tasks.length}</h3>
+      <h3 className="lead" style={{ color: '#000000', fontWeight: 'bold' }}>Completed Tasks: {Math.round(completePercentage)}%</h3>
+
+      <CatGif completionPercentage={Math.round(completePercentage)} />
     </div>
   );
+  
 };
 
 export default CatTracker;
