@@ -128,14 +128,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       taskFormData.description = description;
     }
 
-    //if (startTime) {
-    //taskFormData.start = Date.parse(startTime);
-    //}
-
-    //if (endTime) {
-    //taskFormData.end = Date.parse(endTime);
-    //}
-
     if (category) {
       taskFormData.categoryid = category;
     }
@@ -277,27 +269,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           />
         </div>
 
-        {/* <div>
-          <label>
-            Start Time<span style={{ color: "red" }}></span>:
-            <input
-              type="datetime-local"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            End Time<span style={{ color: "red" }}></span>:
-            <input
-              type="datetime-local"
-              value={endTime}
-              onChange={(e) => setEndTime(e.target.value)}
-            />
-          </label>
-        </div> */}
 
         <div>
           <select
@@ -332,7 +303,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
         <div>
           <button type="submit">Update</button>
-        </div>
+        </div> 
       </>
     );
   } else {
@@ -422,18 +393,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           />
         </div>
 
-        {/* <div>
-          <label>
-            Start Time<span style={{ color: "red" }}></span>:
-            <input
-              type="datetime-local"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-            />
-          </label>
-        </div> */}
-
-<div>
+        <div>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -468,21 +428,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
           <button type="submit">Add task</button>
         </div>
 
-
-        {/* <div>
-          <label>
-            Status:
-            <select
-              value={curStatus}
-              onChange={(e) => setStatus(e.target.value)}
-            >
-              <option value="Default">—</option>
-              <option value="to do">To Do</option>
-              <option value="in progress">In Progress</option>
-              <option value="done">Done</option>
-            </select>
-          </label>
-        </div> */}
       </>
     );
   }
@@ -492,7 +437,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
       <FormContainer>
         {formContent}
       </FormContainer>
-      
     </form>
   );
 };
