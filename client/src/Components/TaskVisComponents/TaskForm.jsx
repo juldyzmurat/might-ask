@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
 import { GoogleData } from "../Login/LoginAPI";
+import styled from "styled-components";
+
+
+const FormContainer = styled.div`
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+`;
 
 const TaskForm = ({ onClose, editoradd, taskId }) => {
   console.log("Server Response:", taskId);
@@ -108,7 +117,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     }
 
     if (actDur) {
-        taskFormData.actDur = actDur * 60;
+      taskFormData.actDur = actDur * 60;
     }
 
     if (location) {
@@ -118,14 +127,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     if (description) {
       taskFormData.description = description;
     }
-
-    //if (startTime) {
-    //taskFormData.start = Date.parse(startTime);
-    //}
-
-    //if (endTime) {
-    //taskFormData.end = Date.parse(endTime);
-    //}
 
     if (category) {
       taskFormData.categoryid = category;
@@ -178,317 +179,264 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     formContent = (
       <>
         <div>
-          <label>
-            Task Name:
-            <input
+          <input
               type="text"
+              placeholder="Task Name"
               value={taskName}
               onChange={(e) => setTaskName(e.target.value)}
-            />
-          </label>
+          />
         </div>
 
         <div>
-          <label>
-            Due Date:
-            <input
-              type="datetime-local"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-            />
-          </label>
+          <input
+            type="datetime-local"
+            placeholder="Due Date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
         </div>
 
         <div>
-          <label>
-            Estimated Duration (in minutes):
-            <input
-              type="number"
-              value={estDur}
-              onChange={(e) => setEstDur(e.target.value)}
-              min="0"
-            />
-          </label>
+          <input
+            type="number"
+            placeholder="Estimated Duration (in minutes)"
+            value={estDur}
+            onChange={(e) => setEstDur(e.target.value)}
+            min="0"
+          />
         </div>
 
         <div>
-          <label>
-            Actual Duration (in minutes, if done):
-            <input
-              type="number"
-              value={actDur}
-              onChange={(e) => setActDur(e.target.value)}
-              min="0"
-            />
-          </label>
+          <input
+            type="number"
+            placeholder="Actual Duration (in minutes, if done)"
+            value={actDur}
+            onChange={(e) => setActDur(e.target.value)}
+            min="0"
+          />
         </div>
 
         <div>
-          <label>
-            Location:
-            <PlacesAutocomplete
-              value={location}
-              onChange={(value) => setLocation(value)}
-              onSelect={handleSelect}
-              googleCallbackName="initGooglePlaces"
-              googlePlacesAutocomplete={{
-                apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0",
-              }}
-            >
-              {({
-                getInputProps,
-                suggestions,
-                getSuggestionItemProps,
-                loading,
-              }) => (
-                <div>
-                  <input
-                    {...getInputProps({
-                      placeholder: "Enter your address...",
-                      className: "location-search-input",
-                    })}
-                  />
-                  <div className="autocomplete-dropdown-container">
-                    {loading && <div>Loading...</div>}
-                    {suggestions.map((suggestion) => {
-                      const style = {
-                        backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
-                      };
-                      return (
-                        <div
-                          {...getSuggestionItemProps(suggestion, {
-                            style,
-                          })}
-                        >
-                          {suggestion.description}
-                        </div>
-                      );
-                    })}
-                  </div>
+          <PlacesAutocomplete
+            value={location}
+            onChange={(value) => setLocation(value)}
+            onSelect={handleSelect}
+            googleCallbackName="initGooglePlaces"
+            googlePlacesAutocomplete={{
+              apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0", // Replace with your actual API key
+            }}
+          >
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
+              <div>
+                <input
+                  {...getInputProps({
+                    placeholder: "Enter your address...",
+                    className: "location-search-input",
+                  })}
+                />
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map((suggestion) => {
+                    const style = {
+                      backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
+                    };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          style,
+                        })}
+                      >
+                        {suggestion.description}
+                      </div>
+                    );
+                  })}
                 </div>
-              )}
-            </PlacesAutocomplete>
-          </label>
+              </div>
+            )}
+          </PlacesAutocomplete>
         </div>
 
         <div>
-          <label>
-            Description:
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </label>
+          <textarea
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </div>
 
-        {/* <div>
-          <label>
-            Start Time<span style={{ color: "red" }}></span>:
-            <input
-              type="datetime-local"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-            />
-          </label>
+
+        <div>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="" disabled hidden>
+              Category
+            </option>
+            <option value="Work">Work</option>
+            <option value="School">School</option>
+            <option value="Personal">Personal</option>
+            <option value="Extracurricular">Extracurricular</option>
+            <option value="Leisure">Leisure</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
         <div>
-          <label>
-            End Time<span style={{ color: "red" }}></span>:
-            <input
-              type="datetime-local"
-              value={endTime}
-              onChange={(e) => setEndTime(e.target.value)}
-            />
-          </label>
-        </div> */}
-
-        <div>
-          <label>
-            Category:
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="Default">—</option>
-              <option value="Work">Work</option>
-              <option value="School">School</option>
-              <option value="Personal">Personal</option>
-              <option value="Extracurricular">Extracurricular</option>
-              <option value="Leisure">Leisure</option>
-              <option value="Other">Other</option>
-            </select>
-          </label>
+          <select
+            value={curStatus}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="" disabled hidden>
+              Status
+            </option>
+            <option value="to do">To Do</option>
+            <option value="in progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
         </div>
 
         <div>
-          <label>
-            Status:
-            <select
-              value={curStatus}
-              onChange={(e) => setStatus(e.target.value)}
-            >
-              <option value="Default">—</option>
-              <option value="to do">To Do</option>
-              <option value="in progress">In Progress</option>
-              <option value="done">Done</option>
-            </select>
-          </label>
-        </div>
+          <button type="submit">Update</button>
+        </div> 
       </>
     );
   } else {
     formContent = (
       <>
         <div>
-          <label>
-            Task Name<span style={{ color: "red" }}>*</span>:
-            <input
-              type="text"
-              value={taskName}
-              onChange={(e) => setTaskName(e.target.value)}
-              required
-            />
-          </label>
+          <input
+            type="text"
+            placeholder="Task Name"
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+            required
+          />
         </div>
 
         <div>
-          <label>
-            Due Date<span style={{ color: "red" }}>*</span>:
-            <input
-              type="datetime-local"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-              required
-            />
-          </label>
+          <input
+            type="datetime-local"
+            placeholder="Due Date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            required
+          />
         </div>
 
         <div>
-          <label>
-            Estimated Duration (in minutes)
-            <span style={{ color: "red" }}>*</span>:
-            <input
-              type="number"
-              value={estDur}
-              onChange={(e) => setEstDur(e.target.value)}
-              min="0"
-              required
-            />
-          </label>
+          <input
+            type="number"
+            placeholder="Estimated Duration (in minutes)"
+            value={estDur}
+            onChange={(e) => setEstDur(e.target.value)}
+            min="0"
+            required 
+          />
         </div>
 
         <div>
-          <label>
-            Location:
-            <PlacesAutocomplete
-              value={location}
-              onChange={(value) => setLocation(value)}
-              onSelect={handleSelect}
-              googleCallbackName="initGooglePlaces"
-              googlePlacesAutocomplete={{
-                apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0", // Replace with your actual API key
-              }}
-            >
-              {({
-                getInputProps,
-                suggestions,
-                getSuggestionItemProps,
-                loading,
-              }) => (
-                <div>
-                  <input
-                    {...getInputProps({
-                      placeholder: "Enter your address...",
-                      className: "location-search-input",
-                    })}
-                  />
-                  <div className="autocomplete-dropdown-container">
-                    {loading && <div>Loading...</div>}
-                    {suggestions.map((suggestion) => {
-                      const style = {
-                        backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
-                      };
-                      return (
-                        <div
-                          {...getSuggestionItemProps(suggestion, {
-                            style,
-                          })}
-                        >
-                          {suggestion.description}
-                        </div>
-                      );
-                    })}
-                  </div>
+          <PlacesAutocomplete
+            value={location}
+            onChange={(value) => setLocation(value)}
+            onSelect={handleSelect}
+            googleCallbackName="initGooglePlaces"
+            googlePlacesAutocomplete={{
+              apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0", // Replace with your actual API key
+            }}
+          >
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
+              <div>
+                <input
+                  {...getInputProps({
+                    placeholder: "Enter your address...",
+                    className: "location-search-input",
+                  })}
+                />
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map((suggestion) => {
+                    const style = {
+                      backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
+                    };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          style,
+                        })}
+                      >
+                        {suggestion.description}
+                      </div>
+                    );
+                  })}
                 </div>
-              )}
-            </PlacesAutocomplete>
-          </label>
+              </div>
+            )}
+          </PlacesAutocomplete>
         </div>
 
         <div>
-          <label>
-            Description:
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </label>
+          <textarea
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </div>
-
-        {/* <div>
-          <label>
-            Start Time<span style={{ color: "red" }}></span>:
-            <input
-              type="datetime-local"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-            />
-          </label>
-        </div> */}
 
         <div>
-          <label>
-            Category:
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="Default">—</option>
-              <option value="Work">Work</option>
-              <option value="School">School</option>
-              <option value="Personal">Personal</option>
-              <option value="Extracurricular">Extracurricular</option>
-              <option value="Leisure">Leisure</option>
-              <option value="Other">Other</option>
-            </select>
-          </label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="" disabled hidden>
+              Category
+            </option>
+            <option value="Work">Work</option>
+            <option value="School">School</option>
+            <option value="Personal">Personal</option>
+            <option value="Extracurricular">Extracurricular</option>
+            <option value="Leisure">Leisure</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
-        {/* <div>
-          <label>
-            Status:
-            <select
-              value={curStatus}
-              onChange={(e) => setStatus(e.target.value)}
-            >
-              <option value="Default">—</option>
-              <option value="to do">To Do</option>
-              <option value="in progress">In Progress</option>
-              <option value="done">Done</option>
-            </select>
-          </label>
-        </div> */}
+        <div>
+          <select
+            value={curStatus}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="" disabled hidden>
+              Status
+            </option>
+            <option value="to do">To Do</option>
+            <option value="in progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+
+        <div>
+          <button type="submit">Add task</button>
+        </div>
+
       </>
     );
   }
 
   return (
     <form onSubmit={editoradd === "Edit" ? handleSubmitEdit : handleSubmitAdd}>
-      {formContent}
-      <div>
-        <button type="submit">Submit</button>
-      </div>
+      <FormContainer>
+        {formContent}
+      </FormContainer>
     </form>
   );
 };

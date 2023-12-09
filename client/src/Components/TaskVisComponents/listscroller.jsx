@@ -7,9 +7,10 @@ import EditDeleteButtons from "./EditDeleteButtons";
 import TaskForm from "./TaskForm";
 import { GoogleData } from "../Login/LoginAPI";
 
+
 function PinnedSubheaderList({ data }) {
   const [hoveredItemId, setHoveredItemId] = useState(null);
-  const [isEditClicked, setIsEditClicked] = useState(false); // New state for tracking edit button click
+  const [isEditClicked, setIsEditClicked] = useState(false);
 
   const handleMouseEnter = (itemId) => {
     setHoveredItemId(itemId);
@@ -22,12 +23,12 @@ function PinnedSubheaderList({ data }) {
   };
 
   const getColorForItem = (item) => {
-    return item.priority === "high" ? "red" : "blue";
+    return item.priority === "high" ? "text-danger" : "text-primary";
   };
 
   const handleEdit = (itemId) => {
-    setIsEditClicked(true); // Set the state to true when edit is clicked
-    setHoveredItemId(itemId); // Optionally, you can set hoveredItemId for styling
+    setIsEditClicked(true);
+    setHoveredItemId(itemId);
   };
 
   const handleCloseTaskForm = () => {
@@ -55,19 +56,17 @@ function PinnedSubheaderList({ data }) {
     }
   };
 
-  const daysList = []; 
+  const daysList = [];
   data.map((task, index) => {
     const dayOfWeek = new Date(task.due).toDateString();
     daysList.push(dayOfWeek);
   });
 
   function removeDuplicates(arr) {
-    return arr.filter((item,
-        index) => arr.indexOf(item) === index);
+    return arr.filter((item, index) => arr.indexOf(item) === index);
   }
   const daysOfWeek = removeDuplicates(daysList);
 
-  // Sort by timestamp
   function sortByDate(a, b) {
     const dateOne = Date.parse(a);
     const dateTwo = Date.parse(b);
@@ -77,36 +76,34 @@ function PinnedSubheaderList({ data }) {
   return (
     <>
       <List
+        className="list-group"
         sx={{
           width: "100%",
           maxHeight: "100%",
-          bgcolor: "background.paper",
           position: "relative",
           overflow: "auto",
-          "& ul": { padding: 0 },
         }}
         subheader={<li />}
       >
         {daysOfWeek.sort(sortByDate).map((day, index) => (
-          <li key={`section-${index}`}>
-            <ul>
-              <ListSubheader>{`${day}`}</ListSubheader>
+          <li key={`section-${index}`} className="list-group-item">
+            <ul className="list-unstyled">
+              <ListSubheader className="bg-light">{`${day}`}</ListSubheader>
               {data
                 .filter((item) => {
-                  return (
-                    day ===
-                    new Date(item.due).toDateString()
-                  );
+                  return day === new Date(item.due).toDateString();
                 })
                 .map((item) => (
                   <ListItem
                     key={`item-${index}-${item._id}`}
-                    style={{ color: getColorForItem(item) }}
+                    className={`d-flex justify-content-between align-items-center ${getColorForItem(item)}`}
                     onMouseEnter={() => handleMouseEnter(item._id)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <ListItemText primary={item.name} />
-                    <ListItemText primary={new Date(item.due).toTimeString()} />
+                    <ListItemText style={{ color: '#8200ff' }} primary={item.name} />
+                    <ListItemText style={{ color: '#8200ff' }} primary={new Date(item.due).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} />
+
+
                     {hoveredItemId === item._id && (
                       <EditDeleteButtons
                         onEditClick={() => handleEdit(item._id)}
@@ -120,24 +117,18 @@ function PinnedSubheaderList({ data }) {
         ))}
       </List>
 
+      {/* {isEditClicked && (
+        // <div className="position-fixed top-0 start-0 w-100 h-100 bg-dark">
+        //   {console.log("Hovered Item ID:", hoveredItemId)}
+        <div className="task-form-overlay">
+          <TaskForm onClose={handleCloseTaskForm} editoradd="Edit" taskId={hoveredItemId}/>
+        </div>
+        // </div>
+      )} */}
+
       {isEditClicked && (
-        <div
-          className="task-form-overlay"
-          style={{
-            position: "absolute",
-            zIndex: 1000,
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          {console.log("Hovered Item ID:", hoveredItemId)}
-          <TaskForm
-            onClose={handleCloseTaskForm}
-            editoradd="Edit"
-            taskId={hoveredItemId}
-          />
+        <div className="task-form-overlay" style={{ zIndex: 1000 }}>
+          <TaskForm onClose={handleCloseTaskForm} editoradd="Edit" taskId={hoveredItemId}/>
         </div>
       )}
     </>

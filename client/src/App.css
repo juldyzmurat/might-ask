@@ -5,6 +5,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: #780485;
+  background: -webkit-linear-gradient(to right, rgb(116, 9, 93), rgb(77, 0, 122));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgb(116, 9, 93), rgb(77, 0, 122));
 }
 
 .App-logo {
@@ -16,13 +21,17 @@
   width: 200px;
   height: 200px;
 }
-.main-box {
+/* .main-box {
   background: #f1b6dc; /* Removed quotes around color value */
-  margin: 3.5rem auto 1.5rem;
+/* margin: 3.5rem auto 1.5rem;
   padding: 2rem 1rem;
   color: #e8f0f2;
   border-radius: 2rem; /* Changed to camelCase */
-  padding-top: 5%; /* Changed to hyphenated style */
+/* padding-top: 5%; /* Changed to hyphenated style */
+/* } */
+
+.carousel-item {
+  transform: none !important;
 }
 
 /* Task view container */
@@ -30,7 +39,7 @@
   width: 600px;
   height: 600px;
   min-height: 400px;
-  background: #f1b6dc;
+  /* background: #f1b6dc; */
   margin: 3.5rem auto 1.5rem;
   padding: 2rem 1rem;
   color: #e8f0f2;
@@ -47,7 +56,7 @@ ul.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #39a2db;
+  border: 1px solid #fc00ff;
   border-radius: 2rem;
   padding-left: 0px;
   @media (max-width: 768px) {
@@ -73,7 +82,7 @@ ul.nav li:hover {
   background: rgba(50, 224, 196, 0.15);
 }
 ul.nav li.active {
-  background: #39a2db;
+  background: #fc00ff;
 }
 
 .ListView p {

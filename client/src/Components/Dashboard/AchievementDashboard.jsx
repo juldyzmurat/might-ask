@@ -56,25 +56,29 @@ const AchievementDashboard = () => {
   taskData.forEach((task) => {
     const categoryId = task.categoryid;
     if (task.actDur) {
-        const estimatedDuration = task.estDur;
-        const actualDuration = task.actDur;
+      const estimatedDuration = task.estDur;
+      const actualDuration = task.actDur;
 
-        if (!categoryTotals[categoryId]) {
-            categoryTotals[categoryId] = {
-              categoryName: categoryId,
-              totalEstimatedDuration: 0,
-              totalActualDuration: 0,
-              doneCount: 0,
-              averageEstimatedDuration: 0,
-              averageActualDuration: 0,
-            };
-        }
+      if (!categoryTotals[categoryId]) {
+        categoryTotals[categoryId] = {
+          categoryName: categoryId,
+          totalEstimatedDuration: 0,
+          totalActualDuration: 0,
+          doneCount: 0,
+          averageEstimatedDuration: 0,
+          averageActualDuration: 0,
+        };
+      }
 
-        categoryTotals[categoryId].doneCount += 1;
-        categoryTotals[categoryId].totalEstimatedDuration += estimatedDuration;
-        categoryTotals[categoryId].totalActualDuration += actualDuration;
-        categoryTotals[categoryId].averageEstimatedDuration = categoryTotals[categoryId].totalEstimatedDuration / categoryTotals[categoryId].doneCount;
-        categoryTotals[categoryId].averageActualDuration = categoryTotals[categoryId].totalActualDuration / categoryTotals[categoryId].doneCount;
+      categoryTotals[categoryId].doneCount += 1;
+      categoryTotals[categoryId].totalEstimatedDuration += estimatedDuration;
+      categoryTotals[categoryId].totalActualDuration += actualDuration;
+      categoryTotals[categoryId].averageEstimatedDuration =
+        categoryTotals[categoryId].totalEstimatedDuration /
+        categoryTotals[categoryId].doneCount;
+      categoryTotals[categoryId].averageActualDuration =
+        categoryTotals[categoryId].totalActualDuration /
+        categoryTotals[categoryId].doneCount;
     }
   });
 
@@ -134,12 +138,12 @@ const AchievementDashboard = () => {
           <Legend />
           <Bar
             dataKey="averageEstimatedDuration"
-            fill="lightpink"
+            fill="#8200ff"
             name="Estimated Duration"
           />
           <Bar
             dataKey="averageActualDuration"
-            fill="lightblue"
+            fill="#da1e79"
             name="Actual Duration"
             stackId="a"
             animationDuration={300}
