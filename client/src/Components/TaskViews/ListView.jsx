@@ -25,13 +25,14 @@ const ListView = ({ data }) => {
       <div>
         <PlusButton onClick={handleAddTaskClick} />
         {showTaskForm && (
-          <div className="task-form-overlay">
+          <div className="task-form-overlay" style={{ zIndex: 1000 }}>
             <TaskForm onClose={handleCloseTaskForm} editoradd="Add" />
           </div>
         )}
       </div>
     </div>
   );
+  
 };
 
 export default ListView;

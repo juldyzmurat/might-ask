@@ -117,13 +117,19 @@ function PinnedSubheaderList({ data }) {
         ))}
       </List>
 
-      {isEditClicked && (
+      {/* {isEditClicked && (
         // <div className="position-fixed top-0 start-0 w-100 h-100 bg-dark">
         //   {console.log("Hovered Item ID:", hoveredItemId)}
         <div className="task-form-overlay">
           <TaskForm onClose={handleCloseTaskForm} editoradd="Edit" taskId={hoveredItemId}/>
         </div>
         // </div>
+      )} */}
+
+      {isEditClicked && (
+        <div className="task-form-overlay" style={{ zIndex: 1000 }}>
+          <TaskForm onClose={handleCloseTaskForm} editoradd="Edit" taskId={hoveredItemId}/>
+        </div>
       )}
     </>
   );
