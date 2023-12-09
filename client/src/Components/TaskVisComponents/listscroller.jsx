@@ -7,6 +7,7 @@ import EditDeleteButtons from "./EditDeleteButtons";
 import TaskForm from "./TaskForm";
 import { GoogleData } from "../Login/LoginAPI";
 
+
 function PinnedSubheaderList({ data }) {
   const [hoveredItemId, setHoveredItemId] = useState(null);
   const [isEditClicked, setIsEditClicked] = useState(false);
@@ -99,8 +100,10 @@ function PinnedSubheaderList({ data }) {
                     onMouseEnter={() => handleMouseEnter(item._id)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <ListItemText primary={item.name} />
-                    <ListItemText primary={new Date(item.due).toTimeString()} />
+                    <ListItemText style={{ color: '#8200ff' }} primary={item.name} />
+                    <ListItemText style={{ color: '#8200ff' }} primary={new Date(item.due).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} />
+
+
                     {hoveredItemId === item._id && (
                       <EditDeleteButtons
                         onEditClick={() => handleEdit(item._id)}

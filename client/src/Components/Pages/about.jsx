@@ -8,8 +8,8 @@ const About = () => {
 
 
   const imageStyle = {
-    width: "1000px",
-    height: "600px", // Change the height as needed
+    width: "384px",
+    height: "480px", // Change the height as needed
   };
 
   return (
