@@ -151,55 +151,58 @@ const BoardView = ({ tasks, setTasks }) => {
   };
 
   return (
-    <div className="board-container">
+    <div className="board-container d-flex justify-content-center align-items-center">  
       <DragDropContext onDragEnd={onDragEnd}>
         {boards.map((board) => (
-          <Droppable key={board.id} droppableId={board.id}>
-            {(provided, snapshot) => (
-              <div
-                className="board-list"
-                ref={provided.innerRef}
-                style={{
-                  background: snapshot.isDraggingOver
-                    ? "#6821eb"
-                    : "fc00ff",
-                  padding: "8px",
-                  marginRight: "16px",
-                  width: "250px",
-                  borderRadius: "8px",
-                }}
-              >
-                {tasksByStatus[board.id].map((task, index) => (
-                  <Draggable
-                    key={task._id}
-                    draggableId={task._id}
-                    index={index}
-                  >
-                    {(provided, snapshot) => (
-                      <div
-                        className={`board-item ${
-                          snapshot.isDragging ? "board-item-dragging" : ""
-                        }`}
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={{
-                          userSelect: "none",
-                          padding: "16px",
-                          marginBottom: "8px",
-                          background: "fc00ff",
-                          ...provided.draggableProps.style,
-                        }}
-                      >
-                        {task.name}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
+          <div key={board.id}>
+            <h6 style={{ textAlign: "center", color: "#yourHexCode" }}>
+              {board.display}
+            </h6>
+            <Droppable key={board.id} droppableId={board.id}>
+              {(provided, snapshot) => (
+                <div
+                  className="board-list"
+                  ref={provided.innerRef}
+                  style={{
+                    background: snapshot.isDraggingOver ? "#6821eb" : "fc00ff",
+                    padding: "8px",
+                    marginRight: "16px",
+                    width: "250px",
+                    borderRadius: "8px",
+                  }}
+                >
+                  {tasksByStatus[board.id].map((task, index) => (
+                    <Draggable
+                      key={task._id}
+                      draggableId={task._id}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          className={`board-item ${
+                            snapshot.isDragging ? "board-item-dragging" : ""
+                          }`}
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={{
+                            userSelect: "none",
+                            padding: "16px",
+                            marginBottom: "8px",
+                            background: "fc00ff",
+                            ...provided.draggableProps.style,
+                          }}
+                        >
+                          {task.name}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
         ))}
       </DragDropContext>
     </div>
