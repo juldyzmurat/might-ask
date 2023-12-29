@@ -14,7 +14,8 @@ function Home() {
       if (!gapi.auth2.getAuthInstance()) {
         gapi.auth2.init({
           client_id: clientId,
-          scope: "profile email",
+          scope: "profile email https://www.googleapis.com/auth/calendar",
+          //scope: "profile email"
         });
       }
     }
