@@ -30,8 +30,16 @@
 /* padding-top: 5%; /* Changed to hyphenated style */
 /* } */
 
-.carousel-item {
-  transform: none !important;
+
+#carouselExampleCaptions .carousel-item {
+  transition: none !important;
+}
+
+#carouselExampleCaptions .carousel-control-prev{
+  transition: none !important;
+}
+#carouselExampleCaptions .carousel-control-next {
+  transition: none !important;
 }
 
 /* Task view container */

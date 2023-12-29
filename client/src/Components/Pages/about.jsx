@@ -4,13 +4,19 @@ import gif1 from "../../Assets/aboutcat.gif";
 import gif2 from "../../Assets/learningcat.gif";
 import gif3 from "../../Assets/donecat.gif";
 
+
+
 const About = () => {
 
 
   const imageStyle = {
     width: "384px",
-    height: "480px", // Change the height as needed
+    height: "480px",
+  // Change the height as needed
   };
+  
+
+  
 
   return (
     <div id="carouselExampleCaptions" className="carousel slide" >
