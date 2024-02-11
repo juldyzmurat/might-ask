@@ -223,7 +223,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
             onSelect={handleSelect}
             googleCallbackName="initGooglePlaces"
             googlePlacesAutocomplete={{
-              apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0", // Replace with your actual API key
+              apiKey: "AIzaSyCtkKfUMT6mTU5QYrNb2qaIIpwAEW04qIg", // Replace with your actual API key
             }}
           >
             {({
@@ -347,7 +347,7 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
             onSelect={handleSelect}
             googleCallbackName="initGooglePlaces"
             googlePlacesAutocomplete={{
-              apiKey: "AIzaSyBLZu5W8WZiQFTzOQGpOVR0FaxaEPE1zv0", // Replace with your actual API key
+              apiKey: "AIzaSyCjtzk3FOsDTVE0_qm1im1xPvXOICqa1Z4", // Replace with your actual API key
             }}
           >
             {({
