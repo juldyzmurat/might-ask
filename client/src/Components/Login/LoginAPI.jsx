@@ -2,8 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import React from "react";
 
-const clientID =
-  "613216441734-0c8nmpfakholp4jm5v5jp14occlu232i.apps.googleusercontent.com";
+
+
+const clientID = "613216441734-0c8nmpfakholp4jm5v5jp14occlu232i.apps.googleusercontent.com";
 
 let GoogleData;
 

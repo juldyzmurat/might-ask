@@ -5,6 +5,8 @@
   background: #6821eb00;
 }
 
+
+
 .board-list {
   background: #6821eb;
   padding: 8px;
@@ -12,6 +14,8 @@
   width: 250px;
   display: flex;
   flex-direction: column; /* Display items vertically */
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 250px; /* Set the maximum height for the scrollable list */
 }
 
 .board-item {

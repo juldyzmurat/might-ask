@@ -18,7 +18,17 @@ const CatGif = ({ completionPercentage }) => {
   // Get the corresponding GIF image
   const gifImage = gifImages[gifIndex];
 
-  return <img src={gifImage} alt="Cat GIF" />;
+  // Define uniform width and height for the images
+  const style = {
+    width: '400px', // Set the desired width
+    height: '400px' // Set the desired height
+  };
+
+  return <img src={gifImage} alt="Cat GIF" style={style} />;
 };
 
 export default CatGif;
+
+
+
+
