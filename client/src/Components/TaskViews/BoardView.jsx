@@ -18,7 +18,6 @@ const boardColors = {
 
 
 
-
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -160,6 +159,7 @@ const BoardView = ({ tasks, setTasks }) => {
   };
 
   return (
+    
     <div className="board-container d-flex justify-content-center align-items-center">  
       <DragDropContext onDragEnd={onDragEnd}>
         {boards.map((board) => (
@@ -184,12 +184,15 @@ const BoardView = ({ tasks, setTasks }) => {
                   }}
                 >
                   {tasksByStatus[board.id].map((task, index) => (
+
                     <Draggable
                       key={task._id}
                       draggableId={task._id}
                       index={index}
                     >
                       {(provided, snapshot) => (
+
+
                         <div
                           className={`board-item ${snapshot.isDragging ? "board-item-dragging" : ""}`}
                           ref={provided.innerRef}
@@ -203,6 +206,7 @@ const BoardView = ({ tasks, setTasks }) => {
                             ...provided.draggableProps.style,
                           }}
                         >
+
                           {task.name}
                         </div>
                       )}
