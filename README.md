@@ -76,9 +76,10 @@ The app generates a schedule to maximize the tasks before their due date.
 An event with its name, start, and end times can be added to the Google calendar of a Google account, currently signed in on the brower
 
 ## Demo 
-<a href="[http://www.youtube.com/watch?feature=player_embedded&v=VIDEO_ID](https://www.youtube.com/watch?v=eMNY3zI-TPM)
-" target="_blank"><img src="[http://img.youtube.com/vi/VIDEO_ID/0.jpg](https://www.youtube.com/watch?v=eMNY3zI-TPM)" 
-alt="Video Title" width="240" height="180" border="10" /></a>
+
+
+https://github.com/juldyzmurat/mightask/assets/105715486/99b70f67-cdcc-4ace-b25c-d8d6e50b8806
+
 
 ## Credits
 zxu4@cas.edu
