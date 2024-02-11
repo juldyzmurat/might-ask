@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# .env
+
+This project requires a .env file with keys for google maps api and google OAuth 2.0 
+
 ## Available Scripts
 
 In the project directory, you can run:
