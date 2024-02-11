@@ -22,7 +22,7 @@ const AddressAutofill = () => {
         maxZoom: 22,
         mapId: "",
       },
-      mapsApiKey: "AIzaSyDLT8Jcv8ei7xL0DE93MVw_1l1VCshblXE",
+      mapsApiKey: process.env.GOOGLEM_KEY,
       capabilities: {
         addressAutocompleteControl: true,
         mapDisplayControl: true,

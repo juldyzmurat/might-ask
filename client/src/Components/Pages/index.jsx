@@ -5,8 +5,7 @@ import "./../../Styles/Common.css";
 import { gapi } from "gapi-script";
 import img from "../../Assets/mighTASK1.png";
 
-const clientId =
-  "613216441734-0c8nmpfakholp4jm5v5jp14occlu232i.apps.googleusercontent.com";
+const clientId = process.env.CLIENT_KEY;
 
 function Home() {
   useEffect(() => {
