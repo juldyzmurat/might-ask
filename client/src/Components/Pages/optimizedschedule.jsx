@@ -168,7 +168,17 @@ const OptimizedSchedule = () => {
               task.endTime = endTime;
               updatedData.push(task);
             }
+            else{
+              console.log(task.name,"cannot be scheudled");
+              currentTime = startTime; // Update current time
+              task.startTime = null; // Assign start time to the task
+              task.endTime = null;   // Assign end time to the task
+              updatedData.push(task);
+
+            }
           } else {
+            
+
             // No overlap with any calendar event
             // Update current time
             currentTime = endTime;
