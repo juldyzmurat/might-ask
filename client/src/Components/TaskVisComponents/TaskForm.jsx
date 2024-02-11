@@ -4,14 +4,37 @@ import { GoogleData } from "../Login/LoginAPI";
 import styled from "styled-components";
 
 
+
+
 const FormContainer = styled.div`
   background-color: white;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  width: 350px;
+  height: 500px;
+`;
+
+const AutocompleteContainer = styled.div`
+  position: relative;
+`;
+
+const AutocompleteDropdown = styled.div`
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 150px; /* Set maximum height for dropdown */
+  overflow-y: auto; /* Enable vertical scrolling if dropdown exceeds max height */
 `;
 
 const TaskForm = ({ onClose, editoradd, taskId }) => {
+
   console.log("Server Response:", taskId);
   const [taskName, setTaskName] = useState("");
   const [location, setLocation] = useState("");
@@ -21,13 +44,13 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
   const [estDur, setEstDur] = useState("");
   const [actDur, setActDur] = useState("");
   const [curStatus, setStatus] = useState("");
-
   const [, setCategoryID] = useState([]);
+
   useEffect(() => {
     const fetchCategory = async () => {
       try {
         const request = "http://localhost:5200/categories/".concat(
-          GoogleData.profileObj.email,
+          GoogleData.profileObj.email
         );
         const response = await fetch(request);
         if (!response.ok) {
@@ -41,7 +64,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     };
     fetchCategory();
   }, []);
-  // console.log(categoryIDs);
 
   const handleSelect = async (address) => {
     try {
@@ -99,7 +121,6 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
 
   const handleSubmitEdit = async (e) => {
     e.preventDefault();
-
     // Create an object to store the non-null fields
     const taskFormData = {};
 
@@ -173,269 +194,121 @@ const TaskForm = ({ onClose, editoradd, taskId }) => {
     onClose();
   };
 
-  let formContent;
-
-  if (editoradd === "Edit") {
-    formContent = (
-      <>
-        <div>
-          <input
+  return (
+    <form onSubmit={editoradd === "Edit" ? handleSubmitEdit : handleSubmitAdd}>
+      <FormContainer className="container">
+        <div className="row">
+          <div className="col">
+            <input
               type="text"
+              className="form-control mb-3"
               placeholder="Task Name"
               value={taskName}
               onChange={(e) => setTaskName(e.target.value)}
-          />
+            />
+            <input
+              type="datetime-local"
+              className="form-control mb-3"
+              placeholder="Due Date"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+            />
+            <input
+              type="number"
+              className="form-control mb-3"
+              placeholder="Estimated Duration (in minutes)"
+              value={estDur}
+              onChange={(e) => setEstDur(e.target.value)}
+              min="0"
+            />
+            <input
+              type="number"
+              className="form-control mb-3"
+              placeholder="Actual Duration (in minutes, if done)"
+              value={actDur}
+              onChange={(e) => setActDur(e.target.value)}
+              min="0"
+            />
+            <AutocompleteContainer>
+              <PlacesAutocomplete
+                value={location}
+                onChange={(value) => setLocation(value)}
+                onSelect={handleSelect}
+                googleCallbackName="initGooglePlaces"
+                googlePlacesAutocomplete={{
+                  apiKey: "AIzaSyCtkKfUMT6mTU5QYrNb2qaIIpwAEW04qIg",
+                }}
+              >
+                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                  <AutocompleteDropdown>
+                    <input
+                      {...getInputProps({
+                        placeholder: "Enter your address...",
+                        className: "form-control location-search-input",
+                      })}
+                    />
+                    <div className="autocomplete-dropdown-container">
+                      {loading && <div>Loading...</div>}
+                      {suggestions.map((suggestion) => {
+                        const style = {
+                          backgroundColor: suggestion.active ? "#fffff" : "#00000",
+                          color: suggestion.active ? "#000" : "#333",
+                        };
+                        return (
+                          <div
+                            {...getSuggestionItemProps(suggestion, {
+                              style,
+                            })}
+                          >
+                            {suggestion.description}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </AutocompleteDropdown>
+                )}
+              </PlacesAutocomplete>
+            </AutocompleteContainer>
+            <textarea
+              className="form-control mb-3"
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
+            <select
+              className="form-select mb-3"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="" disabled hidden>
+                Category
+              </option>
+              <option value="Work">Work</option>
+              <option value="School">School</option>
+              <option value="Personal">Personal</option>
+              <option value="Extracurricular">Extracurricular</option>
+              <option value="Leisure">Leisure</option>
+              <option value="Other">Other</option>
+            </select>
+            <select
+              className="form-select mb-3"
+              value={curStatus}
+              onChange={(e) => setStatus(e.target.value)}
+            >
+              <option value="" disabled hidden>
+                Status
+              </option>
+              <option value="to do">To Do</option>
+              <option value="in progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+            <div className="d-grid gap-2">
+              <button type="submit" className="btn btn-primary">
+                {editoradd === "Edit" ? "Update" : "Add Task"}
+              </button>
+            </div>
+          </div>
         </div>
-
-        <div>
-          <input
-            type="datetime-local"
-            placeholder="Due Date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
-        </div>
-
-        <div>
-          <input
-            type="number"
-            placeholder="Estimated Duration (in minutes)"
-            value={estDur}
-            onChange={(e) => setEstDur(e.target.value)}
-            min="0"
-          />
-        </div>
-
-        <div>
-          <input
-            type="number"
-            placeholder="Actual Duration (in minutes, if done)"
-            value={actDur}
-            onChange={(e) => setActDur(e.target.value)}
-            min="0"
-          />
-        </div>
-
-        <div>
-          <PlacesAutocomplete
-            value={location}
-            onChange={(value) => setLocation(value)}
-            onSelect={handleSelect}
-            googleCallbackName="initGooglePlaces"
-            googlePlacesAutocomplete={{
-              apiKey: "AIzaSyCtkKfUMT6mTU5QYrNb2qaIIpwAEW04qIg", // Replace with your actual API key
-            }}
-          >
-            {({
-              getInputProps,
-              suggestions,
-              getSuggestionItemProps,
-              loading,
-            }) => (
-              <div>
-                <input
-                  {...getInputProps({
-                    placeholder: "Enter your address...",
-                    className: "location-search-input",
-                  })}
-                />
-                <div className="autocomplete-dropdown-container">
-                  {loading && <div>Loading...</div>}
-                  {suggestions.map((suggestion) => {
-                    const style = {
-                      backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
-                    };
-                    return (
-                      <div
-                        {...getSuggestionItemProps(suggestion, {
-                          style,
-                        })}
-                      >
-                        {suggestion.description}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </PlacesAutocomplete>
-        </div>
-
-        <div>
-          <textarea
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-
-
-        <div>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="" disabled hidden>
-              Category
-            </option>
-            <option value="Work">Work</option>
-            <option value="School">School</option>
-            <option value="Personal">Personal</option>
-            <option value="Extracurricular">Extracurricular</option>
-            <option value="Leisure">Leisure</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div>
-          <select
-            value={curStatus}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="" disabled hidden>
-              Status
-            </option>
-            <option value="to do">To Do</option>
-            <option value="in progress">In Progress</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-
-        <div>
-          <button type="submit">Update</button>
-        </div> 
-      </>
-    );
-  } else {
-    formContent = (
-      <>
-        <div>
-          <input
-            type="text"
-            placeholder="Task Name"
-            value={taskName}
-            onChange={(e) => setTaskName(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <input
-            type="datetime-local"
-            placeholder="Due Date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <input
-            type="number"
-            placeholder="Estimated Duration (in minutes)"
-            value={estDur}
-            onChange={(e) => setEstDur(e.target.value)}
-            min="0"
-            required 
-          />
-        </div>
-
-        <div>
-          <PlacesAutocomplete
-            value={location}
-            onChange={(value) => setLocation(value)}
-            onSelect={handleSelect}
-            googleCallbackName="initGooglePlaces"
-            googlePlacesAutocomplete={{
-              apiKey: "AIzaSyCjtzk3FOsDTVE0_qm1im1xPvXOICqa1Z4", // Replace with your actual API key
-            }}
-          >
-            {({
-              getInputProps,
-              suggestions,
-              getSuggestionItemProps,
-              loading,
-            }) => (
-              <div>
-                <input
-                  {...getInputProps({
-                    placeholder: "Enter your address...",
-                    className: "location-search-input",
-                  })}
-                />
-                <div className="autocomplete-dropdown-container">
-                  {loading && <div>Loading...</div>}
-                  {suggestions.map((suggestion) => {
-                    const style = {
-                      backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
-                    };
-                    return (
-                      <div
-                        {...getSuggestionItemProps(suggestion, {
-                          style,
-                        })}
-                      >
-                        {suggestion.description}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </PlacesAutocomplete>
-        </div>
-
-        <div>
-          <textarea
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-
-        <div>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="" disabled hidden>
-              Category
-            </option>
-            <option value="Work">Work</option>
-            <option value="School">School</option>
-            <option value="Personal">Personal</option>
-            <option value="Extracurricular">Extracurricular</option>
-            <option value="Leisure">Leisure</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div>
-          <select
-            value={curStatus}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="" disabled hidden>
-              Status
-            </option>
-            <option value="to do">To Do</option>
-            <option value="in progress">In Progress</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-
-        <div>
-          <button type="submit">Add task</button>
-        </div>
-
-      </>
-    );
-  }
-
-  return (
-    <form onSubmit={editoradd === "Edit" ? handleSubmitEdit : handleSubmitAdd}>
-      <FormContainer>
-        {formContent}
       </FormContainer>
     </form>
   );
