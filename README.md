@@ -2,6 +2,11 @@
 
 This is a simple task/schedule manager built as a class project.
 
+## Description
+
+The app allows a user to create a to-do list, the tasks from which can be prioritized using optimal scheduling algorithms. To make the user's experience efficient, the app connects the tasks and optimal time for their completion with the user’s Google Calendar and sends desktop notifications. The application also allows users to track their progress in completing their tasks by providing easily comprehensible visual features. 
+
+
 ## Developer Setup
 
 1. Run `npm install` to install dependencies
@@ -49,3 +54,30 @@ to the project.
 
 1. Maintain a README file for major directories with explanations and
    instructions for future contributions
+
+### Features
+
+1. Add a task
+Tasks can be added using the plus button on the Task List View mode.
+
+2. Edit a task
+Tasks can be edited using the pen icon on the Task List View mode
+
+3. Task List View
+Tasks can be viewed as a list
+
+4. Task Board View
+Tasks can be viewed as a board from which the status of tasks can be tracked and changed
+
+5. Generate a schedule
+The app generates a schedule to maximize the tasks before their due date. 
+
+7. Add an event to Calendar
+An event with its name, start, and end times can be added to the Google calendar of a Google account, currently signed in on the brower 
+
+## Credits
+zxu4@cas.edu
+jgg64@case.edu
+jts212@case.edu
+axg1328@case.edu
+sxk1654@case.edu
