@@ -73,7 +73,12 @@ Tasks can be viewed as a board from which the status of tasks can be tracked and
 The app generates a schedule to maximize the tasks before their due date. 
 
 7. Add an event to Calendar
-An event with its name, start, and end times can be added to the Google calendar of a Google account, currently signed in on the brower 
+An event with its name, start, and end times can be added to the Google calendar of a Google account, currently signed in on the brower
+
+## Demo 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=VIDEO_ID
+" target="_blank"><img src="[http://img.youtube.com/vi/VIDEO_ID/0.jpg](https://www.youtube.com/watch?v=eMNY3zI-TPM)" 
+alt="Video Title" width="240" height="180" border="10" /></a>
 
 ## Credits
 zxu4@cas.edu
